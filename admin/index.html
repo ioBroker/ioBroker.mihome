@@ -1,0 +1,79 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td.line{
+        border-top:1px solid black;
+    }
+
+</style>
+
+<script type="text/javascript">
+    'use strict';
+
+    function load(settings, onChange) {
+        if (!settings) return;
+
+        fillSelectIPs('#bind', settings.bind, false, true);
+
+        $('.value').each(function () {
+            var key = $(this).attr('id');
+            var $value = $('#' + key + '.value');
+            if ($value.attr('type') === 'checkbox') {
+                $value.prop('checked', settings[key]).change(function() {
+                    onChange();
+                });
+            } else {
+                $value.val(settings[key]).change(function() {
+                    onChange();
+                }).keyup(function() {
+                    onChange();
+                });
+            }
+        });
+
+        onChange(false);
+    }
+
+    function save(callback) {
+        var obj = {};
+
+        $('.value').each(function () {
+            var $this = $(this);
+            if ($this.attr('type') === 'checkbox') {
+                obj[$this.attr('id')] = $this.prop('checked');
+            } else {
+                obj[$this.attr('id')] = $this.val();
+            }
+        });
+        callback(obj);
+    }
+
+</script>
+</head>
+<body>
+    <div id="adapter-container">
+        <table><tr>
+            <td><img src="mihome.png" width="128"/></td>
+            <td><h3 class="translate">MiHome Smarthome settings</h3></td>
+        </tr></table>
+        <table>
+            <tr><td><label class="translate" for="bind">ioBroker IP:</label></td><td class="admin-icon"></td><td><select id="bind" class="value"></select></td></tr>
+            <tr><td><label class="translate" for="port">ioBroker Port:</label></td><td class="admin-icon"></td><td><input class="value" id="port" size="5" maxlength="5"/></td></tr>
+            <tr><td><label class="translate" for="key">Gateway Key:</label></td><td class="admin-icon"></td><td><input class="value" id="key" /></td></tr>
+        </table>
+    </div>
+</body>
+</html>

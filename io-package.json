@@ -1,0 +1,63 @@
+{
+    "common": {
+        "name":                     "mihome",
+        "title":                    "MiHome Smarthome",
+        "desc":                     {
+			"en": "Xiaomi MiHome support",
+			"de": "Xiaomi MiHome Unterstutzung",
+			"ru": "Поддержка Xiaomi MiHome"
+		},
+        "version":                  "0.1.0",
+        "news": {
+            "0.1.0": {
+                "en": "initial commit",
+                "de": "initial commit",
+                "ru": "initial commit"
+            }
+        },
+        "mode":                     "daemon",
+        "platform":                 "javascript/Node.js",
+        "loglevel":                 "info",
+        "keywords":                 ["mihome", "xiaomi"],
+        "main":                     "main.js",
+        "authors": [
+            "bluefox <dogafox@gmail.com>"
+        ],
+        "license":                  "MIT",
+        "readme":                   "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
+        "icon":                     "mihome.png",
+        "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
+        "type":                     "hardware",
+        "enabled":                  true
+    },
+    "native": {
+        "bind":             "0.0.0.0",
+        "port":             9898,
+        "key":              ""
+    },
+    "objects": [
+    ],
+    "instanceObjects": [
+        {
+            "_id":  "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id":  "info.connection",
+            "type": "state",
+            "common": {
+                "role":  "indicator.connected",
+                "name":  "If connected to MiHome gateway",
+                "type":  "boolean",
+                "read":  true,
+                "write": false,
+                "def":   false
+            },
+            "native": {}
+        }
+    ]
+}
