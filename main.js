@@ -568,7 +568,7 @@ function startMihome() {
         }
     });
     hub.on('data', function (sid, type, data) {
-        adapter.log.info('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));
+        adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));
         updateStates(sid, type, data);
     });
 
