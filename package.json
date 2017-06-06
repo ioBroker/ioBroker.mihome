@@ -1,7 +1,7 @@
 {
   "name": "iobroker.mihome",
-  "description": "ZWave support for ioBroker based on openmihome packet",
-  "version": "0.1.0",
+  "description": "Control Xiaomi Mi Home smarthome devices/sebsors",
+  "version": "0.1.1",
   "author": {
     "name": "bluefox",
     "email": "dogafox@gmail.com"
@@ -20,7 +20,7 @@
   "keywords": [
     "ioBroker",
     "mihome",
-    "xiamoi",
+    "xiaomi",
     "home automation"
   ],
   "repository": {

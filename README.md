@@ -41,7 +41,7 @@ Install the App on a iOS device:
 - If you change here something, you lose your password!
 
 ## Changelog
-### 0.1.0 (2017-06-02)
+### 0.1.1 (2017-06-06)
  - (bluefox) Initial commit
 
 ## License

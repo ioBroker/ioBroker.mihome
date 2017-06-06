@@ -7,9 +7,9 @@
 			"de": "Xiaomi MiHome Unterstutzung",
 			"ru": "Поддержка Xiaomi MiHome"
 		},
-        "version":                  "0.1.0",
+        "version":                  "0.1.1",
         "news": {
-            "0.1.0": {
+            "0.1.1": {
                 "en": "initial commit",
                 "de": "initial commit",
                 "ru": "initial commit"
