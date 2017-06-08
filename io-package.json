@@ -7,9 +7,9 @@
 			"de": "Xiaomi MiHome Unterstutzung",
 			"ru": "Поддержка Xiaomi MiHome"
 		},
-        "version":                  "0.1.2",
+        "version":                  "0.1.3",
         "news": {
-            "0.1.2": {
+            "0.1.3": {
                 "en": "add cube\nremove voltage by gateway",
                 "de": "Cube hinzugefügt\nLöschen Voltage bei gateway",
                 "ru": "Добавлен Куб\nУдалены проценты из gateway"
