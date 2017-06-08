@@ -184,7 +184,6 @@ function createDevice(device, callback) {
 
     switch (device.type) {
         case 'gateway':
-            getVoltageObjects(id, objs);
             objs.push({
                 _id: id + '.illumination',
                 common: {
@@ -505,6 +504,130 @@ function createDevice(device, callback) {
                     name: 'Socket plug',
                     role: 'switch',
                     write: true,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'cube':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.flip90',
+                common: {
+                    name: 'Flip on 90°',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.flip180',
+                common: {
+                    name: 'Flip on 180°',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.move',
+                common: {
+                    name: 'Move action',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.tap_twice',
+                common: {
+                    name: 'Tapped twice',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.shake_air',
+                common: {
+                    name: 'Shaken in air',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.swing',
+                common: {
+                    name: 'Swing action',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.alert',
+                common: {
+                    name: 'Alert action',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.free_fall',
+                common: {
+                    name: 'Free fall action',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.rotate_left',
+                common: {
+                    name: 'Rotate left',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.rotate_right',
+                common: {
+                    name: 'Rotate right',
+                    role: 'button',
+                    write: false,
                     read: true,
                     type: 'boolean'
                 },
