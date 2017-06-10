@@ -144,7 +144,25 @@ function syncObjects(objs, callback) {
                         setTimeout(syncObjects, 0, objs, callback);
                     })
                 } else {
-                    setTimeout(syncObjects, 0, objs, callback);
+                    // init rotate position with previous value
+                    if (oObj._id.match(/\.rotate_position$/)) {
+                        adapter.getForeignState(oObj._id, function (err, state) {
+                            if (state) {
+                                var pos       = oObj._id.lastIndexOf('.');
+                                var channelId = oObj._id.substring(0, pos);
+
+                                if (objects[channelId]) {
+                                    var device = hub.getSensor(objects[channelId].native.sid);
+                                    if (device && device.Control) {
+                                        device.Control('rotate_position', state.val);
+                                    }
+                                }
+                            }
+                            setTimeout(syncObjects, 0, objs, callback);
+                        });
+                    } else {
+                        setTimeout(syncObjects, 0, objs, callback);
+                    }
                 }
             }
         }
@@ -514,6 +532,33 @@ function createDevice(device, callback) {
 
         case 'cube':
             getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.rotate',
+                common: {
+                    name: 'Rotation angle',
+                    role: 'state',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.rotate_position',
+                common: {
+                    name: 'Rotation angle',
+                    role: 'state',
+                    write: true,
+                    read:  true,
+                    min:   0,
+                    max:   100,
+                    unit:  '%',
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
             objs.push({
                 _id: id + '.flip90',
                 common: {

@@ -41,7 +41,7 @@ Install the App on a iOS device:
 - If you change here something, you lose your password!
 
 ## Changelog
-### 0.1.3 (2017-06-08)
+### 0.1.4 (2017-06-09)
  - (bluefox) add cube
  - (bluefox) remove voltage by gateway
 
