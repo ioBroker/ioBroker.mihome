@@ -41,6 +41,9 @@ Install the App on a iOS device:
 - If you change here something, you lose your password!
 
 ## Changelog
+### 0.2.0 (2017-07-18)
+ - (bluefox) fix battery level
+ 
 ### 0.1.4 (2017-06-09)
  - (bluefox) add cube
  - (bluefox) remove voltage by gateway
