@@ -301,6 +301,19 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
+            objs.push({
+                _id: id + '.doublePress',
+                common: {
+                    name:  'Double press',
+                    desc:  'You can press connect button twice',
+                    role:  'state',
+                    write: false,
+                    read:  true,
+                    type:  'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
             break;
 
         case 'magnet':
@@ -713,10 +726,12 @@ function startMihome() {
     if (!adapter.config.key) {
         adapter.log.error('no key defined. Only read is possible');
     }
+
     hub = new MiHome({
-        port: adapter.config.port,
-        bind: adapter.config.bind || '0.0.0.0',
-        key:  adapter.config.key
+        port:     adapter.config.port,
+        bind:     adapter.config.bind || '0.0.0.0',
+        key:      adapter.config.key,
+        interval: adapter.config.interval
     });
 
     hub.on('message', function (msg) {

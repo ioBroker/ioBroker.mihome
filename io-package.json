@@ -7,8 +7,13 @@
 			"de": "Xiaomi MiHome Unterstutzung",
 			"ru": "Поддержка Xiaomi MiHome"
 		},
-        "version":                  "0.2.0",
+        "version":                  "0.2.1",
         "news": {
+            "0.2.1": {
+                "en": "Implement double click on temperature sensor",
+                "de": "Doppelklick auf Temperaturfühler durchführen",
+                "ru": "Дважды нажмите на датчик температуры"
+            },
             "0.2.0": {
                 "en": "fix battery level",
                 "de": "Korrigiere Battery-Status",
@@ -43,7 +48,8 @@
     "native": {
         "bind":             "0.0.0.0",
         "port":             9898,
-        "key":              ""
+        "key":              "",
+        "interval":         5000
     },
     "objects": [
     ],

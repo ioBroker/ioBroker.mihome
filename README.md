@@ -40,7 +40,13 @@ Install the App on a iOS device:
 - Then tap the first toggle switch to enable LAN functions. Note down the password (29p9i40jeypwck38 in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
 - If you change here something, you lose your password!
 
+## Usage
+You can use small button on temperature sensor to trigger "double Press" event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
+
 ## Changelog
+### 0.2.1 (2017-07-29)
+ - (bluefox) Implement double click on temperature sensor
+ 
 ### 0.2.0 (2017-07-18)
  - (bluefox) fix battery level
  

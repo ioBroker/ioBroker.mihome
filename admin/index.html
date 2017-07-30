@@ -58,6 +58,10 @@
                 obj[$this.attr('id')] = $this.val();
             }
         });
+
+        obj.interval = parseInt(obj.interval, 10) || 0;
+        if (obj.interval > 9000) obj.interval = 9000;
+
         callback(obj);
     }
 
@@ -73,6 +77,7 @@
             <tr><td><label class="translate" for="bind">ioBroker IP:</label></td><td class="admin-icon"></td><td><select id="bind" class="value"></select></td></tr>
             <tr><td><label class="translate" for="port">ioBroker Port:</label></td><td class="admin-icon"></td><td><input class="value" id="port" size="5" maxlength="5"/></td></tr>
             <tr><td><label class="translate" for="key">Gateway Key:</label></td><td class="admin-icon"></td><td><input class="value" id="key" /></td></tr>
+            <tr><td><label class="translate" for="interval">Double key interval (ms):</label></td><td class="admin-icon"></td><td><input class="value" type="number" max="9000" min="0" id="interval" /></td></tr>
         </table>
     </div>
 </body>
