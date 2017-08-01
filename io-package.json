@@ -7,8 +7,13 @@
 			"de": "Xiaomi MiHome Unterstutzung",
 			"ru": "Поддержка Xiaomi MiHome"
 		},
-        "version":                  "0.2.1",
+        "version":                  "0.2.2",
         "news": {
+            "0.2.2": {
+                "en": "Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug",
+                "de": "Setzet nach 300ms doublePress auf false bei Temperatursensor\nErlaube Steuerung von Plug",
+                "ru": "Ставит после 300 мс doublePress на false для датчика температуры\nРазрешить управление Plug"
+            },
             "0.2.1": {
                 "en": "Implement double click on temperature sensor",
                 "de": "Doppelklick auf Temperaturfühler durchführen",

@@ -269,6 +269,20 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
+            objs.push({
+                _id: id + '.mid',
+                common: {
+                    name: 'Music ID',
+                    desc: '10000 - stop, 10005 - custom ringtone',
+                    role: 'state',
+                    write: true,
+                    read:  false,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+
             break;
 
         case 'sensor_ht':
@@ -316,6 +330,66 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'weather.v1':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.temperature',
+                common: {
+                    name: 'Temperature',
+                    role: 'value.temperature',
+                    unit: '°C',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.humidity',
+                common: {
+                    name: 'Humidity',
+                    role: 'value.humidity',
+                    unit: '%',
+                    write: false,
+                    read: true,
+                    type: 'number',
+                    min: 0,
+                    max: 100
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.pressure',
+                common: {
+                    name: 'Pressure',
+                    role: 'value.pressure',
+                    unit: 'Pa',
+                    write: false,
+                    read: true,
+                    type: 'number',
+                    min: 0,
+                    max: 100
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.doublePress',
+                common: {
+                    name:  'Double press',
+                    desc:  'You can press connect button twice',
+                    role:  'state',
+                    write: false,
+                    read:  true,
+                    type:  'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
         case 'magnet':
             getVoltageObjects(id, objs);
             objs.push({
@@ -326,6 +400,62 @@ function createDevice(device, callback) {
                     write: false,
                     read: true,
                     type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'natgas':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.state',
+                common: {
+                    name: 'Alarm state',
+                    role: 'indicator.alarm.CO2',
+                    write: false,
+                    read:  true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.description',
+                common: {
+                    name: 'Alarm description',
+                    role: 'state',
+                    write: false,
+                    read:  true,
+                    type: 'string'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'smoke':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.state',
+                common: {
+                    name: 'Alarm state',
+                    role: 'indicator.alarm.fire',
+                    write: false,
+                    read:  true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.description',
+                common: {
+                    name: 'Alarm description',
+                    role: 'state',
+                    write: false,
+                    read:  true,
+                    type: 'string'
                 },
                 type: 'state',
                 native: {}
@@ -356,6 +486,49 @@ function createDevice(device, callback) {
                     write: false,
                     read:  true,
                     type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'sensor_motion.aq2':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.state',
+                common: {
+                    name: 'Is motion',
+                    role: 'indicator.motion',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.no_motion',
+                common: {
+                    name:  'Last motion',
+                    desc:  'Last motion for at least X seconds',
+                    role:  'state',
+                    unit:  'seconds',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.lux',
+                common: {
+                    name: 'Brightness',
+                    role: 'indicator.brightness',
+                    write: false,
+                    read: true,
+                    unit: 'lux',
+                    type: 'number'
                 },
                 type: 'state',
                 native: {}
@@ -416,6 +589,18 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
+            objs.push({
+                _id: id + '.channel_0_double',
+                common: {
+                    name: 'Double click',
+                    role: 'button',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
             break;
 
         case '86sw2':
@@ -457,6 +642,30 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
+            objs.push({
+                _id: id + '.channel_0_double',
+                common: {
+                    name: 'First button pressed double',
+                    role: 'button',
+                    write: false,
+                    read:  true,
+                    type:  'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.channel_1_double',
+                common: {
+                    name: 'Second button pressed double',
+                    role: 'button',
+                    write: false,
+                    read:  true,
+                    type:  'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
             break;
 
         case '86plug':
@@ -479,7 +688,7 @@ function createDevice(device, callback) {
                     name: 'Load power',
                     role: 'value.power',
                     unit: 'W',
-                    write: true,
+                    write: false,
                     read: true,
                     type: 'number'
                 },
@@ -492,7 +701,19 @@ function createDevice(device, callback) {
                     name: 'Power consumed',
                     role: 'value.consumption',
                     unit: 'W',
-                    write: true,
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.inuse',
+                common: {
+                    name: 'Is in use',
+                    role: 'state',
+                    write: false,
                     read: true,
                     type: 'number'
                 },
@@ -501,11 +722,66 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'curtain':
+            objs.push({
+                _id: id + '.curtain_level',
+                common: {
+                    name: 'Curtain level',
+                    role: 'level.blinds',
+                    write: true,
+                    read: true,
+                    min: 0,
+                    max: 100,
+                    unit: '%',
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.open',
+                common: {
+                    name: 'Open',
+                    role: 'button',
+                    write: true,
+                    read: false,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.close',
+                common: {
+                    name: 'Close',
+                    role: 'button',
+                    write: true,
+                    read: false,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            objs.push({
+                _id: id + '.stop',
+                common: {
+                    name: 'Stop',
+                    role: 'button',
+                    write: true,
+                    read: false,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'ctrl_ln1':
         case 'ctrl_neutral1':
             objs.push({
                 _id: id + '.channel_0',
                 common: {
-                    name: 'Socket plug',
+                    name: 'Wall switch',
                     role: 'switch',
                     write: true,
                     read: true,
@@ -516,11 +792,12 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'ctrl_ln2':
         case 'ctrl_neutral2':
             objs.push({
                 _id: id + '.channel_0',
                 common: {
-                    name: 'Socket plug',
+                    name: 'Wall switch 0',
                     role: 'switch',
                     write: true,
                     read: true,
@@ -532,7 +809,7 @@ function createDevice(device, callback) {
             objs.push({
                 _id: id + '.channel_1',
                 common: {
-                    name: 'Socket plug',
+                    name: 'Wall switch 1',
                     role: 'switch',
                     write: true,
                     read: true,
