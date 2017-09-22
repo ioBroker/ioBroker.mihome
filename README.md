@@ -44,6 +44,9 @@ Install the App on a iOS device:
 You can use small button on temperature sensor to trigger "double Press" event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
 
 ## Changelog
+### 0.2.3 (2017-09-22)
+ - (bluefox) Remove "." from id of the device
+
 ### 0.2.2 (2017-08-01)
  - (bluefox) Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug
 

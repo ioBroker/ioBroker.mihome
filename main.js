@@ -53,7 +53,7 @@ adapter.on('unload', function (callback) {
 });
 
 function updateStates(sid, type, data) {
-    var id = adapter.namespace + '.devices.' + type + '_' + sid;
+    var id = adapter.namespace + '.devices.' + type.replace('.', '_') + '_' + sid;
 
     for (var attr in data) {
         if (data.hasOwnProperty(attr)) {
@@ -186,7 +186,7 @@ var names = {
 
 function createDevice(device, callback) {
     var objs = [];
-    var id = adapter.namespace + '.devices.' + device.type + '_' + device.sid;
+    var id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
     objs.push({
         _id: id,
         common: {
@@ -1023,7 +1023,7 @@ function startMihome() {
     });
     hub.on('device', function (device) {
         adapter.log.debug('device: ' + device.sid + '(' + device.type + ')');
-        if (!objects[adapter.namespace + '.devices.' + device.type + '_' + device.sid]) {
+        if (!objects[adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid]) {
             createDevice(device);
         }
     });
