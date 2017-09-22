@@ -43,6 +43,31 @@ Install the App on a iOS device:
 ## Usage
 You can use small button on temperature sensor to trigger "double Press" event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
 
+### Supported devices
+
+- gateway -           Xiaomi RGB Gateway
+- sensor_ht -         Xiaomi Temperature/Humidity
+- weather.v1 -        Xiaomi Temperature/Humidity/Pressure
+- switch -            Xiaomi Wireless Switch
+- sensor_switch.aq2 - Xiaomi Aqara Wireless Switch Sensor
+- plug -              Xiaomi Smart Plug
+- 86plug -            Xiaomi Smart Wall Plug
+- 86sw2 -             Xiaomi Wireless Dual Wall Switch
+- 86sw1 -             Xiaomi Wireless Single Wall Switch
+- natgas -            Xiaomi Mijia Honeywell Gas Alarm Detector
+- smoke -             Xiaomi Mijia Honeywell Fire Alarm Detector
+- ctrl_ln1 -          Xiaomi Aqara 86 Fire Wall Switch One Button
+- ctrl_ln2 -          Xiaomi 86 zero fire wall switch double key
+- ctrl_neutral2 -     Xiaomi Wired Dual Wall Switch
+- ctrl_neutral1 -     Xiaomi Wired Single Wall Switch
+- cube -              Xiaomi Cube
+- magnet -            Xiaomi Door Sensor
+- sensor_magnet.aq2 - Xiaomi Aqara Door Sensor
+- curtain -           Xiaomi Aqara Smart Curtain
+- motion -            Xiaomi Motion Sensor
+- sensor_motion.aq2   Xiaomi Aqara Motion Sensor
+
+
 ## Changelog
 ### 0.2.3 (2017-09-22)
  - (bluefox) Remove "." from id of the device
