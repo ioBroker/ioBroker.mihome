@@ -1,13 +1,13 @@
 {
     "common": {
-        "name":                     "mihome",
-        "title":                    "MiHome Smarthome",
-        "desc":                     {
-			"en": "Xiaomi MiHome support",
-			"de": "Xiaomi MiHome Unterstutzung",
-			"ru": "Поддержка Xiaomi MiHome"
-		},
-        "version":                  "0.2.3",
+        "name": "mihome",
+        "title": "MiHome Smarthome",
+        "desc": {
+            "en": "Xiaomi MiHome support",
+            "de": "Xiaomi MiHome Unterstutzung",
+            "ru": "Поддержка Xiaomi MiHome"
+        },
+        "version": "0.2.3",
         "news": {
             "0.2.3": {
                 "en": "Remove \".\" from id of the device",
@@ -40,32 +40,34 @@
                 "ru": "initial commit"
             }
         },
-        "mode":                     "daemon",
-        "platform":                 "javascript/Node.js",
-        "loglevel":                 "info",
-        "keywords":                 ["mihome", "xiaomi"],
-        "main":                     "main.js",
+        "mode": "daemon",
+        "platform": "javascript/Node.js",
+        "loglevel": "info",
+        "keywords": [
+            "mihome",
+            "xiaomi"
+        ],
+        "main": "main.js",
         "authors": [
             "bluefox <dogafox@gmail.com>"
         ],
-        "license":                  "MIT",
-        "readme":                   "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
-        "icon":                     "mihome.png",
-        "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
-        "type":                     "hardware",
-        "enabled":                  true
+        "license": "MIT",
+        "readme": "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
+        "icon": "mihome.png",
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
+        "type": "iot-systems",
+        "enabled": true
     },
     "native": {
-        "bind":             "0.0.0.0",
-        "port":             9898,
-        "key":              "",
-        "interval":         5000
+        "bind": "0.0.0.0",
+        "port": 9898,
+        "key": "",
+        "interval": 5000
     },
-    "objects": [
-    ],
+    "objects": [],
     "instanceObjects": [
         {
-            "_id":  "info",
+            "_id": "info",
             "type": "channel",
             "common": {
                 "name": "Information"
@@ -73,15 +75,15 @@
             "native": {}
         },
         {
-            "_id":  "info.connection",
+            "_id": "info.connection",
             "type": "state",
             "common": {
-                "role":  "indicator.connected",
-                "name":  "If connected to MiHome gateway",
-                "type":  "boolean",
-                "read":  true,
+                "role": "indicator.connected",
+                "name": "If connected to MiHome gateway",
+                "type": "boolean",
+                "read": true,
                 "write": false,
-                "def":   false
+                "def": false
             },
             "native": {}
         }
