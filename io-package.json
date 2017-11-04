@@ -7,8 +7,13 @@
             "de": "Xiaomi MiHome Unterstutzung",
             "ru": "Поддержка Xiaomi MiHome"
         },
-        "version": "0.2.3",
+        "version": "0.2.4",
         "news": {
+            "0.2.4": {
+                "en": "Add aqara water sensor",
+                "de": "Aqara Wasser-Sensor hinzugefügt",
+                "ru": "Добавлен Aqara сенсор протечки"
+            },
             "0.2.3": {
                 "en": "Remove \".\" from id of the device",
                 "de": "\".\" aus der ID des Gerätes entfernt",

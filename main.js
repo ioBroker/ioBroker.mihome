@@ -535,6 +535,23 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'sensor_wleak.aq1':
+            getVoltageObjects(id, objs);
+            objs.push({
+                _id: id + '.state',
+                common: {
+                    name: 'Is water detected',
+                    role: 'indicator.leakage',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+
+            break;
+
         case 'switch':
             getVoltageObjects(id, objs);
             objs.push({

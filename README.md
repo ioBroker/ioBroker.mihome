@@ -66,9 +66,12 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - curtain -           Xiaomi Aqara Smart Curtain
 - motion -            Xiaomi Motion Sensor
 - sensor_motion.aq2   Xiaomi Aqara Motion Sensor
-
+- sensor_wleak.aq1    Xiaomi Aqara water sensor
 
 ## Changelog
+### 0.2.4 (2017-11-04)
+ - (bluefox) Add aqara water sensor
+
 ### 0.2.3 (2017-09-22)
  - (bluefox) Remove "." from id of the device
 
