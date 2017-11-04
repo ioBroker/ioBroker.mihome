@@ -2,12 +2,14 @@
 /*jslint node: true */
 var expect = require('chai').expect;
 var setup  = require(__dirname + '/lib/setup');
+var GW     = require(__dirname + '/lib/gateway');
 
 var objects = null;
 var states  = null;
 var onStateChanged = null;
 var onObjectChanged = null;
 var sendToID = 1;
+var gw;
 
 var adapterShortName = setup.adapterName.substring(setup.adapterName.indexOf('.') + 1);
 var runningMode = require(__dirname + '/../io-package.json').common.mode;
@@ -94,6 +96,8 @@ describe('Test ' + adapterShortName + ' adapter', function() {
                 function (_objects, _states) {
                     objects = _objects;
                     states  = _states;
+                    gw = new GW();
+                    gw.init();
                     _done();
                 });
         });
@@ -120,19 +124,43 @@ describe('Test ' + adapterShortName + ' adapter', function() {
             done();
         });
     });
-/**/
 
-/*
-    PUT YOUR OWN TESTS HERE USING
-    it('Testname', function ( done) {
-        ...
+    it('Test ' + adapterShortName + ' adapter: must connect', function (done) {
+        this.timeout(5000);
+        setTimeout(function () {
+            states.getState(adapterShortName + '.0.info.connection', function (err, state) {
+                expect(err).to.be.not.ok;
+                expect(state.val).to.be.equal(true);
+                done();
+            });
+        }, 3000);
     });
 
-    You can also use "sendTo" method to send messages to the started adapter
-*/
+    it('Test ' + adapterShortName + ' adapter: states must exist', function (done) {
+        this.timeout(5000);
+        states.getState(adapterShortName + '0.devices.sensor_wleak_aq1_aaa000xxxxxxx.state', function (err, state) {
+            expect(err).to.be.not.ok;
+            expect(state.val).to.be.equal(false);
+            done();
+        });
+    });
+
+    it('Test ' + adapterShortName + ' adapter: detect disconnect', function (done) {
+        this.timeout(30000);
+        gw.destroy();
+        setTimeout(function () {
+            states.getState(adapterShortName + '.0.info.connection', function (err, state) {
+                expect(err).to.be.not.ok;
+                expect(state.val).to.be.equal(false);
+                done();
+            });
+        }, 21000);
+    });
 
     after('Test ' + adapterShortName + ' adapter: Stop js-controller', function (done) {
         this.timeout(10000);
+
+
 
         setup.stopController(function (normalTerminated) {
             console.log('Adapter normal terminated: ' + normalTerminated);

@@ -15,6 +15,7 @@ var delayed   = {};
 var connected = null;
 var connTimeout;
 var hub;
+var reconnectTimeout;
 
 adapter.on('ready', main);
 
@@ -46,7 +47,11 @@ adapter.on('stateChange', function (id, state) {
 
 adapter.on('unload', function (callback) {
     if (hub) {
-        hub.stop(callback);
+        try {
+            hub.stop(callback);
+        } catch (e) {
+
+        }
     } else if (callback) {
         callback();
     }
@@ -1009,6 +1014,15 @@ function readObjects(callback) {
     });
 }
 
+function disconnected () {
+    connTimeout = null;
+    if (connected) {
+        connected = false;
+        adapter.setState('info.connection', connected, true);
+    }
+    stopMihome();
+}
+
 function setConnected(conn) {
     if (connected !== conn) {
         connected = conn;
@@ -1016,16 +1030,30 @@ function setConnected(conn) {
     }
 
     if (conn) {
-        if (connTimeout) clearTimeout(connTimeout);
+        if (connTimeout) {
+            clearTimeout(connTimeout);
+        }
 
-        connTimeout = setTimeout(function () {
-            connected = false;
-            adapter.setState('info.connection', connected, true);
-        }, 20000);
+        connTimeout = setTimeout(disconnected, 20000);
+    }
+}
+
+function stopMihome() {
+    if (hub) {
+        try {
+            hub.stop();
+            hub = null;
+        } catch (e) {
+
+        }
+    }
+    if (!reconnectTimeout) {
+        reconnectTimeout = setTimeout(startMihome, 30000);
     }
 }
 
 function startMihome() {
+    reconnectTimeout = null;
     setConnected(false);
     if (!adapter.config.key) {
         adapter.log.error('no key defined. Only read is possible');
@@ -1047,6 +1075,7 @@ function startMihome() {
     });
     hub.on('error', function (error) {
         adapter.log.error(error);
+        stopMihome();
     });
     hub.on('device', function (device) {
         adapter.log.debug('device: ' + device.sid + '(' + device.type + ')');
@@ -1058,6 +1087,10 @@ function startMihome() {
         adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));
         updateStates(sid, type, data);
     });
+
+    if (!connTimeout) {
+        connTimeout = setTimeout(disconnected, 20000);
+    }
 
     hub.listen();
 }
