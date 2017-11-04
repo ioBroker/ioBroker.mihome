@@ -170,18 +170,28 @@ function syncObjects(objs, callback) {
 }
 
 var names = {
-    'gateway':          'Xiaomi RGB Gateway',
-    'sensor_ht':        'Xiaomi Temperature/Humidity',
-    'switch':           'Xiaomi Wireless Switch',
-    'plug':             'Xiaomi Smart Plug',
-    '86plug':           'Xiaomi Smart Wall Plug',
-    '86sw2':            'Xiaomi Wireless Dual Wall Switch',
-    '86sw1':            'Xiaomi Wireless Single Wall Switch',
-    'ctrl_neutral2':    'Xiaomi Wired Dual Wall Switch',
-    'ctrl_neutral1':    'Xiaomi Wired Single Wall Switch',
-    'cube':             'Xiaomi Cube',
-    'magnet':           'Xiaomi Door Sensor',
-    'motion':           'Xiaomi Motion Sensor'
+    'gateway':           'Xiaomi RGB Gateway',
+    'sensor_ht':         'Xiaomi Temperature/Humidity',
+    'switch':            'Xiaomi Wireless Switch',
+    'plug':              'Xiaomi Smart Plug',
+    '86plug':            'Xiaomi Smart Wall Plug',
+    '86sw2':             'Xiaomi Wireless Dual Wall Switch',
+    '86sw1':             'Xiaomi Wireless Single Wall Switch',
+    'ctrl_neutral2':     'Xiaomi Wired Dual Wall Switch',
+    'ctrl_neutral1':     'Xiaomi Wired Single Wall Switch',
+    'cube':              'Xiaomi Cube',
+    'magnet':            'Xiaomi Door Sensor',
+    'motion':            'Xiaomi Motion Sensor',
+    'weather.v1':        'Xiaomi Temperature/Humidity/Pressure',
+    'sensor_switch.aq2': 'Xiaomi Wireless Switch Sensor',
+    'natgas':            'Xiaomi Mijia Honeywell Gas Alarm Detector',
+    'smoke':             'Xiaomi Mijia Honeywell Fire Alarm Detector',
+    'ctrl_ln1':          'Xiaomi Aqara 86 Fire Wall Switch One Button',
+    'ctrl_ln2':          'Xiaomi 86 zero fire wall switch double key',
+    'sensor_magnet.aq2': 'Xiaomi Door Sensor',
+    'curtain':           'Xiaomi Aqara Smart Curtain',
+    'sensor_motion.aq2': 'Xiaomi Motion Sensor',
+    'sensor_wleak.aq1':  'Xiaomi Aqara Water Sensor'
 };
 
 function createDevice(device, callback) {
@@ -191,7 +201,7 @@ function createDevice(device, callback) {
         _id: id,
         common: {
             name: names[device.type] || device.type,
-            icon: '/icons/' + device.type + '.png'
+            icon: '/icons/' + device.type.replace('.', '_') + '.png'
         },
         type: 'channel',
         native: {
