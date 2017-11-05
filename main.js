@@ -16,6 +16,7 @@ var connected = null;
 var connTimeout;
 var hub;
 var reconnectTimeout;
+var tasks = [];
 
 adapter.on('ready', main);
 
@@ -62,7 +63,7 @@ function updateStates(sid, type, data) {
 
     for (var attr in data) {
         if (data.hasOwnProperty(attr)) {
-            if (objects[id]) {
+            if (objects[id] || objects[id + '.' + attr]) {
                 adapter.setForeignState(id + '.' + attr, data[attr], true);
             } else {
                 delayed[id + '.' + attr] = data[attr];
@@ -106,17 +107,24 @@ function getVoltageObjects(id, objs) {
     });
 }
 
-function syncObjects(objs, callback) {
-    if (!objs || !objs.length) {
+function syncObjects(callback) {
+    if (!tasks || !tasks.length) {
         callback && callback();
         return;
     }
-    var obj = objs.shift();
+    var obj = tasks.shift();
     adapter.getForeignObject(obj._id, function (err, oObj) {
         if (!oObj) {
             objects[obj._id] = obj;
             adapter.setForeignObject(obj._id, obj, function () {
-                setTimeout(syncObjects, 0, objs, callback);
+                if (delayed[obj._id] !== undefined) {
+                    adapter.setForeignState(obj._id, delayed[obj._id], true, function () {
+                        delete delayed[obj._id];
+                        setImmediate(syncObjects, callback);
+                    })
+                } else {
+                    setImmediate(syncObjects, callback);
+                }
             });
         } else {
             var changed = false;
@@ -133,20 +141,20 @@ function syncObjects(objs, callback) {
             objects[obj._id] = oObj;
             if (changed) {
                 adapter.setForeignObject(oObj._id, oObj, function () {
-                    if (delayed[oObj._id]) {
+                    if (delayed[oObj._id] !== undefined) {
                         adapter.setForeignState(oObj._id, delayed[oObj._id], true, function () {
                             delete delayed[oObj._id];
-                            setTimeout(syncObjects, 0, objs, callback);
+                            setImmediate(syncObjects, callback);
                         })
                     } else {
-                        setTimeout(syncObjects, 0, objs, callback);
+                        setImmediate(syncObjects, callback);
                     }
                 });
             } else {
-                if (delayed[oObj._id]) {
+                if (delayed[oObj._id] !== undefined) {
                     adapter.setForeignState(oObj._id, delayed[oObj._id], true, function () {
                         delete delayed[oObj._id];
-                        setTimeout(syncObjects, 0, objs, callback);
+                        setImmediate(syncObjects, callback);
                     })
                 } else {
                     // init rotate position with previous value
@@ -163,10 +171,10 @@ function syncObjects(objs, callback) {
                                     }
                                 }
                             }
-                            setTimeout(syncObjects, 0, objs, callback);
+                            setImmediate(syncObjects, callback);
                         });
                     } else {
-                        setTimeout(syncObjects, 0, objs, callback);
+                        setImmediate(syncObjects, callback);
                     }
                 }
             }
@@ -200,9 +208,10 @@ var names = {
 };
 
 function createDevice(device, callback) {
-    var objs = [];
     var id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
-    objs.push({
+    var isStartTasks = !tasks.length;
+
+    tasks.push({
         _id: id,
         common: {
             name: names[device.type] || device.type,
@@ -217,7 +226,7 @@ function createDevice(device, callback) {
 
     switch (device.type) {
         case 'gateway':
-            objs.push({
+            tasks.push({
                 _id: id + '.illumination',
                 common: {
                     name: 'Illumination',
@@ -230,7 +239,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.rgb',
                 common: {
                     name: 'RGB',
@@ -242,7 +251,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.on',
                 common: {
                     name:  'Light',
@@ -254,7 +263,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.dimmer',
                 common: {
                     name: 'Light',
@@ -269,7 +278,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.volume',
                 common: {
                     name: 'Volume',
@@ -284,7 +293,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.mid',
                 common: {
                     name: 'Music ID',
@@ -301,8 +310,8 @@ function createDevice(device, callback) {
             break;
 
         case 'sensor_ht':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.temperature',
                 common: {
                     name: 'Temperature',
@@ -315,7 +324,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.humidity',
                 common: {
                     name: 'Humidity',
@@ -330,7 +339,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.doublePress',
                 common: {
                     name:  'Double press',
@@ -346,8 +355,8 @@ function createDevice(device, callback) {
             break;
 
         case 'weather.v1':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.temperature',
                 common: {
                     name: 'Temperature',
@@ -360,7 +369,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.humidity',
                 common: {
                     name: 'Humidity',
@@ -375,7 +384,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.pressure',
                 common: {
                     name: 'Pressure',
@@ -390,7 +399,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.doublePress',
                 common: {
                     name:  'Double press',
@@ -406,8 +415,8 @@ function createDevice(device, callback) {
             break;
 
         case 'magnet':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Is opened',
@@ -422,8 +431,8 @@ function createDevice(device, callback) {
             break;
 
         case 'natgas':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Alarm state',
@@ -435,7 +444,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.description',
                 common: {
                     name: 'Alarm description',
@@ -450,8 +459,8 @@ function createDevice(device, callback) {
             break;
 
         case 'smoke':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Alarm state',
@@ -463,7 +472,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.description',
                 common: {
                     name: 'Alarm description',
@@ -478,8 +487,8 @@ function createDevice(device, callback) {
             break;
 
         case 'motion':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Is motion',
@@ -491,7 +500,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.no_motion',
                 common: {
                     name:  'Last motion',
@@ -508,8 +517,8 @@ function createDevice(device, callback) {
             break;
 
         case 'sensor_motion.aq2':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Is motion',
@@ -521,7 +530,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.no_motion',
                 common: {
                     name:  'Last motion',
@@ -535,7 +544,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.lux',
                 common: {
                     name: 'Brightness',
@@ -551,8 +560,8 @@ function createDevice(device, callback) {
             break;
 
         case 'sensor_wleak.aq1':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Is water detected',
@@ -568,8 +577,8 @@ function createDevice(device, callback) {
             break;
 
         case 'switch':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.click',
                 common: {
                     name: 'Simple click',
@@ -581,7 +590,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.double',
                 common: {
                     name: 'Double click',
@@ -593,7 +602,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.long',
                 common: {
                     name: 'Long click',
@@ -608,8 +617,8 @@ function createDevice(device, callback) {
             break;
 
         case '86sw1':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.channel_0',
                 common: {
                     name: 'Simple click',
@@ -621,7 +630,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_0_double',
                 common: {
                     name: 'Double click',
@@ -636,9 +645,9 @@ function createDevice(device, callback) {
             break;
 
         case '86sw2':
-            getVoltageObjects(id, objs);
+            getVoltageObjects(id, tasks);
 
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_0',
                 common: {
                     name: 'First button pressed',
@@ -650,7 +659,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_1',
                 common: {
                     name: 'Second button pressed',
@@ -662,7 +671,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.dual_channel',
                 common: {
                     name: 'Both buttons pressed',
@@ -674,7 +683,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_0_double',
                 common: {
                     name: 'First button pressed double',
@@ -686,7 +695,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_1_double',
                 common: {
                     name: 'Second button pressed double',
@@ -702,7 +711,7 @@ function createDevice(device, callback) {
 
         case '86plug':
         case 'plug':
-            objs.push({
+            tasks.push({
                 _id: id + '.state',
                 common: {
                     name: 'Socket plug',
@@ -714,7 +723,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.load_power',
                 common: {
                     name: 'Load power',
@@ -727,7 +736,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.power_consumed',
                 common: {
                     name: 'Power consumed',
@@ -740,7 +749,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.inuse',
                 common: {
                     name: 'Is in use',
@@ -755,7 +764,7 @@ function createDevice(device, callback) {
             break;
 
         case 'curtain':
-            objs.push({
+            tasks.push({
                 _id: id + '.curtain_level',
                 common: {
                     name: 'Curtain level',
@@ -770,7 +779,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.open',
                 common: {
                     name: 'Open',
@@ -782,7 +791,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.close',
                 common: {
                     name: 'Close',
@@ -794,7 +803,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.stop',
                 common: {
                     name: 'Stop',
@@ -810,7 +819,7 @@ function createDevice(device, callback) {
 
         case 'ctrl_ln1':
         case 'ctrl_neutral1':
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_0',
                 common: {
                     name: 'Wall switch',
@@ -826,7 +835,7 @@ function createDevice(device, callback) {
 
         case 'ctrl_ln2':
         case 'ctrl_neutral2':
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_0',
                 common: {
                     name: 'Wall switch 0',
@@ -838,7 +847,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.channel_1',
                 common: {
                     name: 'Wall switch 1',
@@ -853,8 +862,8 @@ function createDevice(device, callback) {
             break;
 
         case 'cube':
-            getVoltageObjects(id, objs);
-            objs.push({
+            getVoltageObjects(id, tasks);
+            tasks.push({
                 _id: id + '.rotate',
                 common: {
                     name: 'Rotation angle',
@@ -866,7 +875,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.rotate_position',
                 common: {
                     name: 'Rotation angle',
@@ -881,7 +890,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.flip90',
                 common: {
                     name: 'Flip on 90°',
@@ -893,7 +902,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.flip180',
                 common: {
                     name: 'Flip on 180°',
@@ -905,7 +914,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.move',
                 common: {
                     name: 'Move action',
@@ -917,7 +926,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.tap_twice',
                 common: {
                     name: 'Tapped twice',
@@ -929,7 +938,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.shake_air',
                 common: {
                     name: 'Shaken in air',
@@ -941,7 +950,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.swing',
                 common: {
                     name: 'Swing action',
@@ -953,7 +962,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.alert',
                 common: {
                     name: 'Alert action',
@@ -965,7 +974,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.free_fall',
                 common: {
                     name: 'Free fall action',
@@ -977,7 +986,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.rotate_left',
                 common: {
                     name: 'Rotate left',
@@ -989,7 +998,7 @@ function createDevice(device, callback) {
                 type: 'state',
                 native: {}
             });
-            objs.push({
+            tasks.push({
                 _id: id + '.rotate_right',
                 common: {
                     name: 'Rotate right',
@@ -1003,7 +1012,9 @@ function createDevice(device, callback) {
             });
             break;
     }
-    syncObjects(objs, callback);
+    if (isStartTasks) {
+        syncObjects(callback);
+    }
 }
 
 function readObjects(callback) {

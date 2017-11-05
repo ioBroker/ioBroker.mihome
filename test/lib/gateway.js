@@ -17,7 +17,7 @@ var commands = [
 function GatewaySimulator () {
     var that = this;
 
-    this.destroy = function () {
+    this.destroy = function (cb) {
         this.socket.close(cb);
         this.socket = null;
     };

@@ -14,6 +14,137 @@ var gw;
 var adapterShortName = setup.adapterName.substring(setup.adapterName.indexOf('.') + 1);
 var runningMode = require(__dirname + '/../io-package.json').common.mode;
 
+var checkStates = {
+    "mihome.0.devices.gateway_81726387164871.illumination": {
+        "val": 1180,
+        "ack": true,
+        "ts": 1509870303537,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303537
+    },
+    "mihome.0.devices.gateway_81726387164871.on": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303539,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303539
+    },
+    "mihome.0.devices.gateway_81726387164871.dimmer": {
+        "val": 0,
+        "ack": true,
+        "ts": 1509870303539,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303539
+    },
+    "mihome.0.devices.gateway_81726387164871.rgb": {
+        "val": "#000000",
+        "ack": true,
+        "ts": 1509870303539,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303539
+    },
+    "mihome.0.devices.86sw2_1234567abeefc.channel_1": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303830,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303830
+    },
+    "mihome.0.devices.86sw2_1234567abeefc.dual_channel": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303831,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303831
+    },
+    "mihome.0.devices.86sw2_1234567abeefc.channel_1_double": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303574,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303574
+    },
+    "mihome.0.devices.weather_v1_1652761251244.temperature": {
+        "val": 20.3,
+        "ack": true,
+        "ts": 1509870303587,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303587
+    },
+    "mihome.0.devices.weather_v1_1652761251244.humidity": {
+        "val": 66.06,
+        "ack": true,
+        "ts": 1509870303590,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303590
+    },
+    "mihome.0.devices.weather_v1_1652761251244.pressure": {
+        "val": 1001.2,
+        "ack": true,
+        "ts": 1509870303593,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303593
+    },
+    "mihome.0.devices.cube_287658275634875.voltage": {
+        "val": 3.025,
+        "ack": true,
+        "ts": 1509870303600,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303600
+    },
+    "mihome.0.devices.cube_287658275634875.percent": {
+        "val": 82.5,
+        "ack": true,
+        "ts": 1509870303603,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303603
+    },
+    "mihome.0.devices.cube_287658275634875.rotate": {
+        "val": 6.5,
+        "ack": true,
+        "ts": 1509870303605,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303605
+    },
+    "mihome.0.devices.cube_287658275634875.rotate_position": {
+        "val": 6.5,
+        "ack": true,
+        "ts": 1509870303607,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303607
+    },
+    "mihome.0.devices.cube_287658275634875.rotate_right": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303835,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303835
+    },
+    "mihome.0.devices.sensor_wleak_aq1_aaa000xxxxxxx.state": {
+        "val": false,
+        "ack": true,
+        "ts": 1509870303649,
+        "q": 0,
+        "from": "system.adapter.mihome.0",
+        "lc": 1509870303649
+    }
+};
+
 function checkConnectionOfAdapter(cb, counter) {
     counter = counter || 0;
     console.log('Try check #' + counter);
@@ -83,19 +214,21 @@ describe('Test ' + adapterShortName + ' adapter', function() {
         setup.setupController(function () {
             var config = setup.getAdapterConfig();
             // enable adapter
-            config.common.enabled  = true;
+            config.common.enabled = true;
             config.common.loglevel = 'debug';
+            config.native.key = 'aaaaa';
 
             //config.native.dbtype   = 'sqlite';
 
             setup.setAdapterConfig(config.common, config.native);
 
-            setup.startController(true, function(id, obj) {}, function (id, state) {
+            setup.startController(true, function (id, obj) {
+                }, function (id, state) {
                     if (onStateChanged) onStateChanged(id, state);
                 },
                 function (_objects, _states) {
                     objects = _objects;
-                    states  = _states;
+                    states = _states;
                     gw = new GW();
                     gw.init();
                     _done();
@@ -138,11 +271,24 @@ describe('Test ' + adapterShortName + ' adapter', function() {
 
     it('Test ' + adapterShortName + ' adapter: states must exist', function (done) {
         this.timeout(5000);
-        states.getState(adapterShortName + '0.devices.sensor_wleak_aq1_aaa000xxxxxxx.state', function (err, state) {
-            expect(err).to.be.not.ok;
-            expect(state.val).to.be.equal(false);
-            done();
-        });
+        var cnt = 0;
+        for (var __id in checkStates) {
+            if (checkStates.hasOwnProperty(__id)) cnt++;
+        }
+        for (var id in checkStates) {
+            if (!checkStates.hasOwnProperty(id)) continue;
+            (function (_id, checkState) {
+                states.getState(_id, function (err, state) {
+                    expect(err).to.be.not.ok;
+                    expect(state.val).to.be.equal(checkState.val);
+                    expect(state.ack).to.be.equal(checkState.ack);
+                    console.log('Check ' + _id);
+                    if (!--cnt) {
+                        done();
+                    }
+                });
+            })(id, checkStates[id]);
+        }
     });
 
     it('Test ' + adapterShortName + ' adapter: detect disconnect', function (done) {
@@ -159,9 +305,6 @@ describe('Test ' + adapterShortName + ' adapter', function() {
 
     after('Test ' + adapterShortName + ' adapter: Stop js-controller', function (done) {
         this.timeout(10000);
-
-
-
         setup.stopController(function (normalTerminated) {
             console.log('Adapter normal terminated: ' + normalTerminated);
             done();
