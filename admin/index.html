@@ -22,9 +22,14 @@
 
 <script type="text/javascript">
     'use strict';
+    var keys = [];
 
     function load(settings, onChange) {
         if (!settings) return;
+
+        if (!settings.keys) {
+            settings.keys = [];
+        }
 
         fillSelectIPs('#bind', settings.bind, false, true);
 
@@ -41,6 +46,61 @@
                 }).keyup(function() {
                     onChange();
                 });
+            }
+        });
+
+        $('#search').button({
+            label: _('Search'),
+            icons: {
+                primary: ' ui-icon-refresh'
+            }
+        }).click(function () {
+            $('#search').button('disable');
+            sendTo(null, 'browse', {port: parseInt($('#port').val(), 10), bind: $('#bind').val()}, function (list) {
+                $('#search').button('enable');
+                keys = table2values('values');
+                if (list && list.length) {
+                    var changed = false;
+                    for (var i = 0; i < list.length; list++) {
+                       var found = false;
+                       for (var k = 0; k < keys.length; k++) {
+                           if (keys[k].ip.trim() === list[i]) {
+                               found = true;
+                               break;
+                           }
+                       }
+                       if (!found) {
+                           keys.push({ip: list[i], key: ''});
+                           changed = true;
+                       }
+                    }
+                    if (keys.length > 1) {
+                        for (var kk = keys.length - 1; kk >= 0; kk--) {
+                            if (!keys[kk].ip && !keys[kk].key) {
+                                keys.splice(kk, 1);
+                                changed = true;
+                            }
+                        }
+                    }
+
+
+                    if (changed) {
+                        onChange();
+                        values2table('values', keys, onChange);
+                    }
+                }
+            });
+        });
+
+        keys = settings.keys || [];
+
+        values2table('values', keys, onChange);
+
+        getIsAdapterAlive(function (isAlive) {
+            if (isAlive || common.enabled) {
+                $('#search').button('enable');
+            } else {
+                $('#search').button('disable');
             }
         });
 
@@ -62,6 +122,9 @@
         obj.interval = parseInt(obj.interval, 10) || 0;
         if (obj.interval > 9000) obj.interval = 9000;
 
+        // Get edited table
+        obj.keys = table2values('values');
+
         callback(obj);
     }
 
@@ -76,9 +139,25 @@
         <table>
             <tr><td><label class="translate" for="bind">ioBroker IP:</label></td><td class="admin-icon"></td><td><select id="bind" class="value"></select></td></tr>
             <tr><td><label class="translate" for="port">ioBroker Port:</label></td><td class="admin-icon"></td><td><input class="value" id="port" size="5" maxlength="5"/></td></tr>
-            <tr><td><label class="translate" for="key">Gateway Key:</label></td><td class="admin-icon"></td><td><input class="value" id="key" /></td></tr>
+            <tr><td><label class="translate" for="key">Default Gateway Key:</label></td><td class="admin-icon"></td><td><input class="value" id="key" /></td></tr>
             <tr><td><label class="translate" for="interval">Double key interval (ms):</label></td><td class="admin-icon"></td><td><input class="value" type="number" max="9000" min="0" id="interval" /></td></tr>
         </table>
+        <h4 class="translate">Gateway keys</h4>
+        <div id="values" style="width: 100%; height: calc(100% - 280px)">
+            <button class="table-button-add" style="margin-left: 10px; height: 2em; margin-right: 32px; margin-bottom: 3px; display: inline"></button><button id="search" style="display: inline;margin-bottom: 3px;"></button>
+            <div style="width: 100%; height: calc(100% - 30px); overflow: auto;">
+                <table class="table-values" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th data-name="_index"    style="width: 40px" class="translate"></th>
+                        <th data-name="ip"        style="width: 120px" data-style="width: 120px" class="translate">IP Address</th>
+                        <th data-name="key"       style="width: 100%; text-align: left;" data-style="width: 100%" class="translate">Key</th>
+                        <th data-buttons="delete" style="width: 40px"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>

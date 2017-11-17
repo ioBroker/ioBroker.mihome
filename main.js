@@ -51,10 +51,39 @@ adapter.on('unload', function (callback) {
         try {
             hub.stop(callback);
         } catch (e) {
-
+            console.error('Cannot stop: ' + e);
+            callback && callback();
         }
     } else if (callback) {
         callback();
+    }
+});
+
+adapter.on('message', function (obj) {
+    if (obj) {
+        switch (obj.command) {
+            case 'browse':
+                var browse = new MiHome({
+                    port:     (obj.message.port || adapter.config.port) + 1,
+                    bind:     obj.message.bind || '0.0.0.0',
+                    browse:   true
+                });
+                var result = [];
+                browse.on('browse', function (data) {
+                    if (result.indexOf(data.ip) === -1) {
+                        result.push(data.ip);
+                    }
+                });
+
+                browse.listen();
+                setTimeout(function () {
+                    browse.stop(function () {
+                        browse = null;
+                        if (obj.callback) adapter.sendTo(obj.from, obj.command, result, obj.callback);
+                    });
+                }, 3000);
+                break;
+        }
     }
 });
 
@@ -1066,7 +1095,7 @@ function stopMihome() {
 function startMihome() {
     reconnectTimeout = null;
     setConnected(false);
-    if (!adapter.config.key) {
+    if (!adapter.config.key && !adapter.config.keys.find(function (e) { return e.key; })) {
         adapter.log.error('no key defined. Only read is possible');
     }
 
@@ -1074,6 +1103,7 @@ function startMihome() {
         port:     adapter.config.port,
         bind:     adapter.config.bind || '0.0.0.0',
         key:      adapter.config.key,
+        keys:     adapter.config.keys,
         interval: adapter.config.interval
     });
 

@@ -7,8 +7,13 @@
             "de": "Xiaomi MiHome Unterstutzung",
             "ru": "Поддержка Xiaomi MiHome"
         },
-        "version": "0.2.4",
+        "version": "0.3.0",
         "news": {
+            "0.3.0": {
+                "en": "Allow multiple mihome gateways",
+                "de": "Erluabe mehrere Gateways",
+                "ru": "Можно подключить несколько Gateways"
+            },
             "0.2.4": {
                 "en": "Add aqara water sensor",
                 "de": "Aqara Wasser-Sensor hinzugefügt",
@@ -52,6 +57,7 @@
             "mihome",
             "xiaomi"
         ],
+        "messagebox": true,
         "main": "main.js",
         "authors": [
             "bluefox <dogafox@gmail.com>"
@@ -66,7 +72,9 @@
     "native": {
         "bind": "0.0.0.0",
         "port": 9898,
-        "key": "",
+        "keys": [
+            {"ip": "", "key": ""}
+        ],
         "interval": 5000
     },
     "objects": [],
