@@ -1,5 +1,5 @@
 ![Logo](admin/mihome.png)
-ioBroker mihome Adapter
+# ioBroker mihome Adapter
 ==============
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
