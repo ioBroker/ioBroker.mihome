@@ -7,9 +7,9 @@
             "de": "Xiaomi MiHome Unterstutzung",
             "ru": "Поддержка Xiaomi MiHome"
         },
-        "version": "0.3.1",
+        "version": "0.3.2",
         "news": {
-            "0.3.1": {
+            "0.3.2": {
                 "en": "Allow multiple mihome gateways",
                 "de": "Erluabe mehrere Gateways",
                 "ru": "Можно подключить несколько Gateways"

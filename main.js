@@ -1095,7 +1095,7 @@ function stopMihome() {
 function startMihome() {
     reconnectTimeout = null;
     setConnected(false);
-    if (!adapter.config.key && !adapter.config.keys.find(function (e) { return e.key; })) {
+    if (!adapter.config.key || !adapter.config.keys.find(function (e) { return e.key; })) {
         adapter.log.error('no key defined. Only read is possible');
     }
 
