@@ -8,7 +8,7 @@
 
 var utils     = require(__dirname + '/lib/utils'); // Get common adapter utils
 var MiHome    = require(__dirname + '/lib/mihome/Hub');
-var adapter   = utils.adapter('mihome');
+var adapter   = utils.Adapter('mihome');
 
 var objects   = {};
 var delayed   = {};
