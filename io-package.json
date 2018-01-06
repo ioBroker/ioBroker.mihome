@@ -1,14 +1,31 @@
 {
     "common": {
         "name": "mihome",
-        "title": "MiHome Smarthome",
+        "title": "Xiaomi MiHome Gateway",
         "desc": {
-            "en": "Xiaomi MiHome support",
-            "de": "Xiaomi MiHome Unterstutzung",
-            "ru": "Поддержка Xiaomi MiHome"
+            "en": "Xiaomi MiHome gateway support",
+            "de": "Xiaomi MiHome Gateway Unterstützung",
+            "ru": "Поддержка «Xiaomi MiHome gateway»",
+            "pt": "Suporte Xiaomi MiHome gateway",
+            "nl": "Xiaomi MiHome gateway -ondersteuning",
+            "fr": "Prise en charge de la passerelle Xiaomi MiHome",
+            "it": "Supporto Xiaomi MiHome gateway",
+            "es": "Asistencia técnica para Xiaomi MiHome gateway",
+            "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "0.3.3",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "Do not overwrite the names\nReady for Admin3",
+                "de": "Überschreibe die Namen nicht\nBereit für Admin3",
+                "ru": "Не перезаписывайте имена\nГотово для Admin3",
+                "pt": "Não substitua os nomes\nPronto para Admin3",
+                "nl": "Overschrijf de namen niet\nKlaar voor Admin3",
+                "fr": "Ne pas écraser les noms\nPrêt pour Admin3",
+                "it": "Non sovrascrivere i nomi\nPronto per Admin3",
+                "es": "No sobrescribir los nombres\nListo para Admin3",
+                "pl": "Nie nadpisuj nazw\nGotowy na Admin3"
+            },
             "0.3.3": {
                 "en": "Allow multiple mihome gateways",
                 "de": "Erluabe mehrere Gateways",
@@ -58,6 +75,7 @@
             "xiaomi"
         ],
         "messagebox": true,
+        "materialize": true,
         "main": "main.js",
         "authors": [
             "bluefox <dogafox@gmail.com>"

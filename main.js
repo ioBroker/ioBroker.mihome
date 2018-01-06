@@ -1,7 +1,7 @@
 /**
  *      ioBroker MiHome
  *
- *      Copyright 2017, bluefox <dogafox@gmail.com>
+ *      Copyright 2017-2018, bluefox <dogafox@gmail.com>
  *
  *      License: MIT
  */
@@ -157,8 +157,9 @@ function syncObjects(callback) {
             });
         } else {
             var changed = false;
+            // merge info together
             for (var a in obj.common) {
-                if (obj.common.hasOwnProperty(a) && oObj.common[a] !== obj.common[a]) {
+                if (obj.common.hasOwnProperty(a) && a !== 'name' && oObj.common[a] !== obj.common[a]) {
                     changed = true;
                     oObj.common[a] = obj.common[a];
                 }
@@ -167,6 +168,7 @@ function syncObjects(callback) {
                 changed = true;
                 oObj.native = obj.native;
             }
+
             objects[obj._id] = oObj;
             if (changed) {
                 adapter.setForeignObject(oObj._id, oObj, function () {

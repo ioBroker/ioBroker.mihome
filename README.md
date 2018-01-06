@@ -69,31 +69,37 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - sensor_wleak.aq1    Xiaomi Aqara water sensor
 
 ## Changelog
+### 1.0.0 (2018-01-05)
+- (bluefox) Do not overwrite the names
+- (bluefox) Ready for Admin3
+
 ### 0.3.3 (2017-11-26)
- - (bluefox) Allow multiple mihome gateways
+- (bluefox) Allow multiple mihome gateways
 
 ### 0.2.4 (2017-11-04)
- - (bluefox) Add aqara water sensor
+- (bluefox) Add aqara water sensor
 
 ### 0.2.3 (2017-09-22)
- - (bluefox) Remove "." from id of the device
+- (bluefox) Remove "." from id of the device
 
 ### 0.2.2 (2017-08-01)
- - (bluefox) Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug
+- (bluefox) Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug
 
 ### 0.2.1 (2017-07-29)
-  - (bluefox) Implement double click on temperature sensor
+- (bluefox) Implement double click on temperature sensor
 
 ### 0.2.0 (2017-07-18)
- - (bluefox) fix battery level
- 
+- (bluefox) fix battery level
+
 ### 0.1.4 (2017-06-09)
- - (bluefox) add cube
- - (bluefox) remove voltage by gateway
+- (bluefox) add cube
+- (bluefox) remove voltage by gateway
 
 ### 0.1.1 (2017-06-06)
- - (bluefox) Initial commit
+- (bluefox) Initial commit
 
 ## License
 
-Copyright (c) 2017 bluefox <dogafox@gmail.com>
+MIT
+
+Copyright (c) 2017-2018 bluefox <dogafox@gmail.com>
