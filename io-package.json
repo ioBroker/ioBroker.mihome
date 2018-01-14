@@ -13,9 +13,9 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
-            "1.0.1": {
+            "1.0.2": {
                 "en": "Ignore unknown state of sensors",
                 "de": "Ignoriere den unbekannten Zustand der Sensoren",
                 "ru": "Игнорировать неизвестное состояние датчиков",

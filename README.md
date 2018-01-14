@@ -69,7 +69,7 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - sensor_wleak.aq1    Xiaomi Aqara water sensor
 
 ## Changelog
-### 1.0.1 (2018-01-14)
+### 1.0.2 (2018-01-14)
 - (bluefox) Ignore unknown state of sensors
 
 ### 1.0.0 (2018-01-05)
