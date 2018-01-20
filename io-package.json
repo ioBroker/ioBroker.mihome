@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "Invalid temperature values will be ignored",
+                "de": "Ungültige Temperaturwerte werden ignoriert",
+                "ru": "Недопустимые значения температуры будут игнорироваться",
+                "pt": "Valores de temperatura inválidos serão ignorados",
+                "nl": "Ongeldige temperatuurwaarden worden genegeerd",
+                "fr": "Les valeurs de température non valides seront ignorées",
+                "it": "I valori di temperatura non validi verranno ignorati",
+                "es": "Los valores de temperatura inválidos serán ignorados",
+                "pl": "Nieprawidłowe wartości temperatury zostaną zignorowane"
+            },
             "1.0.2": {
                 "en": "Ignore unknown state of sensors",
                 "de": "Ignoriere den unbekannten Zustand der Sensoren",
