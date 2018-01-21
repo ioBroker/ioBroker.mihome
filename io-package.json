@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.3",
+        "version": "1.0.4",
         "news": {
+            "1.0.4": {
+                "en": "The alarm state was fixed.",
+                "de": "Der Alarmzustand wurde behoben.",
+                "ru": "Состояние тревоги было исправлено.",
+                "pt": "O estado do alarme foi resolvido.",
+                "nl": "De alarmstatus was opgelost.",
+                "fr": "L'état d'alarme a été fixé.",
+                "it": "Lo stato di allarme è stato corretto.",
+                "es": "El estado de la alarma fue corregido.",
+                "pl": "Stan alarmu został naprawiony."
+            },
             "1.0.3": {
                 "en": "Invalid temperature values will be ignored",
                 "de": "Ungültige Temperaturwerte werden ignoriert",
