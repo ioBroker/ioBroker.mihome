@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.4",
+        "version": "1.0.5",
         "news": {
+            "1.0.5": {
+                "en": "Xiaomi Aqara Wall Switch LN Double was added",
+                "de": "Xiaomi Aqara Wandschalter LN Double wurde hinzugefügt",
+                "ru": "Xiaomi Aqara Wall Switch LN Double добавлен",
+                "pt": "Xiaomi Aqara Wall Switch LN Double foi adicionado",
+                "nl": "Xiaomi Aqara wandschakelaar LN Double is toegevoegd",
+                "fr": "Xiaomi Aqara Interrupteur mural LN Double a été ajouté",
+                "it": "Xiaomi Aqara Wall Switch LN Double è stato aggiunto",
+                "es": "Se añadió el conmutador de pared Xiaomi Aqara LN doble",
+                "pl": "Przełącznik ścienny Xiaomi Aqara LN Double został dodany"
+            },
             "1.0.4": {
                 "en": "The alarm state was fixed.",
                 "de": "Der Alarmzustand wurde behoben.",

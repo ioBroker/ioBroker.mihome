@@ -67,8 +67,12 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - motion -            Xiaomi Motion Sensor
 - sensor_motion.aq2   Xiaomi Aqara Motion Sensor
 - sensor_wleak.aq1    Xiaomi Aqara water sensor
+- ctrl_ln2.aq1        Xiaomi Aqara Wall Switch LN (Double)
 
 ## Changelog
+### 1.0.5 (2018-03-05)
+- (bluefox) Xiaomi Aqara Wall Switch LN Double was added
+
 ### 1.0.4 (2018-01-21)
 - (bluefox) The alarm state was fixed.
 

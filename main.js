@@ -232,6 +232,7 @@ var names = {
     'smoke':             'Xiaomi Mijia Honeywell Fire Alarm Detector',
     'ctrl_ln1':          'Xiaomi Aqara 86 Fire Wall Switch One Button',
     'ctrl_ln2':          'Xiaomi 86 zero fire wall switch double key',
+    'ctrl_ln2.aq1':      'Xiaomi Aqara Wall Switch LN double key',
     'sensor_magnet.aq2': 'Xiaomi Door Sensor',
     'curtain':           'Xiaomi Aqara Smart Curtain',
     'sensor_motion.aq2': 'Xiaomi Motion Sensor',
@@ -865,6 +866,7 @@ function createDevice(device, callback) {
             break;
 
         case 'ctrl_ln2':
+        case 'ctrl_ln2.aq1':
         case 'ctrl_neutral2':
             tasks.push({
                 _id: id + '.channel_0',
