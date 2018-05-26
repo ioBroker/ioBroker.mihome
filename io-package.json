@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.5",
+        "version": "1.0.6",
         "news": {
+            "1.0.6": {
+                "en": "Added new Aqara cube sensor",
+                "de": "Neuer Aqara Würfelsensor hinzugefügt",
+                "ru": "Добавлен новый датчик аква-куба",
+                "pt": "Adicionado novo sensor de cubo Aqara",
+                "nl": "Nieuwe Aqara cube-sensor toegevoegd",
+                "fr": "Ajout d'un nouveau capteur cube Aqara",
+                "it": "Aggiunto un nuovo sensore cubo Aqara",
+                "es": "Se agregó un nuevo sensor Aqara cube",
+                "pl": "Dodano nowy czujnik kostki Aqara"
+            },
             "1.0.5": {
                 "en": "Xiaomi Aqara Wall Switch LN Double was added",
                 "de": "Xiaomi Aqara Wandschalter LN Double wurde hinzugefügt",

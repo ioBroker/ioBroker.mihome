@@ -5,18 +5,18 @@
  *
  *      License: MIT
  */
+'use strict';
+const utils     = require(__dirname + '/lib/utils'); // Get common adapter utils
+const MiHome    = require(__dirname + '/lib/mihome/Hub');
+const adapter   = utils.Adapter('mihome');
 
-var utils     = require(__dirname + '/lib/utils'); // Get common adapter utils
-var MiHome    = require(__dirname + '/lib/mihome/Hub');
-var adapter   = utils.Adapter('mihome');
-
-var objects   = {};
-var delayed   = {};
-var connected = null;
-var connTimeout;
-var hub;
-var reconnectTimeout;
-var tasks = [];
+let objects   = {};
+let delayed   = {};
+let connected = null;
+let connTimeout;
+let hub;
+let reconnectTimeout;
+let tasks = [];
 
 adapter.on('ready', main);
 
@@ -29,12 +29,12 @@ adapter.on('stateChange', function (id, state) {
         return;
     }
     if (hub) {
-        var pos = id.lastIndexOf('.');
-        var channelId = id.substring(0, pos);
-        var attr = id.substring(pos + 1);
+        const pos = id.lastIndexOf('.');
+        const channelId = id.substring(0, pos);
+        const attr = id.substring(pos + 1);
 
         if (objects[channelId] && objects[channelId].native) {
-            var device = hub.getSensor(objects[channelId].native.sid);
+            const device = hub.getSensor(objects[channelId].native.sid);
             if (device && device.Control) {
                 device.Control(attr, state.val);
             } else {
@@ -63,12 +63,12 @@ adapter.on('message', function (obj) {
     if (obj) {
         switch (obj.command) {
             case 'browse':
-                var browse = new MiHome({
+                let browse = new MiHome({
                     port:     (obj.message.port || adapter.config.port) + 1,
                     bind:     obj.message.bind || '0.0.0.0',
                     browse:   true
                 });
-                var result = [];
+                let result = [];
                 browse.on('browse', function (data) {
                     if (result.indexOf(data.ip) === -1) {
                         result.push(data.ip);
@@ -88,9 +88,9 @@ adapter.on('message', function (obj) {
 });
 
 function updateStates(sid, type, data) {
-    var id = adapter.namespace + '.devices.' + type.replace('.', '_') + '_' + sid;
+    const id = adapter.namespace + '.devices.' + type.replace('.', '_') + '_' + sid;
 
-    for (var attr in data) {
+    for (const attr in data) {
         if (data.hasOwnProperty(attr)) {
             if (objects[id] || objects[id + '.' + attr]) {
                 adapter.setForeignState(id + '.' + attr, data[attr], true);
@@ -141,7 +141,7 @@ function syncObjects(callback) {
         callback && callback();
         return;
     }
-    var obj = tasks.shift();
+    const obj = tasks.shift();
     adapter.getForeignObject(obj._id, function (err, oObj) {
         if (!oObj) {
             objects[obj._id] = obj;
@@ -156,9 +156,9 @@ function syncObjects(callback) {
                 }
             });
         } else {
-            var changed = false;
+            let changed = false;
             // merge info together
-            for (var a in obj.common) {
+            for (const a in obj.common) {
                 if (obj.common.hasOwnProperty(a) && a !== 'name' && oObj.common[a] !== obj.common[a]) {
                     changed = true;
                     oObj.common[a] = obj.common[a];
@@ -192,11 +192,11 @@ function syncObjects(callback) {
                     if (oObj._id.match(/\.rotate_position$/)) {
                         adapter.getForeignState(oObj._id, function (err, state) {
                             if (state) {
-                                var pos       = oObj._id.lastIndexOf('.');
-                                var channelId = oObj._id.substring(0, pos);
+                                const pos       = oObj._id.lastIndexOf('.');
+                                const channelId = oObj._id.substring(0, pos);
 
                                 if (objects[channelId]) {
-                                    var device = hub.getSensor(objects[channelId].native.sid);
+                                    const device = hub.getSensor(objects[channelId].native.sid);
                                     if (device && device.Control) {
                                         device.Control('rotate_position', state.val);
                                     }
@@ -213,7 +213,7 @@ function syncObjects(callback) {
     });
 }
 
-var names = {
+const names = {
     'gateway':           'Xiaomi RGB Gateway',
     'sensor_ht':         'Xiaomi Temperature/Humidity',
     'switch':            'Xiaomi Wireless Switch',
@@ -224,6 +224,7 @@ var names = {
     'ctrl_neutral2':     'Xiaomi Wired Dual Wall Switch',
     'ctrl_neutral1':     'Xiaomi Wired Single Wall Switch',
     'cube':              'Xiaomi Cube',
+    'sensor_cube.aqgl01':'Xiaomi Cube 01',
     'magnet':            'Xiaomi Door Sensor',
     'motion':            'Xiaomi Motion Sensor',
     'weather.v1':        'Xiaomi Temperature/Humidity/Pressure',
@@ -240,8 +241,8 @@ var names = {
 };
 
 function createDevice(device, callback) {
-    var id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
-    var isStartTasks = !tasks.length;
+    const id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
+    const isStartTasks = !tasks.length;
 
     tasks.push({
         _id: id,
@@ -895,6 +896,7 @@ function createDevice(device, callback) {
             break;
 
         case 'cube':
+        case 'sensor_cube.aqgl01':
             getVoltageObjects(id, tasks);
             tasks.push({
                 _id: id + '.rotate',
