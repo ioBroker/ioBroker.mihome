@@ -70,6 +70,9 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - ctrl_ln2.aq1        Xiaomi Aqara Wall Switch LN (Double)
 
 ## Changelog
+### 1.0.7 (2018-06-25)
+- (bluefox) The heartbeat timeout and the re-connection interval settings were added
+
 ### 1.0.6 (2018-05-26)
 - (bluefox) Added new Aqara cube sensor
 

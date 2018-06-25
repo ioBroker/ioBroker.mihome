@@ -30,6 +30,12 @@
         if (!settings.keys) {
             settings.keys = [];
         }
+        if (settings.heartbeatTimeout === undefined) {
+            settings.heartbeatTimeout = 20000;
+        }
+        if (settings.restartInterval === undefined) {
+            settings.restartInterval = 30000;
+        }
 
         fillSelectIPs('#bind', settings.bind, false, true, function () {
             $('#bind').select();
@@ -39,11 +45,11 @@
             var key = $(this).attr('id');
             var $value = $('#' + key + '.value');
             if ($value.attr('type') === 'checkbox') {
-                $value.prop('checked', settings[key]).change(function() {
+                $value.prop('checked', settings[key]).on('change', function() {
                     onChange();
                 });
             } else {
-                $value.val(settings[key]).change(function() {
+                $value.val(settings[key]).on('change', function() {
                     onChange();
                 }).keyup(function() {
                     onChange();
@@ -155,6 +161,16 @@
                     <div class="col s12 m4 l1">
                         <input class="value" id="port" min="0" max="65565" maxlength="5" type="number"/>
                         <label class="translate" for="port">ioBroker Port:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m8 l5">
+                        <input class="value" id="heartbeatTimeout" min="0" max="120000" type="number"/>
+                        <label class="translate" for="heartbeatTimeout">heartbeatTimeout</label>
+                    </div>
+                    <div class="col s12 m4 l1">
+                        <input class="value" id="restartInterval" min="1000" max="120000" type="number"/>
+                        <label class="translate" for="restartInterval">restartInterval</label>
                     </div>
                 </div>
                 <div class="row">

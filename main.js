@@ -20,7 +20,7 @@ let tasks = [];
 
 adapter.on('ready', main);
 
-adapter.on('stateChange', function (id, state) {
+adapter.on('stateChange', (id, state) => {
     if (!id || !state || state.ack) {
         return;
     }
@@ -46,7 +46,7 @@ adapter.on('stateChange', function (id, state) {
     }
 });
 
-adapter.on('unload', function (callback) {
+adapter.on('unload', callback => {
     if (hub) {
         try {
             hub.stop(callback);
@@ -59,7 +59,7 @@ adapter.on('unload', function (callback) {
     }
 });
 
-adapter.on('message', function (obj) {
+adapter.on('message', obj => {
     if (obj) {
         switch (obj.command) {
             case 'browse':
@@ -69,15 +69,12 @@ adapter.on('message', function (obj) {
                     browse:   true
                 });
                 let result = [];
-                browse.on('browse', function (data) {
-                    if (result.indexOf(data.ip) === -1) {
-                        result.push(data.ip);
-                    }
-                });
+
+                browse.on('browse', data => (result.indexOf(data.ip) === -1) && result.push(data.ip));
 
                 browse.listen();
-                setTimeout(function () {
-                    browse.stop(function () {
+                setTimeout(() => {
+                    browse.stop(() => {
                         browse = null;
                         if (obj.callback) adapter.sendTo(obj.from, obj.command, result, obj.callback);
                     });
@@ -142,12 +139,12 @@ function syncObjects(callback) {
         return;
     }
     const obj = tasks.shift();
-    adapter.getForeignObject(obj._id, function (err, oObj) {
+    adapter.getForeignObject(obj._id, (err, oObj) => {
         if (!oObj) {
             objects[obj._id] = obj;
-            adapter.setForeignObject(obj._id, obj, function () {
+            adapter.setForeignObject(obj._id, obj, () => {
                 if (delayed[obj._id] !== undefined) {
-                    adapter.setForeignState(obj._id, delayed[obj._id], true, function () {
+                    adapter.setForeignState(obj._id, delayed[obj._id], true, () => {
                         delete delayed[obj._id];
                         setImmediate(syncObjects, callback);
                     })
@@ -171,9 +168,9 @@ function syncObjects(callback) {
 
             objects[obj._id] = oObj;
             if (changed) {
-                adapter.setForeignObject(oObj._id, oObj, function () {
+                adapter.setForeignObject(oObj._id, oObj, () => {
                     if (delayed[oObj._id] !== undefined) {
-                        adapter.setForeignState(oObj._id, delayed[oObj._id], true, function () {
+                        adapter.setForeignState(oObj._id, delayed[oObj._id], true, () => {
                             delete delayed[oObj._id];
                             setImmediate(syncObjects, callback);
                         })
@@ -183,14 +180,14 @@ function syncObjects(callback) {
                 });
             } else {
                 if (delayed[oObj._id] !== undefined) {
-                    adapter.setForeignState(oObj._id, delayed[oObj._id], true, function () {
+                    adapter.setForeignState(oObj._id, delayed[oObj._id], true, () => {
                         delete delayed[oObj._id];
                         setImmediate(syncObjects, callback);
                     })
                 } else {
                     // init rotate position with previous value
                     if (oObj._id.match(/\.rotate_position$/)) {
-                        adapter.getForeignState(oObj._id, function (err, state) {
+                        adapter.getForeignState(oObj._id, (err, state) => {
                             if (state) {
                                 const pos       = oObj._id.lastIndexOf('.');
                                 const channelId = oObj._id.substring(0, pos);
@@ -1053,7 +1050,7 @@ function createDevice(device, callback) {
 }
 
 function readObjects(callback) {
-    adapter.getForeignObjects(adapter.namespace + '.devices.*', function (err, list) {
+    adapter.getForeignObjects(adapter.namespace + '.devices.*', (err, list) => {
         adapter.subscribeStates('devices.*');
         objects = list;
         callback && callback();
@@ -1064,6 +1061,7 @@ function disconnected () {
     connTimeout = null;
     if (connected) {
         connected = false;
+        adapter.log.info(`Change connection status on timeout after ${adapter.config.heartbeatTimeout}ms: false`);
         adapter.setState('info.connection', connected, true);
     }
     stopMihome();
@@ -1072,15 +1070,16 @@ function disconnected () {
 function setConnected(conn) {
     if (connected !== conn) {
         connected = conn;
+        adapter.log.info('Change connection status: ' + conn);
         adapter.setState('info.connection', connected, true);
     }
 
-    if (conn) {
+    if (conn && adapter.config.heartbeatTimeout) {
         if (connTimeout) {
             clearTimeout(connTimeout);
         }
 
-        connTimeout = setTimeout(disconnected, 20000);
+        connTimeout = setTimeout(disconnected, adapter.config.heartbeatTimeout);
     }
 }
 
@@ -1094,14 +1093,14 @@ function stopMihome() {
         }
     }
     if (!reconnectTimeout) {
-        reconnectTimeout = setTimeout(startMihome, 30000);
+        reconnectTimeout = setTimeout(startMihome, adapter.config.restartInterval);
     }
 }
 
 function startMihome() {
     reconnectTimeout = null;
     setConnected(false);
-    if (!adapter.config.key && (!adapter.config.keys || !adapter.config.keys.find(function (e) { return e.key; }))) {
+    if (!adapter.config.key && (!adapter.config.keys || !adapter.config.keys.find(e => e.key))) {
         adapter.log.error('no key defined. Only read is possible');
     }
 
@@ -1113,35 +1112,40 @@ function startMihome() {
         interval: adapter.config.interval
     });
 
-    hub.on('message', function (msg) {
+    hub.on('message', msg => {
         setConnected(true);
         adapter.log.debug('RAW: ' + JSON.stringify(msg));
     });
-    hub.on('warning', function (msg) {
-        adapter.log.warn(msg);
-    });
-    hub.on('error', function (error) {
+    hub.on('warning', msg => adapter.log.warn(msg));
+    hub.on('error', error => {
         adapter.log.error(error);
         stopMihome();
     });
-    hub.on('device', function (device) {
+    hub.on('device', device => {
         adapter.log.debug('device: ' + device.sid + '(' + device.type + ')');
         if (!objects[adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid]) {
             createDevice(device);
         }
     });
-    hub.on('data', function (sid, type, data) {
+    hub.on('data', (sid, type, data) => {
         adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));
         updateStates(sid, type, data);
     });
 
-    if (!connTimeout) {
-        connTimeout = setTimeout(disconnected, 20000);
+    if (!connTimeout && adapter.config.heartbeatTimeout) {
+        connTimeout = setTimeout(disconnected, adapter.config.heartbeatTimeout);
     }
 
     hub.listen();
 }
 
 function main() {
+    if (adapter.config.heartbeatTimeout === undefined) {
+        adapter.config.heartbeatTimeout = 20000;
+    } else {
+        adapter.config.heartbeatTimeout = parseInt(adapter.config.heartbeatTimeout, 10) || 0;
+    }
+    adapter.config.restartInterval = parseInt(adapter.config.restartInterval, 10) || 30000;
+
     readObjects(startMihome);
 }

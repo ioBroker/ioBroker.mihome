@@ -7,4 +7,26 @@ systemDictionary = {
     "MiHome Smarthome settings": {                   "en": "MiHome Smarthome settings",                       "de": "MiHome Smarthome settings",                       "ru": "MiHome Smarthome settings",                       "pt": "Configurações de MiHome Smarthome",               "nl": "MiHome Smarthome-instellingen",                   "fr": "MiHome Smarthome paramètres",                     "it": "Impostazioni MiHome Smarthome",                   "es": "Ajustes MiHome Smarthome",                        "pl": "Ustawienia MiHome Smarthome"},
     "ioBroker IP:": {                                "en": "ioBroker IP:",                                    "de": "ioBroker IP:",                                    "ru": "ioBroker IP:",                                    "pt": "ioBroker IP:",                                    "nl": "ioBroker IP:",                                    "fr": "ioBroker IP:",                                    "it": "IP ioBroker:",                                    "es": "ioBroker IP:",                                    "pl": "IP ioBroker:"},
     "ioBroker Port:": {                              "en": "ioBroker Port:",                                  "de": "ioBroker Port:",                                  "ru": "ioBroker порт:",                                  "pt": "ioBroker Port:",                                  "nl": "ioBroker Port:",                                  "fr": "ioBroker Port:",                                  "it": "porta ioBroker:",                                 "es": "Puerto ioBroker:",                                "pl": "Port ioBroker:"},
+    "heartbeatTimeout": {
+        "en": "Heartbeat timeout (ms)",
+        "de": "Heartbeat-Timeout (ms)",
+        "ru": "Тайм-аут сердечного ритма (мс)",
+        "pt": "Tempo limite de pulsação (ms)",
+        "nl": "Heartbeat time-out (ms)",
+        "fr": "Délai d'attente de pulsation (ms)",
+        "it": "Timeout heartbeat (ms)",
+        "es": "Tiempo de latido del corazón (ms)",
+        "pl": "Limit czasu bicia serca (ms)"
+    },
+    "restartInterval": {
+        "en": "Re-connection interval (ms)",
+        "de": "Re-Verbindungsintervall (ms)",
+        "ru": "Интервал повторного подключения (мс)",
+        "pt": "Intervalo de reconexão (ms)",
+        "nl": "Re-connection interval (ms)",
+        "fr": "Intervalle de reconnexion (ms)",
+        "it": "Intervallo di ricollegamento (ms)",
+        "es": "Intervalo de reconexión (ms)",
+        "pl": "Interwał ponownego połączenia (ms)"
+    }
 };

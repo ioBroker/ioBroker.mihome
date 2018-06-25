@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.6",
+        "version": "1.0.7",
         "news": {
+            "1.0.7": {
+                "en": "The heartbeat timeout and the re-connection interval settings were added",
+                "de": "Die Heartbeat-Timeout- und die Re-Connection-Intervalleinstellungen wurden hinzugefügt",
+                "ru": "Были добавлены таймаут пульса и настройки интервала повторного подключения",
+                "pt": "O tempo limite de pulsação e as configurações de intervalo de reconexão foram adicionadas",
+                "nl": "De heartbeat-timeout en de re-connectie-intervalinstellingen zijn toegevoegd",
+                "fr": "Le délai d'attente de pulsation et les paramètres d'intervalle de reconnexion ont été ajoutés",
+                "it": "Sono stati aggiunti il ​​timeout del battito cardiaco e le impostazioni dell'intervallo di riconnessione",
+                "es": "Se agregaron el tiempo de espera del latido y la configuración del intervalo de reconexión",
+                "pl": "Limit czasu pulsu i ustawienia interwału ponownego połączenia zostały dodane"
+            },
             "1.0.6": {
                 "en": "Added new Aqara cube sensor",
                 "de": "Neuer Aqara Würfelsensor hinzugefügt",
@@ -148,7 +159,9 @@
         "keys": [
             {"ip": "", "key": ""}
         ],
-        "interval": 5000
+        "interval": 5000,
+        "heartbeatTimeout": 20000,
+        "restartInterval": 30000
     },
     "objects": [],
     "instanceObjects": [
