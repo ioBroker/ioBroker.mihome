@@ -50,6 +50,7 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - weather.v1 -        Xiaomi Temperature/Humidity/Pressure
 - switch -            Xiaomi Wireless Switch
 - sensor_switch.aq2 - Xiaomi Aqara Wireless Switch Sensor
+- sensor_switch.aq3 - Xiaomi Aqara Wireless Switch Sensor
 - plug -              Xiaomi Smart Plug
 - 86plug -            Xiaomi Smart Wall Plug
 - 86sw2 -             Xiaomi Wireless Dual Wall Switch
@@ -57,19 +58,30 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - natgas -            Xiaomi Mijia Honeywell Gas Alarm Detector
 - smoke -             Xiaomi Mijia Honeywell Fire Alarm Detector
 - ctrl_ln1 -          Xiaomi Aqara 86 Fire Wall Switch One Button
+- ctrl_ln1.aq1 -      Xiaomi Aqara Wall Switch LN
 - ctrl_ln2 -          Xiaomi 86 zero fire wall switch double key
+- ctrl_ln2.aq1 -      Xiaomi Aqara Wall Switch LN double key
 - ctrl_neutral2 -     Xiaomi Wired Dual Wall Switch
 - ctrl_neutral1 -     Xiaomi Wired Single Wall Switch
 - cube -              Xiaomi Cube
+- sensor_cube.aqgl01 - Xiaomi Cube
 - magnet -            Xiaomi Door Sensor
 - sensor_magnet.aq2 - Xiaomi Aqara Door Sensor
 - curtain -           Xiaomi Aqara Smart Curtain
 - motion -            Xiaomi Motion Sensor
-- sensor_motion.aq2   Xiaomi Aqara Motion Sensor
-- sensor_wleak.aq1    Xiaomi Aqara water sensor
-- ctrl_ln2.aq1        Xiaomi Aqara Wall Switch LN (Double)
+- sensor_motion.aq2 - Xiaomi Aqara Motion Sensor
+- sensor_wleak.aq1 -  Xiaomi Aqara water sensor
+- ctrl_ln2.aq1 -      Xiaomi Aqara Wall Switch LN (Double)
+- remote.b286acn01 -  Xiaomi Aqara Wireless Remote Switch (Double Rocker)
+- vibration -         Xiaomi vibration Sensor
+- wleak1 -            Xiaomi Aqara Water Sensor
+- lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.1.0 (2018-09-13)
+- (bluefox) New devices added:  sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1
+- (bluefox) Names will be taken from gateway
+
 ### 1.0.7 (2018-06-25)
 - (bluefox) The heartbeat timeout and the re-connection interval settings were added
 

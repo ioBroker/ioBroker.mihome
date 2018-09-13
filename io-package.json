@@ -13,8 +13,19 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.0.7",
+        "version": "1.1.0",
         "news": {
+            "1.1.0": {
+                "en": "New devices added:  sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nNames will be taken from gateway\nConnection state was added to gateway",
+                "de": "Neue Geräte hinzugefügt: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, Vibration, wleak1, lock_aq1\nDie Namen werden vom Gateway übernommen\nDer Verbindungsstatus wurde zum Gateway hinzugefügt",
+                "ru": "Добавлены новые устройства: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, вибрация, wleak1, lock_aq1\nИмена будут взяты из шлюза\nСостояние подключения добавлено в шлюз",
+                "pt": "Novos dispositivos adicionados: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibração, wleak1, lock_aq1\nOs nomes serão retirados do gateway\nEstado de conexão foi adicionado ao gateway",
+                "nl": "Nieuwe apparaten toegevoegd: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nNamen worden van de gateway gehaald\nVerbindingsstatus is toegevoegd aan gateway",
+                "fr": "Nouveaux périphériques ajoutés: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nLes noms seront pris de la passerelle\nL'état de la connexion a été ajouté à la passerelle",
+                "it": "Aggiunti nuovi dispositivi: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibrazione, wleak1, lock_aq1\nI nomi saranno presi dal gateway\nLo stato della connessione è stato aggiunto al gateway",
+                "es": "Nuevos dispositivos agregados: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nLos nombres serán tomados de la entrada\nEl estado de conexión se agregó a la puerta de enlace",
+                "pl": "Dodano nowe urządzenia: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, wibracja, wleak1, lock_aq1\nNazwy będą pobierane z bramy\nStan połączenia został dodany do bramy"
+            },
             "1.0.7": {
                 "en": "The heartbeat timeout and the re-connection interval settings were added",
                 "de": "Die Heartbeat-Timeout- und die Re-Connection-Intervalleinstellungen wurden hinzugefügt",

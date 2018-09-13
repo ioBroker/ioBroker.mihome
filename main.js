@@ -211,6 +211,7 @@ function syncObjects(callback) {
 }
 
 const names = {
+    'curtain':           'Xiaomi Aqara Smart Curtain',
     'gateway':           'Xiaomi RGB Gateway',
     'sensor_ht':         'Xiaomi Temperature/Humidity',
     'switch':            'Xiaomi Wireless Switch',
@@ -220,40 +221,31 @@ const names = {
     '86sw1':             'Xiaomi Wireless Single Wall Switch',
     'ctrl_neutral2':     'Xiaomi Wired Dual Wall Switch',
     'ctrl_neutral1':     'Xiaomi Wired Single Wall Switch',
+    'ctrl_86plug_aq1':   'Xiaomi Aqara Wall Socket',
     'cube':              'Xiaomi Cube',
+    'lock.v1':           'Xiaomi Vima Smart Lock', // todo
+    'remote.b286acn01':  'Xiaomi Aqara Wireless Remote Switch (Double Rocker)',
+    'lock.aq1':          'Xiaomi Lock',
     'sensor_cube.aqgl01':'Xiaomi Cube 01',
     'magnet':            'Xiaomi Door Sensor',
     'motion':            'Xiaomi Motion Sensor',
     'weather.v1':        'Xiaomi Temperature/Humidity/Pressure',
     'sensor_switch.aq2': 'Xiaomi Wireless Switch Sensor',
+    'sensor_switch.aq3': 'Xiaomi Wireless Switch Sensor',
     'natgas':            'Xiaomi Mijia Honeywell Gas Alarm Detector',
     'smoke':             'Xiaomi Mijia Honeywell Fire Alarm Detector',
     'ctrl_ln1':          'Xiaomi Aqara 86 Fire Wall Switch One Button',
+    'ctrl_ln1.aq1':      'Xiaomi Aqara Wall Switch LN',
     'ctrl_ln2':          'Xiaomi 86 zero fire wall switch double key',
     'ctrl_ln2.aq1':      'Xiaomi Aqara Wall Switch LN double key',
     'sensor_magnet.aq2': 'Xiaomi Door Sensor',
-    'curtain':           'Xiaomi Aqara Smart Curtain',
     'sensor_motion.aq2': 'Xiaomi Motion Sensor',
-    'sensor_wleak.aq1':  'Xiaomi Aqara Water Sensor'
+    'sensor_wleak.aq1':  'Xiaomi Aqara Water Sensor',
+    'vibration':         'Xiaomi Vibration Sensor'
 };
 
-function createDevice(device, callback) {
+function createDevice(device, name, callback) {
     const id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
-    const isStartTasks = !tasks.length;
-
-    tasks.push({
-        _id: id,
-        common: {
-            name: names[device.type] || device.type,
-            icon: '/icons/' + device.type.replace('.', '_') + '.png'
-        },
-        type: 'channel',
-        native: {
-            sid:  device.sid,
-            type: device.type
-        }
-    });
-
     switch (device.type) {
         case 'gateway':
             tasks.push({
@@ -332,6 +324,19 @@ function createDevice(device, callback) {
                     write: true,
                     read:  false,
                     type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.connected',
+                common: {
+                    name: 'Is gateway connected',
+                    desc: 'Will be set to false if no packets received in 20 seconds',
+                    role: 'indicator.reachable',
+                    write: true,
+                    read:  false,
+                    type: 'boolean'
                 },
                 type: 'state',
                 native: {}
@@ -546,6 +551,142 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'vibration':
+            getVoltageObjects(id, tasks);
+            tasks.push({
+                _id: id + '.state',
+                common: {
+                    name: 'Is vibration',
+                    role: 'indicator.vibration',
+                    write: false,
+                    read: true,
+                    type: 'boolean'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.tilt_angle',
+                common: {
+                    name:  'Tilt angle',
+                    desc:  'Last tilt angle',
+                    role:  'value',
+                    unit:  '°',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.orientationX',
+                common: {
+                    name:  'Orientation X',
+                    desc:  'Last X orientation',
+                    role:  'value',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.orientationY',
+                common: {
+                    name:  'Orientation Y',
+                    desc:  'Last Y orientation',
+                    role:  'value',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.orientationZ',
+                common: {
+                    name:  'Orientation Z',
+                    desc:  'Last Z orientation',
+                    role:  'value',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.bed_activity',
+                common: {
+                    name:  'Bed activity',
+                    desc:  'Last bed activity',
+                    role:  'value',
+                    write: false,
+                    read:  true,
+                    type:  'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+        case 'lock.v1':
+        case 'lock.aq1':
+            getVoltageObjects(id, tasks);
+            tasks.push({
+                _id: id + '.fing_verified',
+                common: {
+                    name: 'Finger verified',
+                    role: 'value',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.psw_verified',
+                common: {
+                    name: 'Password verified',
+                    role: 'value',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.card_verified',
+                common: {
+                    name: 'Card verified',
+                    role: 'value',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            tasks.push({
+                _id: id + '.verified_wrong',
+                common: {
+                    name: 'Wrong verification',
+                    role: 'value',
+                    write: false,
+                    read: true,
+                    type: 'number'
+                },
+                type: 'state',
+                native: {}
+            });
+            break;
+
+
         case 'sensor_motion.aq2':
             getVoltageObjects(id, tasks);
             tasks.push({
@@ -606,6 +747,8 @@ function createDevice(device, callback) {
 
             break;
 
+        case 'sensor_switch.aq2':
+        case 'sensor_switch.aq3':
         case 'switch':
             getVoltageObjects(id, tasks);
             tasks.push({
@@ -674,6 +817,7 @@ function createDevice(device, callback) {
             });
             break;
 
+        case 'remote.b286acn01':
         case '86sw2':
             getVoltageObjects(id, tasks);
 
@@ -740,6 +884,7 @@ function createDevice(device, callback) {
             break;
 
         case '86plug':
+        case 'ctrl_86plug_aq1':
         case 'plug':
             tasks.push({
                 _id: id + '.state',
@@ -848,6 +993,7 @@ function createDevice(device, callback) {
             break;
 
         case 'ctrl_ln1':
+        case 'ctrl_ln1.aq1':
         case 'ctrl_neutral1':
             tasks.push({
                 _id: id + '.channel_0',
@@ -1044,9 +1190,23 @@ function createDevice(device, callback) {
             });
             break;
     }
-    if (isStartTasks) {
-        syncObjects(callback);
-    }
+
+    const isStartTasks = !tasks.length;
+
+    tasks.push({
+        _id: id,
+        common: {
+            name: name || names[device.type] || device.type,
+            icon: '/icons/' + device.type.replace('.', '_') + '.png'
+        },
+        type: 'channel',
+        native: {
+            sid:  device.sid,
+            type: device.type
+        }
+    });
+
+    isStartTasks && syncObjects(callback);
 }
 
 function readObjects(callback) {
@@ -1121,10 +1281,10 @@ function startMihome() {
         adapter.log.error(error);
         stopMihome();
     });
-    hub.on('device', device => {
+    hub.on('device', (device, name) => {
         adapter.log.debug('device: ' + device.sid + '(' + device.type + ')');
         if (!objects[adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid]) {
-            createDevice(device);
+            createDevice(device, name);
         }
     });
     hub.on('data', (sid, type, data) => {
