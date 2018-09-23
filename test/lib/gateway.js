@@ -36,6 +36,11 @@ function GatewaySimulator () {
                 console.log('Send ' + json);
                 that.socket.send(json, 0, json.length, rinfo.port, rinfo.ip);
             }
+        } else {
+            msg.mirror = true;
+            const json = JSON.stringify(msg);
+            console.log('Mirror ' + json);
+            that.socket.send(json, 0, json.length, rinfo.port, rinfo.ip);
         }
     }
 
@@ -43,10 +48,10 @@ function GatewaySimulator () {
         this.socket = dgram.createSocket('udp4');
         this.socket.on('message', onMessage);
         this.socket.on('error', error => console.error('ERROR: ' + error));
-        this.socket.on('listening', function () {
+        this.socket.on('listening', () => {
             that.socket.setBroadcast(true);
             that.socket.setMulticastTTL(128);
-         that.socket.addMembership('224.0.0.50');
+            that.socket.addMembership('224.0.0.50');
         });
         this.socket.bind(4321);
     };
