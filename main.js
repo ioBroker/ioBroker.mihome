@@ -246,6 +246,7 @@ const names = {
 
 function createDevice(device, name, callback) {
     const id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
+    const isStartTasks = !tasks.length;
     switch (device.type) {
         case 'gateway':
             tasks.push({
@@ -1191,8 +1192,6 @@ function createDevice(device, name, callback) {
             break;
     }
 
-    const isStartTasks = !tasks.length;
-
     tasks.push({
         _id: id,
         common: {
@@ -1282,9 +1281,11 @@ function startMihome() {
         stopMihome();
     });
     hub.on('device', (device, name) => {
-        adapter.log.debug('device: ' + device.sid + '(' + device.type + ')');
         if (!objects[adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid]) {
+            adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');
             createDevice(device, name);
+        } else {
+            adapter.log.debug('known device: ' + device.sid + '(' + device.type + ')');
         }
     });
     hub.on('data', (sid, type, data) => {

@@ -1,6 +1,6 @@
-var dgram        = require('dgram');
+const dgram        = require('dgram');
 
-var commands = [
+const commands = [
     {"cmd":"heartbeat", "model":"gateway",          "sid":"81726387164871","short_id":"0","token":"8475638456384","data":{"ip":"192.168.10.68"}},
     {"cmd":"report",    "model":"86sw2",            "sid":"1234567abeefc","short_id":10256,"data":{"channel_1":"click"}},
     {"cmd":"report",    "model":"86sw2",            "sid":"1234567abeefc","short_id":10256,"data":{"dual_channel":"both_click"}},
@@ -15,7 +15,7 @@ var commands = [
 ];
 
 function GatewaySimulator () {
-    var that = this;
+    const that = this;
 
     this.destroy = function (cb) {
         this.socket.close(cb);
@@ -23,7 +23,7 @@ function GatewaySimulator () {
     };
 
     function onMessage(msgBuffer, rinfo) {
-        var msg;
+        let msg;
         try {
             msg = JSON.parse(msgBuffer.toString());
         }
@@ -31,8 +31,9 @@ function GatewaySimulator () {
             return;
         }
         if (msg.cmd === 'whois') {
-            for (var c = 0; c < commands.length; c++) {
-                var json = JSON.stringify(commands[c]);
+            for (let c = 0; c < commands.length; c++) {
+                const json = JSON.stringify(commands[c]);
+                console.log('Send ' + json);
                 that.socket.send(json, 0, json.length, rinfo.port, rinfo.ip);
             }
         }
@@ -41,9 +42,7 @@ function GatewaySimulator () {
     this.init = function () {
         this.socket = dgram.createSocket('udp4');
         this.socket.on('message', onMessage);
-        this.socket.on('error', function (error) {
-            console.error('ERROR: ' + error);
-        });
+        this.socket.on('error', error => console.error('ERROR: ' + error));
         this.socket.on('listening', function () {
             that.socket.setBroadcast(true);
             that.socket.setMulticastTTL(128);
@@ -58,6 +57,6 @@ function GatewaySimulator () {
 if (typeof module !== undefined && module.parent) {
     module.exports = GatewaySimulator;
 } else {
-    var gw = new GatewaySimulator();
+    const gw = new GatewaySimulator();
     gw.init();
 }

@@ -280,6 +280,9 @@ describe('Test ' + adapterShortName + ' adapter', function() {
             (function (_id, checkState) {
                 states.getState(_id, function (err, state) {
                     expect(err).to.be.not.ok;
+                    if (!state) {
+                        console.error('cannot find ' + _id);
+                    }
                     expect(state.val).to.be.equal(checkState.val);
                     expect(state.ack).to.be.equal(checkState.ack);
                     console.log('Check ' + _id);

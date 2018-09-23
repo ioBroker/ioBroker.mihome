@@ -15,6 +15,17 @@
         },
         "version": "1.1.0",
         "news": {
+            "1.1.1":{
+                "en": "Fixed the creation of new devices",
+                "de": "Die Erstellung neuer Geräte wurde korrigiert",
+                "ru": "Исправлено создание новых устройств",
+                "pt": "Corrigida a criação de novos dispositivos",
+                "nl": "Het maken van nieuwe apparaten opgelost",
+                "fr": "Correction de la création de nouveaux appareils",
+                "it": "Risolto il problema della creazione di nuovi dispositivi",
+                "es": "Se corrigió la creación de nuevos dispositivos",
+                "pl": "Naprawiono tworzenie nowych urządzeń"
+            },
             "1.1.0": {
                 "en": "New devices added:  sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nNames will be taken from gateway\nConnection state was added to gateway",
                 "de": "Neue Geräte hinzugefügt: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, Vibration, wleak1, lock_aq1\nDie Namen werden vom Gateway übernommen\nDer Verbindungsstatus wurde zum Gateway hinzugefügt",
