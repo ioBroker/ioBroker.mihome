@@ -1,5 +1,7 @@
 /* jshint -W097 */// jshint strict:false
 /*jslint node: true */
+'use strict';
+
 var expect = require('chai').expect;
 var setup  = require(__dirname + '/lib/setup');
 var GW     = require(__dirname + '/lib/gateway');
@@ -216,7 +218,7 @@ describe('Test ' + adapterShortName + ' adapter', function() {
             // enable adapter
             config.common.enabled = true;
             config.common.loglevel = 'debug';
-            config.native.key = 'aaaaa';
+            config.native.key = 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF';
 
             //config.native.dbtype   = 'sqlite';
 
@@ -293,7 +295,13 @@ describe('Test ' + adapterShortName + ' adapter', function() {
             })(id, checkStates[id]);
         }
     });
-
+    /*
+    it('Test ' + adapterShortName + ' adapter: control should work', (done) => {
+        states.setState('mihome.0.devices.gateway_81726387164871.on', true, err => {
+            expect(err).to.be.not.ok;
+        });
+    }).timeout(5000);
+*/
     it('Test ' + adapterShortName + ' adapter: detect disconnect', function (done) {
         this.timeout(30000);
         gw.destroy();
