@@ -219,8 +219,8 @@ const names = {
     '86plug':            'Xiaomi Smart Wall Plug',
     '86sw2':             'Xiaomi Wireless Dual Wall Switch',
     '86sw1':             'Xiaomi Wireless Single Wall Switch',
-    'ctrl_neutral2':     'Xiaomi Wired Dual Wall Switch',
     'ctrl_neutral1':     'Xiaomi Wired Single Wall Switch',
+    'ctrl_neutral2':     'Xiaomi Wired Dual Wall Switch',
     'ctrl_86plug_aq1':   'Xiaomi Aqara Wall Socket',
     'cube':              'Xiaomi Cube',
     'lock.v1':           'Xiaomi Vima Smart Lock', // todo
