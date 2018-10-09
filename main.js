@@ -225,6 +225,7 @@ const names = {
     'cube':              'Xiaomi Cube',
     'lock.v1':           'Xiaomi Vima Smart Lock', // todo
     'remote.b286acn01':  'Xiaomi Aqara Wireless Remote Switch (Double Rocker)',
+    'remote.b1acn01':    'Xiaomi Aqara Smart Wireless Switch',
     'lock.aq1':          'Xiaomi Lock',
     'sensor_cube.aqgl01':'Xiaomi Cube 01',
     'magnet':            'Xiaomi Door Sensor',
@@ -687,7 +688,6 @@ function createDevice(device, name, callback) {
             });
             break;
 
-
         case 'sensor_motion.aq2':
             getVoltageObjects(id, tasks);
             tasks.push({
@@ -750,6 +750,7 @@ function createDevice(device, name, callback) {
 
         case 'sensor_switch.aq2':
         case 'sensor_switch.aq3':
+        case 'remote.b1acn01':
         case 'switch':
             getVoltageObjects(id, tasks);
             tasks.push({

@@ -73,11 +73,15 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - sensor_wleak.aq1 -  Xiaomi Aqara water sensor
 - ctrl_ln2.aq1 -      Xiaomi Aqara Wall Switch LN (Double)
 - remote.b286acn01 -  Xiaomi Aqara Wireless Remote Switch (Double Rocker)
+- remote.b1acn01 -    Xiaomi Aqara Wireless Remote Switch
 - vibration -         Xiaomi vibration Sensor
 - wleak1 -            Xiaomi Aqara Water Sensor
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.1.2 (2018-10-08)
+- (bluefox) New button switch was added
+
 ### 1.1.1 (2018-09-23)
 - (bluefox) Fixed the creation of new devices
 

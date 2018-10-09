@@ -13,9 +13,20 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.1.1",
+        "version": "1.1.2",
         "news": {
-            "1.1.1":{
+            "1.1.2": {
+                "en": "New button switch was added",
+                "de": "Neuer Schalter wurde hinzugefügt",
+                "ru": "Добавлен новый кнопочный переключатель",
+                "pt": "Novo botão switch foi adicionado",
+                "nl": "Nieuwe knopschakelaar is toegevoegd",
+                "fr": "Un nouveau bouton a été ajouté",
+                "it": "È stata aggiunta la nuova opzione di pulsante",
+                "es": "Nuevo interruptor de botón fue agregado",
+                "pl": "Dodano nowy przełącznik przycisku"
+            },
+            "1.1.1": {
                 "en": "Fixed the creation of new devices",
                 "de": "Die Erstellung neuer Geräte wurde korrigiert",
                 "ru": "Исправлено создание новых устройств",
