@@ -4,7 +4,7 @@ Mit dem Mi Home Adapter wird ein Mi Control Hub (Gateway) in ein ioBroker System
 eingebunden und ermöglicht so die Kommunikation verschiedener Xiaomi Sensoren,  
 Schalter etc. mit ioBroker.
 
-Die Beleuchtung und der Lautsprecher des Gateways können über ioBroker gesteuert  
+Über ioBroker kann z.B. die Beleuchtung und der Lautsprecher des Gateways gesteuert  
 werden.
 
 ## Voraussetzungen
@@ -12,7 +12,7 @@ werden.
 * Angeschlossenes Mi Home Gateway
 * Betriebsbereites ioBroker System
 
-### Installation der Mi Home App
+### Installation der Mi Home App und freischalten de lokalen Netzwerk Funktion
 
 #### Android
 * [Android Mi Home App][Android App] auf einem Android Gerät herunterladen, installieren, öffnen und  
