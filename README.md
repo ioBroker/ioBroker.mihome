@@ -79,6 +79,9 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.2.0 (2018-10-12)
+- (bluefox) refactoring
+
 ### 1.1.2 (2018-10-08)
 - (bluefox) New button switch was added
 
