@@ -106,7 +106,7 @@ Den Adapter im Bereich `Adapter` suchen und über das `+` Zeichen installieren.
 
 Es öffnet sich dann folgendes Konfigurationsfenster:
 
-![Logo](media/Adapterkonfig1.png)
+![Logo](media/Adapterconfig1.png)
 
 Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `speichern`  
 `und schließen` das Fenster schließen. Der laufende Adapter sollte danach unter   
