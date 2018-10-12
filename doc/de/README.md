@@ -102,7 +102,7 @@ Die folgende Aufstellung erhebt keinen Anspruch auf Vollständigkeit:
 Weitere Einstellungen erfolgen nur noch über die ioBroker Admin-Oberfläche.  
 Den Adapter im Bereich `Adapter` suchen und über das `+` Zeichen installieren. 
 
-![Logo](adapter.png)
+![Logo](media/adapter.png)
 
 Es öffnet sich dann folgendes Konfigurationsfenster:
 
