@@ -100,18 +100,22 @@ Die folgende Aufstellung erhebt keinen Anspruch auf Vollständigkeit:
 
 ## ioBroker Mi Home Adapter Installation
 Weitere Einstellungen erfolgen nur noch über die ioBroker Admin-Oberfläche.  
-Den Adapter im Bereich `Adapter` suchen und über das `+` Zeichen installieren. 
+Den Adapter im Bereich `Adapter` suchen und über das `+` Zeichen installieren.
+
 ![Logo](media/Adapter.png)
 
 Es öffnet sich dann folgendes Konfigurationsfenster:
+
 ![Logo](media/Adapterconfig1.PNG)
 
 Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `speichern`  
 `und schließen` das Fenster schließen. Der laufende Adapter sollte danach unter   
 `Instanzen` grün angezeigt werden:
+
 ![Logo](media/Instanz.PNG)
 
 Unter `Objekte` wird nun das Gateway und seine angelernten Geräte angezeigt:
+
 ![Logo](media/Objekte.PNG)
 
 Die Anleitung wurde nach besten Wissen und Gewissen erstellt. 
