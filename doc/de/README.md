@@ -112,12 +112,6 @@ Es öffnet sich dann folgendes Konfigurationsfenster:
 
 
 
-
-
-
-
-
-
 Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `speichern`  
 `und schließen` das Fenster schließen. Der laufende Adapter sollte danach unter   
 `Instanzen` grün angezeigt werden:
