@@ -124,6 +124,12 @@ Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `spei
 
 ![Logo](media/Instanz.png)
 
+
+
+
+
+
+
 Unter `Objekte` wird nun das Gateway und seine angelernten Geräte angezeigt:
 
 ![Logo](media/Objekte.png)
