@@ -1,4 +1,4 @@
-![Logo](admin/mihome.png)
+![Logo](media/mihome.png)
 # ioBroker Mi Home Adapter
 Mit dem Mi Home Adapter wird ein Mi Control Hub (Gateway) in ein ioBroker System  
 eingebunden und ermöglicht so die Kommunikation verschiedener Xiaomi Sensoren,  
