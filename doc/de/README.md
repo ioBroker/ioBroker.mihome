@@ -108,10 +108,6 @@ Es öffnet sich dann folgendes Konfigurationsfenster:
 
 ![Logo](media/Adapterconfig1.PNG)
 
-
-
-
-
 Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `speichern`  
 `und schließen` das Fenster schließen. Der laufende Adapter sollte danach unter   
 `Instanzen` grün angezeigt werden:
@@ -123,10 +119,6 @@ Unter `Default Gateway Key` das oben ermittelte Passwort eintragen und mit `spei
 Unter `Objekte` wird nun das Gateway und seine angelernten Geräte angezeigt:
 
 ![Logo](media/Objekte.PNG)
-
-
-
-## Links
 
 
 
