@@ -12,7 +12,7 @@ werden.
 * Angeschlossenes Mi Home Gateway
 * Betriebsbereites ioBroker System
 
-### Installation der Mi Home App und freischalten de lokalen Netzwerk Funktion
+### Installation der Mi Home App und freischalten der lokalen Netzwerk Funktion
 
 #### Android
 * [Android Mi Home App][Android App] auf einem Android Gerät herunterladen, installieren, öffnen und  
