@@ -79,7 +79,7 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
-### 1.2.1 (2018-10-15)
+### 1.2.2 (2018-10-15)
 - (goohnie) New wall switch was added
 
 ### 1.2.0 (2018-10-12)

@@ -1,7 +1,7 @@
 {
   "name": "iobroker.mihome",
   "description": "Control Xiaomi Mi Home smarthome devices/sensors",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": {
     "name": "bluefox",
     "email": "dogafox@gmail.com"
