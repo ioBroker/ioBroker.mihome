@@ -13,9 +13,9 @@
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
             "pl": "Wsparcie dla Xiaomi MiHome gateway"
         },
-        "version": "1.2.2",
+        "version": "1.2.3",
         "news": {
-            "1.2.2": {
+            "1.2.3": {
                 "en": "New switch was added",
                 "de": "Neuer Knopf wurde hinzugefügt",
                 "ru": "Добавлен новый кнопочный переключатель",
