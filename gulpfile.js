@@ -22,7 +22,8 @@ var languages =  {
     fr: {},
     it: {},
     es: {},
-    pl: {}
+    pl: {},
+    'zh-cn': {}
 };
 
 function lang2data(lang, isFlat) {
@@ -363,7 +364,8 @@ gulp.task('updatePackages', function (done) {
         newNews[pkg.version] = {
             en: 'news',
             de: 'neues',
-            ru: 'новое'
+            ru: 'новое',
+            'zh-cn': '消息'
         };
         iopackage.common.news = Object.assign(newNews, news);
     }
