@@ -79,6 +79,9 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.2.5 (2019-01-24)
+- (Vanwards) Added long click for Aquara wall switch
+
 ### 1.2.4 (2019-01-15)
 - (SchumyHao) Add Chinese support
 
@@ -149,4 +152,4 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 
 MIT
 
-Copyright (c) 2017-2018 bluefox <dogafox@gmail.com>
+Copyright (c) 2017-2019 bluefox <dogafox@gmail.com>

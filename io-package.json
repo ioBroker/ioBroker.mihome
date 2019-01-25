@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.4",
+        "version": "1.2.5",
         "news": {
+            "1.2.5": {
+                "en": "Long click for Aquara wall switch was added",
+                "de": "Langer Klick für Aquara-Wandschalter wurde hinzugefügt",
+                "ru": "Добавлен длинный щелчок для настенного выключателя Aquara",
+                "pt": "Longo clique para interruptor de parede Aquara foi adicionado",
+                "nl": "Lange klik voor Aquara-wandschakelaar is toegevoegd",
+                "fr": "Un clic long sur l'interrupteur mural Aquara a été ajouté",
+                "it": "È stato aggiunto un lungo clic per l'interruttore a parete Aquara",
+                "es": "Clic largo para Aquara interruptor de pared fue añadido",
+                "pl": "Długie kliknięcie przełącznika ściennego Aquara zostało dodane",
+                "zh-cn": "长时间点击Aquara墙壁开关添加"
+            },
             "1.2.4": {
                 "en": "Add Chinese support",
                 "de": "Chinesische Unterstützung hinzufügen",
