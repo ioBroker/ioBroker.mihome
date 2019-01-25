@@ -11,10 +11,23 @@
             "fr": "Prise en charge de la passerelle Xiaomi MiHome",
             "it": "Supporto Xiaomi MiHome gateway",
             "es": "Asistencia técnica para Xiaomi MiHome gateway",
-            "pl": "Wsparcie dla Xiaomi MiHome gateway"
+            "pl": "Wsparcie dla Xiaomi MiHome gateway",
+            "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.3",
+        "version": "1.2.4",
         "news": {
+            "1.2.4": {
+                "en": "Add Chinese support",
+                "de": "Chinesische Unterstützung hinzufügen",
+                "ru": "Добавить поддержку китайцев",
+                "pt": "Adicionar suporte chinês",
+                "nl": "Voeg Chinese ondersteuning toe",
+                "fr": "Ajouter un support chinois",
+                "it": "Aggiungi supporto cinese",
+                "es": "Añadir soporte chino",
+                "pl": "Dodaj chińskie wsparcie",
+                "zh-cn": "添加中文支持"
+            },
             "1.2.3": {
                 "en": "New switch was added",
                 "de": "Neuer Knopf wurde hinzugefügt",
