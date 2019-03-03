@@ -6,7 +6,7 @@
  *      License: MIT
  */
 'use strict';
-const utils   = require('./lib/utils'); // Get common adapter utils
+const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const MiHome  = require('./lib/Hub');
 const adapter = utils.Adapter('mihome');
 
