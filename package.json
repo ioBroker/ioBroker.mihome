@@ -30,8 +30,9 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
-    "mocha": "^5.2.0",
-    "chai": "^4.1.2"
+    "mocha": "^6.0.2",
+    "chai": "^4.1.2",
+    "@iobroker/adapter-core": "^1.0.3"
   },
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.mihome/issues"
