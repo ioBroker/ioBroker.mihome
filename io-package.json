@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.5",
+        "version": "1.2.6",
         "news": {
+            "1.2.6": {
+                "en": "Improved calculation for sensor's battery percentage",
+                "de": "Verbesserte Berechnung der Sensor Batterieprozente",
+                "ru": "Улучшенный расчет процента заряда батареи датчика",
+                "pt": "Cálculo melhorado para a percentagem da bateria do sensor",
+                "nl": "Verbeterde berekening van het batterijpercentage van de sensor",
+                "fr": "Calcul amélioré pour le pourcentage de la batterie du capteur",
+                "it": "Calcolo migliorato per la percentuale della batteria del sensore",
+                "es": "Cálculo mejorado del porcentaje de batería del sensor",
+                "pl": "Lepsze obliczanie procentowego udziału baterii czujnika",
+                "zh-cn": "改進了傳感器電池百分比的計算"
+            },
             "1.2.5": {
                 "en": "Long click for Aquara wall switch was added",
                 "de": "Langer Klick für Aquara-Wandschalter wurde hinzugefügt",
