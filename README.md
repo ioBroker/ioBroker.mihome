@@ -2,7 +2,7 @@
 # ioBroker mihome Adapter
 ==============
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
+![Number of Installations](http://iobroker.live/badges/mihome-installed.svg) ![Number of Installations](http://iobroker.live/badges/mihome-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 
 [![NPM](https://nodei.co/npm/iobroker.mihome.png?downloads=true)](https://nodei.co/npm/iobroker.mihome/)
