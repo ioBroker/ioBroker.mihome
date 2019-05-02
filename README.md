@@ -79,6 +79,9 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.2.6 (2019-03-04)
+- (Diginix) Improved calculation for sensor's battery percentage
+
 ### 1.2.5 (2019-01-24)
 - (Vanwards) Added long click for Aquara wall switch
 
