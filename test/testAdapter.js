@@ -106,7 +106,7 @@ var checkStates = {
         "lc": 1509870303600
     },
     "mihome.0.devices.cube_287658275634875.percent": {
-        "val": 82.5,
+        "val": 67.9,
         "ack": true,
         "ts": 1509870303603,
         "q": 0,
