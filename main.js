@@ -176,7 +176,7 @@ function syncObjects(callback) {
 }
 
 function createDevice(device, name, callback) {
-    const id = adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid;
+    const id = adapter.namespace + '.devices.' + device.className.replace('.', '_') + '_' + device.sid;
     const isStartTasks = !tasks.length;
     const dev = Object.keys(MiHome.Devices).find(id => MiHome.Devices[id].type === device.type);
 
@@ -284,7 +284,7 @@ function startMihome() {
         stopMihome();
     });
     hub.on('device', (device, name) => {
-        if (!objects[adapter.namespace + '.devices.' + device.type.replace('.', '_') + '_' + device.sid]) {
+        if (!objects[adapter.namespace + '.devices.' + device.className.replace('.', '_') + '_' + device.sid]) {
             adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');
             createDevice(device, name);
         } else {
