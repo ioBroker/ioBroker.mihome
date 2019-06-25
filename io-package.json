@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.6",
+        "version": "1.2.7",
         "news": {
+            "1.2.7": {
+                "en": "Add several devices support for protocol 2.0.x",
+                "de": "Unterstützung mehrerer Geräte für Protokoll 2.0.x hinzufügen",
+                "ru": "Добавлена поддержка нескольких устройств для протокола 2.0.x",
+                "pt": "Adicionar suporte a vários dispositivos para o protocolo 2.0.x",
+                "nl": "Voeg verschillende apparaten ondersteuning toe voor protocol 2.0.x",
+                "fr": "Ajouter plusieurs périphériques pris en charge pour le protocole 2.0.x",
+                "it": "Aggiungi diversi dispositivi di supporto per il protocollo 2.0.x",
+                "es": "Agregue soporte para varios dispositivos para el protocolo 2.0.x.",
+                "pl": "Dodaj obsługę kilku urządzeń dla protokołu 2.0.x",
+                "zh-cn": "为协议2.0.x添加多个设备支持"
+            },
             "1.2.6": {
                 "en": "Improved calculation for sensor's battery percentage",
                 "de": "Verbesserte Berechnung der Sensor Batterieprozente",
