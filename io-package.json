@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.7",
+        "version": "1.2.8",
         "news": {
+            "1.2.8": {
+                "en": "Change curtain and gateway light role that making them can be detected by type-detector",
+                "de": "Ändern Sie die Vorhang- und Gateway-Lichtrolle, damit sie vom Typendetektor erkannt werden können",
+                "ru": "Измените роль шторки и подсветки шлюза, чтобы их можно было определить с помощью детектора типа",
+                "pt": "Mude o papel da cortina e da luz do gateway que os fazendo podem ser detectados pelo tipo-detector",
+                "nl": "Verander de gordijn- en gateway-lichtrol zodat ze kunnen worden gedetecteerd door een typedetector",
+                "fr": "Changer le rôle du rideau et de la lumière de la passerelle pouvant être détecté par le détecteur de type",
+                "it": "Cambia il ruolo di tenda e gateway luce che renderli possono essere rilevati dal sensore di tipo",
+                "es": "Cambie el rol de la cortina y la luz de la puerta de enlace para que el detector de tipo pueda detectarlos.",
+                "pl": "Zmień rolę światła kurtyny i bramy, które można wykryć za pomocą detektora typu",
+                "zh-cn": "改变窗帘和网关灯的角色，使type-detector可以检测到它们"
+            },
             "1.2.7": {
                 "en": "Add several devices support for protocol 2.0.x",
                 "de": "Unterstützung mehrerer Geräte für Protokoll 2.0.x hinzufügen",
