@@ -6,9 +6,9 @@
 
 [![NPM](https://nodei.co/npm/iobroker.mihome.png?downloads=true)](https://nodei.co/npm/iobroker.mihome/)
 
-## Requirements 
+## Requirements
 ### Android (copied from [here](http://www.domoticz.com/wiki/Xiaomi_Gateway_(Aqara)) )
-You first need to enable local network functions by using the Android Mi Home 
+You first need to enable local network functions by using the Android Mi Home
 App https://play.google.com/store/apps/details?id=com.xiaomi.smarthome :
 
 - Install the App on a Android device
@@ -27,7 +27,7 @@ App https://play.google.com/store/apps/details?id=com.xiaomi.smarthome :
 
 ### iOS
 You first need to enable local network functions by using the [iOS Mi Home App iosApp Mi](https://itunes.apple.com/fr/app/%E7%B1%B3%E5%AE%B6-%E7%B2%BE%E5%93%81%E5%95%86%E5%9F%8E-%E6%99%BA%E8%83%BD%E7%94%9F%E6%B4%BB/id957323480?mt=8)
-Install the App on a iOS device: 
+Install the App on a iOS device:
 - Make sure you set your region to: Mainland China under settings -> Locale - required for the moment.
 - Mainland China and language can set on English
 - Select your Gateway in Mi Home
@@ -78,6 +78,9 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - lock_aq1 -          Xiaomi Lock
 
 ## Changelog
+### 1.2.9 (2019-11-15)
+* (Diginix) Fixed pressure range and values of Aqara weather sensor
+
 ### 1.2.8 (2019-07-18)
 * (SchumyHao) Change curtain and gateway light role that making them can be detected by type-detector
 
