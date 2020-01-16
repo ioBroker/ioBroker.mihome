@@ -42,6 +42,14 @@ Install the App on a iOS device:
 ## Usage
 You can use small button on temperature sensor to trigger "double Press" event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
 
+### Add device by SID
+In case of device does not recognized by its Model name it is possible to try to add device using SID. Currently it is applicable for __Aqara 2 channels relay control module__ which has empty model name due to some problems in Gateway firmware. 
+
+In order to add device by SID, open DEVICE SID tab in adapter settings and specify SID and device name from the supported devices list below. 
+
+For Aqara relay module it should be specified like this:
+![by sid](img/device-sid-settings.png)
+
 ### Supported devices
 
 - gateway -           Xiaomi RGB Gateway
@@ -76,8 +84,13 @@ You can use small button on temperature sensor to trigger "double Press" event. 
 - vibration -         Xiaomi vibration Sensor
 - wleak1 -            Xiaomi Aqara Water Sensor
 - lock_aq1 -          Xiaomi Lock
+- aqara.relay -       Aqara 2 channels relay control module (__using SID number__)
 
 ## Changelog
+
+### 1.3.0 (2020-01-16)
+* (algar42) Ability to add devices with missing model by their SID ([e.g. for Aqara two-channel relay](https://github.com/algar42/ioBroker.mihome#usage))
+
 ### 1.2.9 (2019-11-15)
 * (Diginix) Fixed pressure range and values of Aqara weather sensor
 
