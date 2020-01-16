@@ -84,7 +84,7 @@ For Aqara relay module it should be specified like this:
 - vibration -         Xiaomi vibration Sensor
 - wleak1 -            Xiaomi Aqara Water Sensor
 - lock_aq1 -          Xiaomi Lock
-- aqara.relay -       Aqara 2 channels relay control module (__using SID number__)
+- relay.c2acn01 -       Aqara 2 channels relay control module (__using SID number__)
 
 ## Changelog
 
