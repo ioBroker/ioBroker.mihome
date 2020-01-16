@@ -271,6 +271,7 @@ function startMihome() {
         bind:     adapter.config.bind || '0.0.0.0',
         key:      adapter.config.key,
         keys:     adapter.config.keys,
+        sids:     adapter.config.sids,
         interval: adapter.config.interval
     });
 

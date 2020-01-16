@@ -14,20 +14,8 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.9",
+        "version": "1.2.8",
         "news": {
-            "1.2.9": {
-                "en": "Fixed pressure range and values of Aqara weather sensor",
-                "de": "Wertebereich für Luftdruck korrigiert",
-                "ru": "Изменены диапазон давления и значения датчика погоды Aqara",
-                "pt": "Faixa de pressão e valores alterados do sensor climático Aqara",
-                "nl": "Gewijzigd drukbereik en waarden van Aqara-weersensor",
-                "fr": "Plage de pression modifiée et valeurs du capteur météo Aqara",
-                "it": "Intervallo di pressione e valori del sensore meteorologico Aqara modificati",
-                "es": "Se modificó el rango de presión y los valores del sensor meteorológico de Aqara",
-                "pl": "Zmieniono zakres ciśnienia i wartości czujnika pogodowego Aqara",
-                "zh-cn": "更改了Aqara天气传感器的压力范围和值"
-            },
             "1.2.8": {
                 "en": "Change curtain and gateway light role that making them can be detected by type-detector",
                 "de": "Ändern Sie die Vorhang- und Gateway-Lichtrolle, damit sie vom Typendetektor erkannt werden können",
@@ -286,6 +274,9 @@
         "port": 9898,
         "keys": [
             {"ip": "", "key": ""}
+        ],
+         "sids": [
+            {"sid": "", "model": ""}
         ],
         "interval": 5000,
         "heartbeatTimeout": 20000,
