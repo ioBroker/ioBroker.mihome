@@ -28,6 +28,18 @@
                 "pl": "Możliwość dodawania urządzeń według ich identyfikatora SID, co umożliwia dodawanie urządzeń z pustym modelem, takich jak przekaźnik dwukanałowy Aqara",
                 "zh-cn": "能够通过其SID添加设备，从而可以添加具有空模型的设备，例如Aqara两通道中继"
             },
+            "1.2.9": {
+                "en": "Fixed pressure range and values of Aqara weather sensor",
+                "de": "Wertebereich für Luftdruck korrigiert",
+                "ru": "Изменены диапазон давления и значения датчика погоды Aqara",
+                "pt": "Faixa de pressão e valores alterados do sensor climático Aqara",
+                "nl": "Gewijzigd drukbereik en waarden van Aqara-weersensor",
+                "fr": "Plage de pression modifiée et valeurs du capteur météo Aqara",
+                "it": "Intervallo di pressione e valori del sensore meteorologico Aqara modificati",
+                "es": "Se modificó el rango de presión y los valores del sensor meteorológico de Aqara",
+                "pl": "Zmieniono zakres ciśnienia i wartości czujnika pogodowego Aqara",
+                "zh-cn": "更改了Aqara天气传感器的压力范围和值"
+            },
             "1.2.8": {
                 "en": "Change curtain and gateway light role that making them can be detected by type-detector",
                 "de": "Ändern Sie die Vorhang- und Gateway-Lichtrolle, damit sie vom Typendetektor erkannt werden können",
