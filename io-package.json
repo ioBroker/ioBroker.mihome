@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.2.9",
+        "version": "1.3.0",
         "news": {
+             "1.3.0": {
+                "en": "Ability to add devices by their SID, which makes it possible to add devices with empty model such as Aqara two-channel relay",
+                "de": "Möglichkeit, Geräte anhand ihrer SID hinzuzufügen, sodass Geräte mit leerem Modell wie das Aqara-Zweikanal-Relais hinzugefügt werden können",
+                "ru": "Возможность добавления устройств по их SID, что позволяет добавлять устройства с пустой моделью, такой как двухканальная ретрансляция Aqara.",
+                "pt": "Capacidade de adicionar dispositivos pelo seu SID, o que torna possível adicionar dispositivos com modelo vazio, como o relé de dois canais do Aqara",
+                "nl": "Mogelijkheid om apparaten toe te voegen via hun SID, waardoor het mogelijk is om apparaten toe te voegen met een leeg model zoals Aqara tweekanaals relais",
+                "fr": "Possibilité d'ajouter des appareils par leur SID, ce qui permet d'ajouter des appareils avec un modèle vide comme le relais à deux canaux Aqara",
+                "it": "Possibilità di aggiungere dispositivi tramite il loro SID, che consente di aggiungere dispositivi con modello vuoto come il relè a due canali Aqara",
+                "es": "Posibilidad de agregar dispositivos por su SID, lo que hace posible agregar dispositivos con un modelo vacío, como el relé de dos canales Aqara",
+                "pl": "Możliwość dodawania urządzeń według ich identyfikatora SID, co umożliwia dodawanie urządzeń z pustym modelem, takich jak przekaźnik dwukanałowy Aqara",
+                "zh-cn": "能够通过其SID添加设备，从而可以添加具有空模型的设备，例如Aqara两通道中继"
+            },
             "1.2.9": {
                 "en": "Fixed pressure range and values of Aqara weather sensor",
                 "de": "Wertebereich für Luftdruck korrigiert",
@@ -286,6 +298,9 @@
         "port": 9898,
         "keys": [
             {"ip": "", "key": ""}
+        ],
+         "sids": [
+            {"sid": "", "model": ""}
         ],
         "interval": 5000,
         "heartbeatTimeout": 20000,

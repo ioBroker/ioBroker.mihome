@@ -23,13 +23,14 @@
 <script type="text/javascript">
     'use strict';
     var keys = [];
+    var sids = [];    
 
     function load(settings, onChange) {
         if (!settings) return;
 
-        if (!settings.keys) {
-            settings.keys = [];
-        }
+        settings.keys = settings.keys || [];
+        settings.sids = settings.sids || [];
+
         if (settings.heartbeatTimeout === undefined) {
             settings.heartbeatTimeout = 20000;
         }
@@ -95,14 +96,20 @@
                     if (changed) {
                         onChange();
                         values2table('values', keys, {onChange: onChange});
+                        values2table('sidvalues', keys, {onChange: onChange});
+
                     }
                 }
             });
         });
 
-        keys = settings.keys || [];
+        keys = settings.keys;
 
         values2table('values', keys, {onChange: onChange});
+
+        sids = settings.sids;
+
+        values2table('sidvalues', sids, {onChange: onChange});
 
         getIsAdapterAlive(function (isAlive) {
             if (isAlive || common.enabled) {
@@ -132,8 +139,10 @@
 
         // Get edited table
         obj.keys = table2values('values');
-
+        //callback(obj);
+        obj.sids = table2values('sidvalues');
         callback(obj);
+       console.log(JSON.stringify(obj));
     }
 
 </script>
@@ -143,8 +152,9 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
-                    <li class="tab col s2"><a href="#tab-main" class="translate active">Main settings</a></li>
-                    <li class="tab col s2"><a href="#tab-keys" class="translate">Gateway keys</a></li>
+                    <li class="tab col s3"><a href="#tab-main" class="translate active">Main settings</a></li>
+                    <li class="tab col s3"><a href="#tab-keys" class="translate">Gateway keys</a></li>
+                    <li class="tab col s3"><a href="#sid-keys" class="translate">Device SID</a></li>
                 </ul>
             </div>
             <div id="tab-main" class="col s12 page">
@@ -208,6 +218,30 @@
                     </div>
                 </div>
             </div>
+           <div id="sid-keys" class="col s12 page">
+                <div id="sidvalues">
+                    <div class="row">
+                        <div class="col s12">
+                            <a class="btn-floating waves-effect waves-light table-button-add"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <table class="table-values" style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th data-name="_index"    style="width: 40px" class="translate"></th>
+                                    <th data-name="sid"        style="width: 120px" data-style="width: 120px" class="translate">SID</th>
+                                    <th data-name="model"       style="width: 100%; text-align: left;" data-style="width: 100%" class="translate">Model</th>
+                                    <th data-buttons="delete" style="width: 40px"></th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
