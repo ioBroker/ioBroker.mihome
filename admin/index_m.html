@@ -28,12 +28,8 @@
     function load(settings, onChange) {
         if (!settings) return;
 
-        if (!settings.keys) {
-            settings.keys = [];
-        }
-        if (!settings.sids) {
-            settings.sids = [];
-        }
+        settings.keys = settings.keys || [];
+        settings.sids = settings.sids || [];
 
         if (settings.heartbeatTimeout === undefined) {
             settings.heartbeatTimeout = 20000;
@@ -107,11 +103,11 @@
             });
         });
 
-        keys = settings.keys || [];
+        keys = settings.keys;
 
         values2table('values', keys, {onChange: onChange});
 
-        sids = settings.sids || [];
+        sids = settings.sids;
 
         values2table('sidvalues', sids, {onChange: onChange});
 
