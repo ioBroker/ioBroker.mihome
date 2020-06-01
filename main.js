@@ -36,8 +36,8 @@ adapter.on('stateChange', (id, state) => {
         if (objects[channelId] && objects[channelId].native) {
             const device = hub.getSensor(objects[channelId].native.sid);
             if (device && device.Control) {
-                adapter.log.debug('attr:' + attr);              // Для отладки
-                adapter.log.debug('state:' + state.val);        // Для отладки
+                adapter.log.debug('attr:' + attr);              // This is added for debugging
+                adapter.log.debug('state:' + state.val);        // This is added for debugging
                 device.Control(attr, state.val);
             } else {
                 adapter.log.warn('Cannot control ' + id);
@@ -279,7 +279,7 @@ function startMihome() {
 
     hub.on('message', msg => {
         setConnected(true);
-        adapter.log.debug('RAW: ' + JSON.stringify(msg));       // Здесь вывод в Log ioBrokera строк debug RAW:
+        adapter.log.debug('RAW: ' + JSON.stringify(msg));       // Here's the output in Log ioBrokera of debug RAW lines:
     });
     hub.on('warning', msg => adapter.log.warn(msg));
     hub.on('debug', msg => adapter.log.debug(msg));
@@ -288,9 +288,9 @@ function startMihome() {
         stopMihome();
     });
     hub.on('device', (device, name) => {
-        if (device.sid !== '000000000000') {        // Игнорируем устройства с пустым sid
+        if (device.sid !== '000000000000') {        // Ignore devices with empty sid
             if (!objects[adapter.namespace + '.devices.' + device.className.replace('.', '_') + '_' + device.sid]) {
-                adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');       // Здесь вывод в Log ioBrokera строк NEW device:
+                adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');       // Here's the output in Log ioBrokera of the lines NEW device:
                 createDevice(device, name);
             } else {
                 adapter.log.debug('known device: ' + device.sid + '(' + device.type + ')');
@@ -298,7 +298,7 @@ function startMihome() {
         }
     });
     hub.on('data', (sid, type, data) => {
-        if (sid !== '000000000000') {               // Игнорируем устройства с пустым sid
+        if (sid !== '000000000000') {               // Ignore devices with empty sid
                 adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));      // data: 000000000000(gateway): {"relay_status":"off"}
                 updateStates(sid, type, data);
         }
