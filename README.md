@@ -1,8 +1,6 @@
 ![Logo](admin/mihome.png)
 # mihome Gateway
 
-## English/Русский
-
 ## Description
         
   This modification allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), (it will probably work with version v2 too, but I don’t have a device to check, if anyone tries, let me know).
@@ -32,40 +30,9 @@
   - devices.js
   - THSensor.js
   
-  
-## Описание
-        
-  Эта модификация  позволяет управлять кондиционером подключенным к ioBroker с помощью acpartner.v3 (KTBL11LM), (возможно будет работать и с версией v2, но у меня нет устройства для проверки, если кто-либо испытает - сообщите).
-  
-  При разработке данного адаптера использовался адаптер iobroker.mihome версии 1.2.9, поэтому я выражаю огромную благодарность всем авторам принимавшим участие в этой работе: https://github.com/ioBroker/ioBroker.mihome/graphs/contributors.
-  
-  Основной момент заключается в том что по-видимому китайские облака Xiaomi и Aqara используют разные команды в сетевом протоколе. Для Aqara есть некоторая документация - http://docs.opencloud.aqara.com/en/development/gateway-LAN-communication/#air-conditioning-controller. Для Xiaomi подобной документации в широком доступе не существует. Подключив шлюз-acpartner к облаку Aqara я получил обновление firmware, которое позволило использовать команды управления кондиционером, описанные в приведенной выше ссылке. Побочным эффектом является то что похоже в прошивке от Aqara нет протокола miio, по крайней мере acpartner больше не виден для команды miio-discovery.
-  
-  Некоторую сложность может доставить процесс включения LAN доступа и получения GATEWAY KEY - процесс описан ниже.
-  
-  Для начала использования:
-  - установите на смартфон приложение Aqara Home (https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome),
-  - зарегестрируйтесь в приложении Aqara Home,
-  - выберите в настройках регион "Материковый китай",
-  - добавьте acpartner в приложение Aqara Home,
-  - обновите прошивку acpartner (нажмите на иконку кодиционера, затем три точки в правом верхнем углу, затем нажмите самый нижний пункт     "Версия ПО"), в результате на acpartner будет установлена прошивка Aqara (при использовании приложения MiHome была от Xiaomi),
-  - зарегестрируйтесь на сайте https://opencloud.aqara.cn/ с тем же паролем и логином как и в приложении Aqara Home (подтверждение     регистрации может занять некоторое время, у меня было около 6 часов),
-  - войдите в консоль https://opencloud.aqara.cn/console/
-  - создайте приложение на вкладке https://opencloud.aqara.cn/console/app-management с типом "Device access" (в необходимости данного пункта я не уверен (потому что сделал его пока разбирался), поэтому можно попробовать его пропустить),
-  - затем перейдите в консоль https://opencloud.aqara.cn/console и выберите Gateway LAN слева, заполните поля "Aqara account" и "Password" и нажмите кнопку Submit - вы увидите свой Air Conditioning Controller и кнопку включения сетевого протокола, нажав на которую вы разрешите LAN доступ и увидите ключ сети, который необходим для настройки адаптера в ioBroker.
-  - установите адаптер с этой страницы, в настройках введите ключ полученный выше.  
-  
-  По отношению к официальной версии адаптера были модифицированы следующие файлы:
-  - main.js
-  - Hub.js
-  - Gateway.js
-  - devices.js
-  - THSensor.js  
 
-
-
-### Supported Devices/Поддерживаемые устройства:
-- All currently available versions 1.2.9 and support for controlling the air conditioner through acpartner.v3/Все доступные на момент версии 1.2.9 и поддержка управления кондиционером через acpartner.v3
+### Supported Devices:
+- All currently available versions 1.2.9 and support for controlling the air conditioner through acpartner.v3
 - acpartner.v3 -      Aqara AC Partner
 - gateway -           Xiaomi RGB Gateway
 - sensor_ht -         Xiaomi Temperature/Humidity
