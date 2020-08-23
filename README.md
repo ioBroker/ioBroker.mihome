@@ -1,74 +1,114 @@
 ![Logo](admin/mihome.png)
 # mihome Gateway
 
-## Description
-        
-  This modification allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), (it will probably work with version v2 too, but I don’t have a device to check, if anyone tries, let me know).
-  
-  When developing this adapter, the iobroker.mihome adapter version 1.2.9 was used, so I express my deep gratitude to all the authors who participated in this work: https://github.com/ioBroker/ioBroker.mihome/graphs/contributors.
-  
-  The main point is that apparently the Chinese clouds Xiaomi and Aqara use different commands in the network protocol. There is some documentation for Aqara - http://docs.opencloud.aqara.com/en/development/gateway-LAN-communication/#air-conditioning-controller. For Xiaomi, such documentation is not widely available. By connecting the acpartner gateway to the Aqara cloud, I received a firmware update that allowed the use of the air conditioning control commands described in the link above. A side effect is that there seems to be no miio protocol in Aqara firmware, at least acpartner is no longer visible to the miio-discovery command.
-  
-  The process of enabling LAN access and receiving GATEWAY KEY can be of some difficulty, the process is described below.
-  
-  To start using:
-  - Install the Aqara Home application on your smartphone (https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome),
-  - register in the Aqara Home application,
-  - select the "Mainland China" region in the settings,
-  - add acpartner to the Aqara Home app,
-  - update the acpartner firmware (click on the air conditioning icon, then the three dots in the upper right corner, then click the lowest point “Software Version”), as a result, Aqara firmware will be installed on acpartner (when using the MiHome application it was from Xiaomi),
-  - register on the site https://opencloud.aqara.cn/ with the same password and login as in the Aqara Home application (registration confirmation may take some time, I had about 6 hours),
-  - log in to the console https://opencloud.aqara.cn/console/
-  - create an application on the tab https://opencloud.aqara.cn/console/app-management with the type "Device access" (I’m not sure about the need for this item (because I did it yet), so you can try to skip it),
-  - then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access and you will see the network key, which is necessary to configure the adapter in ioBroker.
-  - install the adapter from this page, in the settings enter the key obtained above.
-  
-  The following files have been modified with respect to the official version of the adapter:
-  - main.js
-  - hub.js
-  - Gateway.js
-  - devices.js
-  - THSensor.js
-  
+![Number of Installations](http://iobroker.live/badges/mihome-installed.svg) ![Number of Installations](http://iobroker.live/badges/mihome-stable.svg) 
+[![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 
-### Supported Devices:
-- All currently available versions 1.2.9 and support for controlling the air conditioner through acpartner.v3
-- acpartner.v3 -      Aqara AC Partner
-- gateway -           Xiaomi RGB Gateway
-- sensor_ht -         Xiaomi Temperature/Humidity
-- weather.v1 -        Xiaomi Temperature/Humidity/Pressure
-- switch -            Xiaomi Wireless Switch
-- sensor_switch.aq2 - Xiaomi Aqara Wireless Switch Sensor
-- sensor_switch.aq3 - Xiaomi Aqara Wireless Switch Sensor
-- plug -              Xiaomi Smart Plug
-- 86plug -            Xiaomi Smart Wall Plug
-- 86sw2 -             Xiaomi Wireless Dual Wall Switch
-- 86sw1 -             Xiaomi Wireless Single Wall Switch
-- natgas -            Xiaomi Mijia Honeywell Gas Alarm Detector
-- smoke -             Xiaomi Mijia Honeywell Fire Alarm Detector
-- ctrl_ln1 -          Xiaomi Aqara 86 Fire Wall Switch One Button
-- ctrl_ln1.aq1 -      Xiaomi Aqara Wall Switch LN
-- ctrl_ln2 -          Xiaomi 86 zero fire wall switch double key
-- ctrl_ln2.aq1 -      Xiaomi Aqara Wall Switch LN double key
-- ctrl_neutral2 -     Xiaomi Wired Dual Wall Switch
-- ctrl_neutral1 -     Xiaomi Wired Single Wall Switch
-- cube -              Xiaomi Cube
-- sensor_cube.aqgl01 - Xiaomi Cube
-- magnet -            Xiaomi Door Sensor
-- sensor_magnet.aq2 - Xiaomi Aqara Door Sensor
-- curtain -           Xiaomi Aqara Smart Curtain
-- motion -            Xiaomi Motion Sensor
-- sensor_motion.aq2 - Xiaomi Aqara Motion Sensor
-- sensor_wleak.aq1 -  Xiaomi Aqara water sensor
-- ctrl_ln2.aq1 -      Xiaomi Aqara Wall Switch LN (Double)
-- remote.b286acn01 -  Xiaomi Aqara Wireless Remote Switch (Double Rocker)
-- remote.b1acn01 -    Xiaomi Aqara Wireless Remote Switch
-- vibration -         Xiaomi vibration Sensor
-- wleak1 -            Xiaomi Aqara Water Sensor
-- lock_aq1 -          Xiaomi Lock
+[![NPM](https://nodei.co/npm/iobroker.mihome.png?downloads=true)](https://nodei.co/npm/iobroker.mihome/)
 
+## Requirements
+### Android (copied from [here](http://www.domoticz.com/wiki/Xiaomi_Gateway_(Aqara)) )
+You first need to enable local network functions by using the Android Mi Home
+App https://play.google.com/store/apps/details?id=com.xiaomi.smarthome :
+
+- Install the App on a Android device
+- Make sure you set your region to: `Mainland China` under `settings -> Locale` - at time of writing this seems to be required.
+- Mainland China and language can set on English
+- Select your Gateway in `Mi Home`
+- Then the 3 dots at the top right of the screen
+- Then click on about
+- Tap the version (2.27 is the current Android version as of 2 June 2017) number at the bottom of the screen repeatedly
+- You should see now 2 extra options listed in English (was Chinese in earlier versions) until you did now enable the developer mode. \[ if not try all steps again! \]
+- Choose the first new option
+- Then tap the first toggle switch to enable LAN functions. Note down the password (`29p9i40jeypwck38` in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
+- If you change here something, you lose your password!
+
+![android](img/mihome-settings.png)
+
+### iOS
+You first need to enable local network functions by using the [iOS Mi Home App iosApp Mi](https://itunes.apple.com/fr/app/%E7%B1%B3%E5%AE%B6-%E7%B2%BE%E5%93%81%E5%95%86%E5%9F%8E-%E6%99%BA%E8%83%BD%E7%94%9F%E6%B4%BB/id957323480?mt=8)
+Install the App on a iOS device:
+- Make sure you set your region to: `Mainland China` under `settings -> Locale` - required for the moment.
+- `Mainland China` and language can set on English
+- Select your Gateway in Mi Home
+- Then the 3 dots at the top right of the screen
+- Then click on about
+- Tap under Tutorial menu(on the blank part) repeatedly
+- You should see now 3 extra options listed in Chinese until you did now enable the developer mode. \[ if not try all steps again! \]
+- Choose the second new option
+- Then tap the first toggle switch to enable LAN functions. Note down the password (`29p9i40jeypwck38` in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
+- If you change here something, you lose your password!
+
+### Using acpartner
+This modification allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
+(it will probably work with version v2 too, but the developer had not hardware to test it, if anyone tries, let us know).
+
+The process of enabling LAN access and receiving GATEWAY KEY can be of some difficulty, the process is described below.
+  
+To start using:
+- Install the Aqara Home application on your smartphone (https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome),
+- register in the Aqara Home application,
+- select the "Mainland China" region in the settings,
+- add acpartner to the Aqara Home app,
+- update the acpartner firmware (click on the air conditioning icon, then the three dots in the upper right corner, then click the lowest point “Software Version”), as a result, Aqara firmware will be installed on acpartner (when using the MiHome application it was from Xiaomi),
+- register on the site https://opencloud.aqara.cn/ with the same password and login as in the Aqara Home application (registration confirmation may take some time, I had about 6 hours),
+- log in to the console https://opencloud.aqara.cn/console/
+- create an application on the tab https://opencloud.aqara.cn/console/app-management with the type "Device access" (I’m not sure about the need for this item (because I did it yet), so you can try to skip it),
+- then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access and you will see the network key, which is necessary to configure the adapter in ioBroker.
+- install the adapter from this page, in the settings enter the key obtained above.
+
+## Usage
+You can use small button on temperature sensor to trigger `double Press` event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
+
+### Add device by SID
+In case of device does not recognized by its Model name it is possible to try to add device using SID. Currently it is applicable for __Aqara 2 channels relay control module__ which has empty model name due to some problems in Gateway firmware.
+
+In order to add device by SID, open `DEVICE SID` tab in adapter settings and specify SID and device name from the supported devices list below.
+
+For Aqara relay module it should be specified like this:
+![by sid](img/device-sid-settings.png)
+
+### Supported devices
+
+- `gateway` -           Xiaomi RGB Gateway
+- `acpartner.v3` -      Aqara AC Partner
+- `sensor_ht` -         Xiaomi Temperature/Humidity
+- `weather.v1` -        Xiaomi Temperature/Humidity/Pressure
+- `switch` -            Xiaomi Wireless Switch
+- `sensor_switch.aq2` - Xiaomi Aqara Wireless Switch Sensor
+- `sensor_switch.aq3` - Xiaomi Aqara Wireless Switch Sensor
+- `plug` -              Xiaomi Smart Plug
+- `86plug` -            Xiaomi Smart Wall Plug
+- `86sw2` -             Xiaomi Wireless Dual Wall Switch
+- `86sw1` -             Xiaomi Wireless Single Wall Switch
+- `natgas` -            Xiaomi Mijia Honeywell Gas Alarm Detector
+- `smoke` -             Xiaomi Mijia Honeywell Fire Alarm Detector
+- `ctrl_ln1` -          Xiaomi Aqara 86 Fire Wall Switch One Button
+- `ctrl_ln1.aq1` -      Xiaomi Aqara Wall Switch LN
+- `ctrl_ln2` -          Xiaomi 86 zero fire wall switch double key
+- `ctrl_ln2.aq1` -      Xiaomi Aqara Wall Switch LN double key
+- `ctrl_neutral2` -     Xiaomi Wired Dual Wall Switch
+- `ctrl_neutral1` -     Xiaomi Wired Single Wall Switch
+- `cube` -              Xiaomi Cube
+- `sensor_cube.aqgl01` - Xiaomi Cube
+- `magnet` -            Xiaomi Door Sensor
+- `sensor_magnet.aq2` - Xiaomi Aqara Door Sensor
+- `curtain` -           Xiaomi Aqara Smart Curtain
+- `motion` -            Xiaomi Motion Sensor
+- `sensor_motion.aq2` - Xiaomi Aqara Motion Sensor
+- `sensor_wleak.aq1` -  Xiaomi Aqara water sensor
+- `ctrl_ln2.aq1` -      Xiaomi Aqara Wall Switch LN (Double)
+- `remote.b286acn01` -  Xiaomi Aqara Wireless Remote Switch (Double Rocker)
+- `remote.b1acn01` -    Xiaomi Aqara Wireless Remote Switch
+- `vibration` -         Xiaomi vibration Sensor
+- `wleak1` -            Xiaomi Aqara Water Sensor
+- `lock_aq1` -          Xiaomi Lock
+- `relay.c2acn01` -     Aqara 2 channels relay control module (__using SID number__)
 
 ## Changelog
+### 1.3.1 (2020-08-19)
+- (Diginix) Fixed calculation for sensor's battery percentage
 
 ### 1.3.0 (2020-01-16)
 * (algar42) Ability to add devices with missing model by their SID ([e.g. for Aqara two-channel relay](https://github.com/algar42/ioBroker.mihome#usage))
