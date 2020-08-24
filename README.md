@@ -41,9 +41,12 @@ Install the App on a iOS device:
 - If you change here something, you lose your password!
 
 ### Using acpartner
-An adapter of version 1.3.xx or higher allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
+  An adapter of version 1.3.xx or higher allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
 (it will probably work with version v2 too, but the developer had not hardware to test it, if anyone tries, let us know).
-
+  
+  The following states have been added to control the air conditioner:
+  ![ac states](img/Air-Conditioning-Controller.png)
+  
 The process of enabling LAN access and receiving GATEWAY KEY can be of some difficulty, the process is described below.
   
 To start using:
