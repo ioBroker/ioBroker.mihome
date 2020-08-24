@@ -41,7 +41,7 @@ Install the App on a iOS device:
 - If you change here something, you lose your password!
 
 ### Using acpartner
-This modification allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
+An adapter of version 1.3.xx or higher allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
 (it will probably work with version v2 too, but the developer had not hardware to test it, if anyone tries, let us know).
 
 The process of enabling LAN access and receiving GATEWAY KEY can be of some difficulty, the process is described below.
@@ -56,7 +56,7 @@ To start using:
 - log in to the console https://opencloud.aqara.cn/console/
 - create an application on the tab https://opencloud.aqara.cn/console/app-management with the type "Device access" (I’m not sure about the need for this item (because I did it yet), so you can try to skip it),
 - then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access and you will see the network key, which is necessary to configure the adapter in ioBroker.
-- install the adapter from this page, in the settings enter the key obtained above.
+- in the adapter settings, enter the key obtained above.
 
 ## Usage
 You can use small button on temperature sensor to trigger `double Press` event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
@@ -72,7 +72,7 @@ For Aqara relay module it should be specified like this:
 ### Supported devices
 
 - `gateway` -           Xiaomi RGB Gateway
-- `acpartner.v3` -      Aqara AC Partner
+- `acpartner.v3` -      Aqara AC Partner (KTBL11LM)
 - `sensor_ht` -         Xiaomi Temperature/Humidity
 - `weather.v1` -        Xiaomi Temperature/Humidity/Pressure
 - `switch` -            Xiaomi Wireless Switch
