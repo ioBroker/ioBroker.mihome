@@ -115,7 +115,7 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.3.2 (2020-08-25)
 * (VLGorskij) Added ac-partner.v3 support
 * (bluefox) Added compact mode
 

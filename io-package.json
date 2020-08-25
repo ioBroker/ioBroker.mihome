@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.3.0",
+        "version": "1.3.2",
         "news": {
+            "1.3.2": {
+                "en": "Added ac-partner.v3 support\nAdded compact mode",
+                "de": "Unterstützung für ac-partner.v3 hinzugefügt\nKompaktmodus hinzugefügt",
+                "ru": "Добавлена поддержка ac-partner.v3\nДобавлен компактный режим",
+                "pt": "Adicionado suporte ac-partner.v3\nAdicionado modo compacto",
+                "nl": "Ondersteuning voor ac-partner.v3 toegevoegd\nCompacte modus toegevoegd",
+                "fr": "Ajout du support ac-partner.v3\nAjout du mode compact",
+                "it": "Aggiunto supporto ac-partner.v3\nAggiunta la modalità compatta",
+                "es": "Se agregó soporte para ac-partner.v3\nModo compacto agregado",
+                "pl": "Dodano obsługę ac-partner.v3\nDodano tryb kompaktowy",
+                "zh-cn": "添加了ac-partner.v3支持\n增加了紧凑模式"
+            },
             "1.3.1": {
                 "en": "Improved calculation for sensor's battery percentage",
                 "de": "Verbesserte Berechnung der Sensor Batterieprozente",
@@ -232,57 +244,6 @@
                 "it": "Ignora lo stato sconosciuto dei sensori",
                 "es": "Ignorar el estado desconocido de los sensores",
                 "pl": "Ignoruj ​​nieznany stan czujników"
-            },
-            "1.0.0": {
-                "en": "Do not overwrite the names\nReady for Admin3",
-                "de": "Überschreibe die Namen nicht\nBereit für Admin3",
-                "ru": "Не перезаписывайте имена\nГотово для Admin3",
-                "pt": "Não substitua os nomes\nPronto para Admin3",
-                "nl": "Overschrijf de namen niet\nKlaar voor Admin3",
-                "fr": "Ne pas écraser les noms\nPrêt pour Admin3",
-                "it": "Non sovrascrivere i nomi\nPronto per Admin3",
-                "es": "No sobrescribir los nombres\nListo para Admin3",
-                "pl": "Nie nadpisuj nazw\nGotowy na Admin3"
-            },
-            "0.3.3": {
-                "en": "Allow multiple mihome gateways",
-                "de": "Erluabe mehrere Gateways",
-                "ru": "Можно подключить несколько Gateways"
-            },
-            "0.2.4": {
-                "en": "Add aqara water sensor",
-                "de": "Aqara Wasser-Sensor hinzugefügt",
-                "ru": "Добавлен Aqara сенсор протечки"
-            },
-            "0.2.3": {
-                "en": "Remove \".\" from id of the device",
-                "de": "\".\" aus der ID des Gerätes entfernt",
-                "ru": "Убрано \".\" из ID устройства"
-            },
-            "0.2.2": {
-                "en": "Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug",
-                "de": "Setzet nach 300ms doublePress auf false bei Temperatursensor\nErlaube Steuerung von Plug",
-                "ru": "Ставит после 300 мс doublePress на false для датчика температуры\nРазрешить управление Plug"
-            },
-            "0.2.1": {
-                "en": "Implement double click on temperature sensor",
-                "de": "Doppelklick auf Temperaturfühler durchführen",
-                "ru": "Дважды нажмите на датчик температуры"
-            },
-            "0.2.0": {
-                "en": "fix battery level",
-                "de": "Korrigiere Battery-Status",
-                "ru": "Исправлены показания уровня батарейки"
-            },
-            "0.1.3": {
-                "en": "add cube\nremove voltage by gateway",
-                "de": "Cube hinzugefügt\nLöschen Voltage bei gateway",
-                "ru": "Добавлен Куб\nУдалены проценты из gateway"
-            },
-            "0.1.1": {
-                "en": "initial commit",
-                "de": "initial commit",
-                "ru": "initial commit"
             }
         },
         "mode": "daemon",
@@ -310,10 +271,16 @@
         "bind": "0.0.0.0",
         "port": 9898,
         "keys": [
-            {"ip": "", "key": ""}
+            {
+                "ip": "",
+                "key": ""
+            }
         ],
-         "sids": [
-            {"sid": "", "model": ""}
+        "sids": [
+            {
+                "sid": "",
+                "model": ""
+            }
         ],
         "interval": 5000,
         "heartbeatTimeout": 20000,
