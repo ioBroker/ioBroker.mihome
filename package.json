@@ -7,7 +7,8 @@
     "email": "dogafox@gmail.com"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --exit"
+    "test": "node node_modules/mocha/bin/mocha --exit",
+    "release": "node node_modules/@alcalzone/release-script/bin/release.js"
   },
   "contributors": [
     {
@@ -28,12 +29,12 @@
     "url": "git+https://github.com/ioBroker/ioBroker.mihome.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^1.0.3"
+    "@iobroker/adapter-core": "^2.4.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "mocha": "^6.0.2",
-    "chai": "^4.1.2"
+    "gulp": "^4.0.2",
+    "mocha": "^8.1.2",
+    "chai": "^4.2.0"
   },
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.mihome/issues"

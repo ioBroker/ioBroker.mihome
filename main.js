@@ -8,7 +8,7 @@
 'use strict';
 const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const MiHome  = require('./lib/Hub');
-const adapter = utils.Adapter('mihome');
+const adapterName = require('./package.json').name.split('.').pop();
 
 let objects   = {};
 let delayed   = {};
@@ -17,74 +17,93 @@ let connTimeout;
 let hub;
 let reconnectTimeout;
 let tasks = [];
+let browseTimeout;
+let adapter;
+function startAdapter(options) {
+    options = options || {};
+    Object.assign(options, {name: adapterName});
+    adapter = new utils.Adapter(options);
 
-adapter.on('ready', main);
+    adapter.on('ready', main);
 
-adapter.on('stateChange', (id, state) => {
-    if (!id || !state || state.ack) {
-        return;
-    }
-    if (!objects[id]) {
-        adapter.log.warn('Unknown ID: ' + id);
-        return;
-    }
-    if (hub) {
-        const pos = id.lastIndexOf('.');
-        const channelId = id.substring(0, pos);
-        const attr = id.substring(pos + 1);
+    adapter.on('stateChange', (id, state) => {
+        if (!id || !state || state.ack) {
+            return;
+        }
+        if (!objects[id]) {
+            adapter.log.warn('Unknown ID: ' + id);
+            return;
+        }
+        if (hub) {
+            const pos = id.lastIndexOf('.');
+            const channelId = id.substring(0, pos);
+            const attr = id.substring(pos + 1);
 
-        if (objects[channelId] && objects[channelId].native) {
-            const device = hub.getSensor(objects[channelId].native.sid);
-            if (device && device.Control) {
-                adapter.log.debug('attr:' + attr);              // This is added for debugging
-                adapter.log.debug('state:' + state.val);        // This is added for debugging
-                device.Control(attr, state.val);
+            if (objects[channelId] && objects[channelId].native) {
+                const device = hub.getSensor(objects[channelId].native.sid);
+                if (device && device.Control) {
+                    adapter.log.debug('attr:' + attr);              // This is added for debugging
+                    adapter.log.debug('state:' + state.val);        // This is added for debugging
+                    device.Control(attr, state.val);
+                } else {
+                    adapter.log.warn('Cannot control ' + id);
+                }
             } else {
-                adapter.log.warn('Cannot control ' + id);
+                adapter.log.warn('Invalid device: ' + id);
             }
-        } else {
-            adapter.log.warn('Invalid device: ' + id);
         }
-    }
-});
+    });
 
-adapter.on('unload', callback => {
-    if (hub) {
-        try {
-            hub.stop(callback);
-        } catch (e) {
-            console.error('Cannot stop: ' + e);
-            callback && callback();
+    adapter.on('unload', callback => {
+        browseTimeout && clearTimeout(browseTimeout);
+        browseTimeout = null;
+
+        connTimeout && clearTimeout(connTimeout);
+        connTimeout = null;
+
+        reconnectTimeout && clearTimeout(reconnectTimeout);
+        reconnectTimeout = null;
+
+        if (hub) {
+            try {
+                hub.stop(callback);
+            } catch (e) {
+                console.error('Cannot stop: ' + e);
+                callback && callback();
+            }
+        } else if (callback) {
+            callback();
         }
-    } else if (callback) {
-        callback();
-    }
-});
+    });
 
-adapter.on('message', obj => {
-    if (obj) {
-        switch (obj.command) {
-            case 'browse':
-                let browse = new MiHome.Hub({
-                    port:     (obj.message.port || adapter.config.port) + 1,
-                    bind:     obj.message.bind || '0.0.0.0',
-                    browse:   true
-                });
-                let result = [];
-
-                browse.on('browse', data => (result.indexOf(data.ip) === -1) && result.push(data.ip));
-
-                browse.listen();
-                setTimeout(() => {
-                    browse.stop(() => {
-                        browse = null;
-                        if (obj.callback) adapter.sendTo(obj.from, obj.command, result, obj.callback);
+    adapter.on('message', obj => {
+        if (obj) {
+            switch (obj.command) {
+                case 'browse':
+                    let browse = new MiHome.Hub({
+                        port:     (obj.message.port || adapter.config.port) + 1,
+                        bind:     obj.message.bind || '0.0.0.0',
+                        browse:   true
                     });
-                }, 3000);
-                break;
+                    let result = [];
+
+                    browse.on('browse', data => (result.indexOf(data.ip) === -1) && result.push(data.ip));
+
+                    browse.listen();
+                    browseTimeout = setTimeout(() => {
+                        browseTimeout = null;
+                        browse.stop(() => {
+                            browse = null;
+                            obj.callback && adapter.sendTo(obj.from, obj.command, result, obj.callback);
+                        });
+                    }, 3000);
+                    break;
+            }
         }
-    }
-});
+    });
+
+    return adapter;
+}
 
 function updateStates(sid, type, data) {
     const id = adapter.namespace + '.devices.' + type.replace('.', '_') + '_' + sid;
@@ -92,6 +111,10 @@ function updateStates(sid, type, data) {
     for (const attr in data) {
         if (data.hasOwnProperty(attr)) {
             if (objects[id] || objects[id + '.' + attr]) {
+                // convert hPa => mmHg
+                if (objects[id + '.' + attr].common && objects[id + '.' + attr].common.unit === 'mmHg') {
+                    data[attr] = Math.round(data.pressure * 100 / 133.322);
+                }
                 adapter.setForeignState(id + '.' + attr, data[attr], true);
             } else {
                 delayed[id + '.' + attr] = data[attr];
@@ -184,14 +207,27 @@ function createDevice(device, name, callback) {
 
     if (dev) {
         for (const attr in MiHome.Devices[dev].states) {
-            if (!MiHome.Devices[dev].states.hasOwnProperty(attr)) continue;
-            console.log('Create ' + id + '.' + attr);
-            tasks.push({
+            if (!MiHome.Devices[dev].states.hasOwnProperty(attr)) {
+                continue;
+            }
+
+            adapter.log.debug('Create ' + id + '.' + attr);
+
+            const obj = {
                 _id: id + '.' + attr,
                 common: MiHome.Devices[dev].states[attr],
                 type: 'state',
                 native: {}
-            });
+            };
+
+            // use valid units
+            if (adapter.config.mmHg && obj.common.unit === 'hPa') {
+                obj.common.unit = 'mmHg';
+                obj.common.min = 0;
+                obj.common.max = 1000;
+            }
+
+            tasks.push(obj);
         }
     } else {
         adapter.log.error('Device ' + device.type + ' not found');
@@ -299,8 +335,8 @@ function startMihome() {
     });
     hub.on('data', (sid, type, data) => {
         if (sid !== '000000000000') {               // Ignore devices with empty sid
-                adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));      // data: 000000000000(gateway): {"relay_status":"off"}
-                updateStates(sid, type, data);
+            adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));      // data: 000000000000(gateway): {"relay_status":"off"}
+            updateStates(sid, type, data);
         }
     });
 
@@ -320,4 +356,12 @@ function main() {
     adapter.config.restartInterval = parseInt(adapter.config.restartInterval, 10) || 30000;
 
     readObjects(startMihome);
+}
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) {
+    module.exports = startAdapter;
+} else {
+    // or start the instance directly
+    startAdapter();
 }

@@ -90,7 +90,7 @@ var checkStates = {
         "lc": 1509870303590
     },
     "mihome.0.devices.weather_v1_1652761251244.pressure": {
-        "val": 751,     // For pressure in mmHg
+        "val": 1001.2,
         "ack": true,
         "ts": 1509870303593,
         "q": 0,

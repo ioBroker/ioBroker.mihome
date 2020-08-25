@@ -298,6 +298,7 @@
         "authors": [
             "bluefox <dogafox@gmail.com>"
         ],
+        "compact": true,
         "license": "MIT",
         "readme": "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
         "icon": "mihome.png",
@@ -316,7 +317,8 @@
         ],
         "interval": 5000,
         "heartbeatTimeout": 20000,
-        "restartInterval": 30000
+        "restartInterval": 30000,
+        "mmHg": false
     },
     "objects": [],
     "instanceObjects": [
