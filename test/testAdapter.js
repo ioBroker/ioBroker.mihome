@@ -90,7 +90,7 @@ var checkStates = {
         "lc": 1509870303590
     },
     "mihome.0.devices.weather_v1_1652761251244.pressure": {
-        "val": 1001.2,
+        "val": 751,     // For pressure in mmHg
         "ack": true,
         "ts": 1509870303593,
         "q": 0,
@@ -106,7 +106,7 @@ var checkStates = {
         "lc": 1509870303600
     },
     "mihome.0.devices.cube_287658275634875.percent": {
-        "val": 67.9,
+        "val": 67.9,    // pull request #121 from Diginix/master
         "ack": true,
         "ts": 1509870303603,
         "q": 0,

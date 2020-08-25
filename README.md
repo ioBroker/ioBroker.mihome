@@ -1,7 +1,8 @@
 ![Logo](admin/mihome.png)
 # mihome Gateway
 
-![Number of Installations](http://iobroker.live/badges/mihome-installed.svg) ![Number of Installations](http://iobroker.live/badges/mihome-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
+![Number of Installations](http://iobroker.live/badges/mihome-installed.svg) ![Number of Installations](http://iobroker.live/badges/mihome-stable.svg) 
+[![NPM version](http://img.shields.io/npm/v/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 
 [![NPM](https://nodei.co/npm/iobroker.mihome.png?downloads=true)](https://nodei.co/npm/iobroker.mihome/)
@@ -39,6 +40,28 @@ Install the App on a iOS device:
 - Then tap the first toggle switch to enable LAN functions. Note down the password (`29p9i40jeypwck38` in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
 - If you change here something, you lose your password!
 
+### Using acpartner
+  An adapter of version 1.3.xx or higher allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
+(it will probably work with version v2 too, but the developer had not hardware to test it, if anyone tries, let us know).
+  
+  The following states have been added to control the air conditioner:
+  ![ac states](img/Air-Conditioning-Controller.png)
+  
+The process of enabling LAN access and receiving GATEWAY KEY can be of some difficulty, the process is described below.
+  
+To start using:
+- Install the Aqara Home application on your smartphone (https://play.google.com/store/apps/details?id=com.lumiunited.aqarahome),
+- register in the Aqara Home application,
+- select the "Mainland China" region in the settings,
+- add acpartner to the Aqara Home app,
+- update the acpartner firmware (click on the air conditioning icon, then the three dots in the upper right corner, then click the lowest point “Software Version”), as a result, Aqara firmware will be installed on acpartner (when using the MiHome application it was from Xiaomi),
+- register on the site https://opencloud.aqara.cn/ with the same password and login as in the Aqara Home application (registration confirmation may take some time, I had about 6 hours),
+- log in to the console https://opencloud.aqara.cn/console/
+- create an application on the tab https://opencloud.aqara.cn/console/app-management with the type "Device access" (I’m not sure about the need for this item (because I did it yet), so you can try to skip it),
+- then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access and you will see the network key, which is necessary to configure the adapter in ioBroker.
+- in the adapter settings, enter the key obtained above.
+![gateway key](img/Gateway-LAN.png)
+
 ## Usage
 You can use small button on temperature sensor to trigger `double Press` event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
 
@@ -53,6 +76,7 @@ For Aqara relay module it should be specified like this:
 ### Supported devices
 
 - `gateway` -           Xiaomi RGB Gateway
+- `acpartner.v3` -      Aqara AC Partner (KTBL11LM)
 - `sensor_ht` -         Xiaomi Temperature/Humidity
 - `weather.v1` -        Xiaomi Temperature/Humidity/Pressure
 - `switch` -            Xiaomi Wireless Switch

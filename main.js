@@ -36,6 +36,8 @@ adapter.on('stateChange', (id, state) => {
         if (objects[channelId] && objects[channelId].native) {
             const device = hub.getSensor(objects[channelId].native.sid);
             if (device && device.Control) {
+                adapter.log.debug('attr:' + attr);              // This is added for debugging
+                adapter.log.debug('state:' + state.val);        // This is added for debugging
                 device.Control(attr, state.val);
             } else {
                 adapter.log.warn('Cannot control ' + id);
@@ -277,24 +279,29 @@ function startMihome() {
 
     hub.on('message', msg => {
         setConnected(true);
-        adapter.log.debug('RAW: ' + JSON.stringify(msg));
+        adapter.log.debug('RAW: ' + JSON.stringify(msg));       // Here's the output in Log ioBrokera of debug RAW lines:
     });
     hub.on('warning', msg => adapter.log.warn(msg));
+    hub.on('debug', msg => adapter.log.debug(msg));
     hub.on('error', error => {
         adapter.log.error(error);
         stopMihome();
     });
     hub.on('device', (device, name) => {
-        if (!objects[adapter.namespace + '.devices.' + device.className.replace('.', '_') + '_' + device.sid]) {
-            adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');
-            createDevice(device, name);
-        } else {
-            adapter.log.debug('known device: ' + device.sid + '(' + device.type + ')');
+        if (device.sid !== '000000000000') {        // Ignore devices with empty sid
+            if (!objects[adapter.namespace + '.devices.' + device.className.replace('.', '_') + '_' + device.sid]) {
+                adapter.log.debug('NEW device: ' + device.sid + '(' + device.type + ')');       // Here's the output in Log ioBrokera of the lines NEW device:
+                createDevice(device, name);
+            } else {
+                adapter.log.debug('known device: ' + device.sid + '(' + device.type + ')');
+            }
         }
     });
     hub.on('data', (sid, type, data) => {
-        adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));
-        updateStates(sid, type, data);
+        if (sid !== '000000000000') {               // Ignore devices with empty sid
+                adapter.log.debug('data: ' + sid + '(' + type + '): ' + JSON.stringify(data));      // data: 000000000000(gateway): {"relay_status":"off"}
+                updateStates(sid, type, data);
+        }
     });
 
     if (!connTimeout && adapter.config.heartbeatTimeout) {
