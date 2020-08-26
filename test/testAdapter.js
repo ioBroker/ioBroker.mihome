@@ -98,7 +98,7 @@ var checkStates = {
         "lc": 1509870303593
     },
     "mihome.0.devices.cube_287658275634875.voltage": {
-        "val": 3.025,
+        "val": 2.800,
         "ack": true,
         "ts": 1509870303600,
         "q": 0,
@@ -106,7 +106,7 @@ var checkStates = {
         "lc": 1509870303600
     },
     "mihome.0.devices.cube_287658275634875.percent": {
-        "val": 67.9,    // pull request #121 from Diginix/master
+        "val": 42,
         "ack": true,
         "ts": 1509870303603,
         "q": 0,
@@ -273,10 +273,8 @@ describe('Test ' + adapterShortName + ' adapter', function() {
 
     it('Test ' + adapterShortName + ' adapter: states must exist', function (done) {
         this.timeout(5000);
-        var cnt = 0;
-        for (var __id in checkStates) {
-            if (checkStates.hasOwnProperty(__id)) cnt++;
-        }
+        var cnt = Object.keys(checkStates).length;
+
         for (var id in checkStates) {
             if (!checkStates.hasOwnProperty(id)) continue;
             (function (_id, checkState) {
@@ -284,6 +282,9 @@ describe('Test ' + adapterShortName + ' adapter', function() {
                     expect(err).to.be.not.ok;
                     if (!state) {
                         console.error('cannot find ' + _id);
+                    }
+                    if (state.val !== checkState.val) {
+                        console.error('Wrong value for ' + _id);
                     }
                     expect(state.val).to.be.equal(checkState.val);
                     expect(state.ack).to.be.equal(checkState.ack);

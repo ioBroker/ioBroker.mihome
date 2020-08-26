@@ -11,7 +11,7 @@ const commands = [
     {"cmd": "report",    "model": "weather.v1",       "sid":"1652761251244",   "short_id": 12817, "data": {"temperature": "2030"}},
     {"cmd": "report",    "model": "cube",             "sid":"287658275634875", "short_id": 21396, "data": {"rotate": "6,500"}},
     {"cmd": "report",    "model": "gateway",          "sid":"81726387164871",  "short_id": 0,     "data": {"rgb": 0, "illumination": 1180}},
-    {"cmd": "heartbeat", "model": "cube",             "sid":"287658275634875", "short_id": 21396, "data": {"voltage": 3025}},
+    {"cmd": "heartbeat", "model": "cube",             "sid":"287658275634875", "short_id": 21396, "data": {"voltage": 2800}},
     {"cmd": "report",    "model": "sensor_wleak.aq1", "sid":"aaa000xxxxxxx",   "short_id": 12345, "data": {"status": "leak"}},
     {"cmd": "report",    "model": "sensor_wleak.aq1", "sid":"aaa000xxxxxxx",   "short_id": 12345, "data": {"status": "no_leak"}}
 ];
