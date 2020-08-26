@@ -42,7 +42,7 @@ jobs:
   adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
 
-    needs: [check-and-lint, build]
+    needs: [check-and-lint]
 
     runs-on: ${{ matrix.os }}
     strategy:
