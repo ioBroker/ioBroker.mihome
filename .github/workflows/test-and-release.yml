@@ -38,25 +38,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-#      - name: Perform a type check
-#        run: npm run check:ts
-#        env:
-#          CI: true
-      # - name: Lint TypeScript code
-      #   run: npm run lint
-#      - name: Test package files
-#        run: npm run test:package
-
-  #build:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - uses: actions/checkout@v1
-  #    - uses: actions/setup-node@v1
-  #      with:
-  #        node-version: 10
-  #    - run: npm i
-  #    - run: npm run build
-
   # Runs adapter tests on all supported node versions and OSes
   adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
@@ -81,14 +62,6 @@ jobs:
 
       - name: Run local tests
         run: npm test
-#      - name: Run unit tests
-#        run: npm run test:unit
-#      - name: Run integration tests # (linux/osx)
-#        if: startsWith(runner.OS, 'windows') == false
-#        run: DEBUG=testing:* npm run test:integration
-#      - name: Run integration tests # (windows)
-#        if: startsWith(runner.OS, 'windows')
-#        run: set DEBUG=testing:* & npm run test:integration
 
   # Deploys the final package to NPM
   deploy:
@@ -156,8 +129,8 @@ jobs:
       #   export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
       #   export SENTRY_URL=https://sentry.iobroker.net
       #    export SENTRY_ORG=iobroker
-      #   export SENTRY_PROJECT=iobroker-javascript
-      #    export SENTRY_VERSION=iobroker.javascript@${{ env.VERSION }}
+      #   export SENTRY_PROJECT=iobroker-mihome
+      #    export SENTRY_VERSION=iobroker.mihome@${{ env.VERSION }}
       #    sentry-cli releases new $SENTRY_VERSION
       #    sentry-cli releases finalize $SENTRY_VERSION
 
