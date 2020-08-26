@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.3.2",
+        "version": "1.3.3",
         "news": {
+            "1.3.3": {
+                "en": "Sentry is activated",
+                "de": "Wachposten ist aktiviert",
+                "ru": "Часовой активирован",
+                "pt": "Sentinela está ativada",
+                "nl": "Sentry is geactiveerd",
+                "fr": "Sentry est activé",
+                "it": "Sentry è attivato",
+                "es": "Sentry está activado",
+                "pl": "Wartownik jest aktywny",
+                "zh-cn": "哨兵被激活"
+            },
             "1.3.2": {
                 "en": "Added ac-partner.v3 support\nAdded compact mode",
                 "de": "Unterstützung für ac-partner.v3 hinzugefügt\nKompaktmodus hinzugefügt",
@@ -233,17 +245,6 @@
                 "it": "I valori di temperatura non validi verranno ignorati",
                 "es": "Los valores de temperatura inválidos serán ignorados",
                 "pl": "Nieprawidłowe wartości temperatury zostaną zignorowane"
-            },
-            "1.0.2": {
-                "en": "Ignore unknown state of sensors",
-                "de": "Ignoriere den unbekannten Zustand der Sensoren",
-                "ru": "Игнорировать неизвестное состояние датчиков",
-                "pt": "Ignore o estado desconhecido de sensores",
-                "nl": "Negeer onbekende toestand van sensoren",
-                "fr": "Ignorer l'état inconnu des capteurs",
-                "it": "Ignora lo stato sconosciuto dei sensori",
-                "es": "Ignorar el estado desconocido de los sensores",
-                "pl": "Ignoruj ​​nieznany stan czujników"
             }
         },
         "mode": "daemon",
