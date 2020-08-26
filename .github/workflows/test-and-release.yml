@@ -123,16 +123,16 @@ jobs:
           prerelease: ${{ contains(env.VERSION, '-') }}
           body: ${{ env.BODY }}
 
-      #- name: Notify Sentry.io about the release
-      #  run: |
-      #    npm i -g @sentry/cli
-      #   export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-      #   export SENTRY_URL=https://sentry.iobroker.net
-      #    export SENTRY_ORG=iobroker
-      #   export SENTRY_PROJECT=iobroker-mihome
-      #    export SENTRY_VERSION=iobroker.mihome@${{ env.VERSION }}
-      #    sentry-cli releases new $SENTRY_VERSION
-      #    sentry-cli releases finalize $SENTRY_VERSION
+      - name: Notify Sentry.io about the release
+        run: |
+          npm i -g @sentry/cli
+          export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+          export SENTRY_URL=https://sentry.iobroker.net
+          export SENTRY_ORG=iobroker
+          export SENTRY_PROJECT=iobroker-mihome
+          export SENTRY_VERSION=iobroker.mihome@${{ env.VERSION }}
+          sentry-cli releases new $SENTRY_VERSION
+          sentry-cli releases finalize $SENTRY_VERSION
 
         # Add the following line BEFORE finalize if repositories are connected in Sentry
         # sentry-cli releases set-commits $SENTRY_VERSION --auto

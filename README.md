@@ -7,6 +7,8 @@
 
 [![NPM](https://nodei.co/npm/iobroker.mihome.png?downloads=true)](https://nodei.co/npm/iobroker.mihome/)
 
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+
 ## Requirements
 ### Android (copied from [here](http://www.domoticz.com/wiki/Xiaomi_Gateway_(Aqara)) )
 You first need to enable local network functions by using the Android Mi Home
@@ -115,6 +117,9 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
+### __WORK IN PROGRESS__
+* (bluefox) Sentry is activated
+
 ### 1.3.2 (2020-08-25)
 * (VLGorskij) Added ac-partner.v3 support
 * (bluefox) Added compact mode

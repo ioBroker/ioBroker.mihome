@@ -265,7 +265,12 @@
         "icon": "mihome.png",
         "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
         "type": "iot-systems",
-        "enabled": true
+        "enabled": true,
+        "plugins": {
+            "sentry": {
+                "dsn": "https://0b230fa2857f4c88a811d152848d6bd9@sentry.iobroker.net/53"
+            }
+        }
     },
     "native": {
         "bind": "0.0.0.0",
