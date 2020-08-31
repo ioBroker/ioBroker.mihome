@@ -117,7 +117,7 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.3.4 (2020-08-31)
 * (Alan) Fixed the crash for non existing attributes 
 
 ### 1.3.3 (2020-08-26)

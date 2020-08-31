@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.3.3",
+        "version": "1.3.4",
         "news": {
+            "1.3.4": {
+                "en": "Fixed the crash for non existing attributes",
+                "de": "Der Absturz für nicht vorhandene Attribute wurde behoben",
+                "ru": "Исправлен сбой для несуществующих атрибутов",
+                "pt": "Corrigida a falha para atributos não existentes",
+                "nl": "De crash voor niet bestaande attributen opgelost",
+                "fr": "Correction du crash pour les attributs non existants",
+                "it": "Risolto il crash per attributi non esistenti",
+                "es": "Se corrigió el bloqueo de los atributos no existentes.",
+                "pl": "Naprawiono awarię dla nieistniejących atrybutów",
+                "zh-cn": "修复了不存在的属性的崩溃"
+            },
             "1.3.3": {
                 "en": "Sentry is activated",
                 "de": "Wachposten ist aktiviert",
@@ -234,17 +246,6 @@
                 "it": "Lo stato di allarme è stato corretto.",
                 "es": "El estado de la alarma fue corregido.",
                 "pl": "Stan alarmu został naprawiony."
-            },
-            "1.0.3": {
-                "en": "Invalid temperature values will be ignored",
-                "de": "Ungültige Temperaturwerte werden ignoriert",
-                "ru": "Недопустимые значения температуры будут игнорироваться",
-                "pt": "Valores de temperatura inválidos serão ignorados",
-                "nl": "Ongeldige temperatuurwaarden worden genegeerd",
-                "fr": "Les valeurs de température non valides seront ignorées",
-                "it": "I valori di temperatura non validi verranno ignorati",
-                "es": "Los valores de temperatura inválidos serán ignorados",
-                "pl": "Nieprawidłowe wartości temperatury zostaną zignorowane"
             }
         },
         "mode": "daemon",
