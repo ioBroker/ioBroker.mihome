@@ -112,7 +112,7 @@ function updateStates(sid, type, data) {
         if (data.hasOwnProperty(attr)) {
             if (objects[id] || objects[id + '.' + attr]) {
                 // convert hPa => mmHg
-                if (objects[id + '.' + attr].common && objects[id + '.' + attr].common.unit === 'mmHg') {
+                if (objects[id + '.' + attr] && objects[id + '.' + attr].common && objects[id + '.' + attr].common.unit === 'mmHg') {
                     data[attr] = Math.round(data.pressure * 100 / 133.322);
                 }
                 adapter.setForeignState(id + '.' + attr, data[attr], true);
