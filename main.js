@@ -115,6 +115,11 @@ function updateStates(sid, type, data) {
                 if (objects[id + '.' + attr] && objects[id + '.' + attr].common && objects[id + '.' + attr].common.unit === 'mmHg') {
                     data[attr] = Math.round(data.pressure * 100 / 133.322);
                 }
+                // TODO: what should be done if objects[id + '.' + attr] === undefined? Object does not exist, but the value will be set...
+                if (!objects[id + '.' + attr]) {
+                    adapter.log.warn(`Check, why the object ${id}.${attr} does not exist! But the value ${data[attr]} is set.`);
+                }
+
                 adapter.setForeignState(id + '.' + attr, data[attr], true);
             } else {
                 delayed[id + '.' + attr] = data[attr];
