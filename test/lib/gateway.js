@@ -53,7 +53,11 @@ function GatewaySimulator () {
         this.socket.on('listening', () => {
             that.socket.setBroadcast(true);
             that.socket.setMulticastTTL(128);
-            that.socket.addMembership('224.0.0.50');
+            try {
+                that.socket.addMembership('224.0.0.50');
+            } catch (err) {
+                console.error('ERROR addMembership: ' + err)
+            }
         });
         this.socket.bind(4321);
     };

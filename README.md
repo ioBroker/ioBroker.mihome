@@ -117,6 +117,10 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
+
+### __WORK IN PROGRESS__
+* (Apollon77) Fix crash cases (Sentry IOBROKER-MIHOME-1..4)
+
 ### 1.3.4 (2020-08-31)
 * (Alan) Fixed the crash for non existing attributes 
 
