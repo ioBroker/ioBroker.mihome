@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.3.4",
+        "version": "1.3.5",
         "news": {
+            "1.3.5": {
+                "en": "Fix crash cases (Sentry IOBROKER-MIHOME-1..4)",
+                "de": "Absturzfälle beheben (Sentry IOBROKER-MIHOME-1..4)",
+                "ru": "Исправить случаи сбоя (Sentry IOBROKER-MIHOME-1..4)",
+                "pt": "Corrigir casos de falha (Sentry IOBROKER-MIHOME-1..4)",
+                "nl": "Crash gevallen repareren (Sentry IOBROKER-MIHOME-1..4)",
+                "fr": "Correction des cas de crash (Sentry IOBROKER-MIHOME-1..4)",
+                "it": "Risolvi i casi di crash (Sentry IOBROKER-MIHOME-1..4)",
+                "es": "Reparar casos de fallas (Sentry IOBROKER-MIHOME-1..4)",
+                "pl": "Napraw przypadki awarii (Sentry IOBROKER-MIHOME-1..4)",
+                "zh-cn": "修复崩溃情况（Sentry IOBROKER-MIHOME-1..4）"
+            },
             "1.3.4": {
                 "en": "Fixed the crash for non existing attributes",
                 "de": "Der Absturz für nicht vorhandene Attribute wurde behoben",
@@ -235,17 +247,6 @@
                 "it": "Xiaomi Aqara Wall Switch LN Double è stato aggiunto",
                 "es": "Se añadió el conmutador de pared Xiaomi Aqara LN doble",
                 "pl": "Przełącznik ścienny Xiaomi Aqara LN Double został dodany"
-            },
-            "1.0.4": {
-                "en": "The alarm state was fixed.",
-                "de": "Der Alarmzustand wurde behoben.",
-                "ru": "Состояние тревоги было исправлено.",
-                "pt": "O estado do alarme foi resolvido.",
-                "nl": "De alarmstatus was opgelost.",
-                "fr": "L'état d'alarme a été fixé.",
-                "it": "Lo stato di allarme è stato corretto.",
-                "es": "El estado de la alarma fue corregido.",
-                "pl": "Stan alarmu został naprawiony."
             }
         },
         "mode": "daemon",
