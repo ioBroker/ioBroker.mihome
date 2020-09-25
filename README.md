@@ -117,6 +117,8 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
+### __WORK IN PROGRESS__
+* (VLGorskij) Added new device QBKG24LM
 
 ### 1.3.5 (2020-09-17)
 * (Apollon77) Fix crash cases (Sentry IOBROKER-MIHOME-1..4)
