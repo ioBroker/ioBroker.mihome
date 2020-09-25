@@ -117,7 +117,7 @@ For Aqara relay module it should be specified like this:
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.3.6 (2020-09-25)
 * (VLGorskij) Added new device QBKG24LM
 
 ### 1.3.5 (2020-09-17)
