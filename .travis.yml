@@ -5,9 +5,9 @@ os:
 sudo: required
 language: node_js
 node_js:
-  - '10'
   - '12'
   - '14'
+  - '16'
 before_install:
   - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CC=clang++; export CXX=clang++; export CXXFLAGS=-std=c++11; fi'
   - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew unlink pkg-config; fi'
