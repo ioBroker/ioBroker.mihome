@@ -118,7 +118,7 @@ For Aqara relay module it should be specified like this:
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.3.8 (2021-09-13)
 * (VLGorskij) fixed the error messages for some states
  
 ### 1.3.7 (2021-01-22)

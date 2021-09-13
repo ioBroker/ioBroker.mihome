@@ -14,8 +14,20 @@
             "pl": "Wsparcie dla Xiaomi MiHome gateway",
             "zh-cn": "小米绿米网关接入适配器"
         },
-        "version": "1.3.7",
+        "version": "1.3.8",
         "news": {
+            "1.3.8": {
+                "en": "fixed the error messages for some states",
+                "de": "die Fehlermeldungen für einige Zustände behoben",
+                "ru": "исправлены сообщения об ошибках для некоторых состояний",
+                "pt": "corrigiu as mensagens de erro para alguns estados",
+                "nl": "de foutmeldingen voor sommige staten verholpen",
+                "fr": "correction des messages d'erreur pour certains états",
+                "it": "corretti i messaggi di errore per alcuni stati",
+                "es": "Se corrigieron los mensajes de error para algunos estados.",
+                "pl": "naprawiono komunikaty o błędach dla niektórych stanów",
+                "zh-cn": "修复了某些状态的错误消息"
+            },
             "1.3.7": {
                 "en": "Prevent crash case (Sentry IOBROKER-MIHOME-A)",
                 "de": "Absturz verhindern (Sentry IOBROKER-MIHOME-A)",
@@ -238,17 +250,6 @@
                 "it": "Aggiunti nuovi dispositivi: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibrazione, wleak1, lock_aq1\nI nomi saranno presi dal gateway\nLo stato della connessione è stato aggiunto al gateway",
                 "es": "Nuevos dispositivos agregados: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nLos nombres serán tomados de la entrada\nEl estado de conexión se agregó a la puerta de enlace",
                 "pl": "Dodano nowe urządzenia: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, wibracja, wleak1, lock_aq1\nNazwy będą pobierane z bramy\nStan połączenia został dodany do bramy"
-            },
-            "1.0.7": {
-                "en": "The heartbeat timeout and the re-connection interval settings were added",
-                "de": "Die Heartbeat-Timeout- und die Re-Connection-Intervalleinstellungen wurden hinzugefügt",
-                "ru": "Были добавлены таймаут пульса и настройки интервала повторного подключения",
-                "pt": "O tempo limite de pulsação e as configurações de intervalo de reconexão foram adicionadas",
-                "nl": "De heartbeat-timeout en de re-connectie-intervalinstellingen zijn toegevoegd",
-                "fr": "Le délai d'attente de pulsation et les paramètres d'intervalle de reconnexion ont été ajoutés",
-                "it": "Sono stati aggiunti il ​​timeout del battito cardiaco e le impostazioni dell'intervallo di riconnessione",
-                "es": "Se agregaron el tiempo de espera del latido y la configuración del intervalo de reconexión",
-                "pl": "Limit czasu pulsu i ustawienia interwału ponownego połączenia zostały dodane"
             }
         },
         "mode": "daemon",
