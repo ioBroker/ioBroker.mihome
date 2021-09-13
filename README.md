@@ -116,8 +116,11 @@ For Aqara relay module it should be specified like this:
 	Placeholder for the next version (at the beginning of the line):
 	### __WORK IN PROGRESS__
 -->
-## Changelog
 
+## Changelog
+### __WORK IN PROGRESS__
+* (VLGorskij) fixed the error messages for some states
+ 
 ### 1.3.7 (2021-01-22)
 * (Apollon77) Prevent crash case (Sentry IOBROKER-MIHOME-A)
 
@@ -227,4 +230,4 @@ For Aqara relay module it should be specified like this:
 ## License
 MIT
 
-Copyright (c) 2017-2020 bluefox <dogafox@gmail.com>
+Copyright (c) 2017-2021 bluefox <dogafox@gmail.com>
