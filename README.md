@@ -118,6 +118,9 @@ For Aqara relay module it should be specified like this:
 -->
 
 ## Changelog
+### __WORK IN PROGRESS__
+* (drtsb) Added two new aqara devices and some missing icons
+
 ### 1.3.8 (2021-09-13)
 * (VLGorskij) fixed the error messages for some states
  
@@ -230,4 +233,4 @@ For Aqara relay module it should be specified like this:
 ## License
 MIT
 
-Copyright (c) 2017-2021 bluefox <dogafox@gmail.com>
+Copyright (c) 2017-2022 bluefox <dogafox@gmail.com>
