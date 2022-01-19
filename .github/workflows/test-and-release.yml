@@ -38,6 +38,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+#      - name: Perform a type check
+#        run: npm run check:ts
+#        env:
+#          CI: true
+      # - name: Lint TypeScript code
+      #   run: npm run lint
+#      - name: Test package files
+#        run: npm run test:package
+
   # Runs adapter tests on all supported node versions and OSes
   adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
@@ -61,7 +70,19 @@ jobs:
         run: npm install
 
       - name: Run local tests
-        run: npm test
+        #         npm downgrade to 6 (mainly for node.js 16) is needed because else testing fails
+        #         after installing additional adapters
+        run: |
+          npm install -g npm@6
+          npm test
+#      - name: Run unit tests
+#        run: npm run test:unit
+#      - name: Run integration tests # (linux/osx)
+#        if: startsWith(runner.OS, 'windows') == false
+#        run: DEBUG=testing:* npm run test:integration
+#      - name: Run integration tests # (windows)
+#        if: startsWith(runner.OS, 'windows')
+#        run: set DEBUG=testing:* & npm run test:integration
 
   # Deploys the final package to NPM
   deploy:
@@ -87,21 +108,27 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Extract the version and commit body from the tag
+        id: extract_release
         # The body may be multiline, therefore we need to escape some characters
         run: |
           VERSION="${{ github.ref }}"
           VERSION=${VERSION##*/}
           VERSION=${VERSION##*v}
-          echo "::set-env name=VERSION::$VERSION"
+          echo "::set-output name=VERSION::$VERSION"
           BODY=$(git show -s --format=%b)
           BODY="${BODY//'%'/'%25'}"
           BODY="${BODY//$'\n'/'%0A'}"
           BODY="${BODY//$'\r'/'%0D'}"
-          echo "::set-env name=BODY::$BODY"
+          echo "::set-output name=BODY::$BODY"
 
       - name: Install Dependencies
         run: npm install
 
+      - name: Build
+        run: npm run build
+
+#      - name: Create a clean build
+#        run: npm run build
       - name: Publish package to npm
         run: |
           npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
@@ -114,11 +141,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release v${{ env.VERSION }}
+          release_name: Release v${{ steps.extract_release.outputs.VERSION }}
           draft: false
-          # Prerelease versions create prereleases on Github
-          prerelease: ${{ contains(env.VERSION, '-') }}
-          body: ${{ env.BODY }}
+          # Prerelease versions create pre-releases on GitHub
+          prerelease: ${{ contains(steps.extract_release.outputs.VERSION, '-') }}
+          body: ${{ steps.extract_release.outputs.BODY }}
 
       - name: Notify Sentry.io about the release
         run: |
@@ -127,12 +154,10 @@ jobs:
           export SENTRY_URL=https://sentry.iobroker.net
           export SENTRY_ORG=iobroker
           export SENTRY_PROJECT=iobroker-mihome
-          export SENTRY_VERSION=iobroker.mihome@${{ env.VERSION }}
+          export SENTRY_VERSION=iobroker.mihome@${{ steps.extract_release.outputs.VERSION }}
           sentry-cli releases new $SENTRY_VERSION
+          sentry-cli releases set-commits $SENTRY_VERSION --auto
           sentry-cli releases finalize $SENTRY_VERSION
-
-        # Add the following line BEFORE finalize if repositories are connected in Sentry
-        # sentry-cli releases set-commits $SENTRY_VERSION --auto
 
         # Add the following line BEFORE finalize if sourcemap uploads are needed
         # sentry-cli releases files $SENTRY_VERSION upload-sourcemaps build/
