@@ -105,7 +105,9 @@ For Aqara relay module it should be specified like this:
 - `sensor_motion.aq2` - Xiaomi Aqara Motion Sensor
 - `sensor_wleak.aq1` -  Xiaomi Aqara water sensor
 - `ctrl_ln2.aq1` -      Xiaomi Aqara Wall Switch LN (Double)
+- `remote.b186acn02` -  Xiaomi Aqara Wireless Remote Switch
 - `remote.b286acn01` -  Xiaomi Aqara Wireless Remote Switch (Double Rocker)
+- `remote.b286acn02` -  Xiaomi Aqara Wireless Remote Switch
 - `remote.b1acn01` -    Xiaomi Aqara Wireless Remote Switch
 - `vibration` -         Xiaomi vibration Sensor
 - `wleak1` -            Xiaomi Aqara Water Sensor
