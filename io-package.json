@@ -1,332 +1,181 @@
 {
-    "common": {
-        "name": "mihome",
-        "title": "Xiaomi MiHome Gateway",
-        "desc": {
-            "en": "Xiaomi MiHome gateway support",
-            "de": "Xiaomi MiHome Gateway Unterstützung",
-            "ru": "Поддержка «Xiaomi MiHome gateway»",
-            "pt": "Suporte Xiaomi MiHome gateway",
-            "nl": "Xiaomi MiHome gateway -ondersteuning",
-            "fr": "Prise en charge de la passerelle Xiaomi MiHome",
-            "it": "Supporto Xiaomi MiHome gateway",
-            "es": "Asistencia técnica para Xiaomi MiHome gateway",
-            "pl": "Wsparcie dla Xiaomi MiHome gateway",
-            "zh-cn": "小米绿米网关接入适配器"
-        },
-        "version": "1.3.8",
-        "news": {
-            "1.3.8": {
-                "en": "fixed the error messages for some states",
-                "de": "die Fehlermeldungen für einige Zustände behoben",
-                "ru": "исправлены сообщения об ошибках для некоторых состояний",
-                "pt": "corrigiu as mensagens de erro para alguns estados",
-                "nl": "de foutmeldingen voor sommige staten verholpen",
-                "fr": "correction des messages d'erreur pour certains états",
-                "it": "corretti i messaggi di errore per alcuni stati",
-                "es": "Se corrigieron los mensajes de error para algunos estados.",
-                "pl": "naprawiono komunikaty o błędach dla niektórych stanów",
-                "zh-cn": "修复了某些状态的错误消息"
-            },
-            "1.3.7": {
-                "en": "Prevent crash case (Sentry IOBROKER-MIHOME-A)",
-                "de": "Absturz verhindern (Sentry IOBROKER-MIHOME-A)",
-                "ru": "Случай предотвращения сбоя (Sentry IOBROKER-MIHOME-A)",
-                "pt": "Prevenir caso de travamento (Sentry IOBROKER-MIHOME-A)",
-                "nl": "Voorkom een crashgeval (Sentry IOBROKER-MIHOME-A)",
-                "fr": "Prévenir les cas de crash (Sentry IOBROKER-MIHOME-A)",
-                "it": "Prevenire il crash case (Sentry IOBROKER-MIHOME-A)",
-                "es": "Caso de prevención de accidentes (Sentry IOBROKER-MIHOME-A)",
-                "pl": "Zapobiegaj awariom (Sentry IOBROKER-MIHOME-A)",
-                "zh-cn": "防止发生崩溃情况（Sentry IOBROKER-MIHOME-A）"
-            },
-            "1.3.6": {
-                "en": "Added new device QBKG24LM",
-                "de": "Neues Gerät QBKG24LM hinzugefügt",
-                "ru": "Добавлено новое устройство QBKG24LM",
-                "pt": "Adicionado novo dispositivo QBKG24LM",
-                "nl": "Nieuw apparaat QBKG24LM toegevoegd",
-                "fr": "Ajout d'un nouvel appareil QBKG24LM",
-                "it": "Aggiunto nuovo dispositivo QBKG24LM",
-                "es": "Nuevo dispositivo agregado QBKG24LM",
-                "pl": "Dodano nowe urządzenie QBKG24LM",
-                "zh-cn": "添加了新设备QBKG24LM"
-            },
-            "1.3.5": {
-                "en": "Fix crash cases (Sentry IOBROKER-MIHOME-1..4)",
-                "de": "Absturzfälle beheben (Sentry IOBROKER-MIHOME-1..4)",
-                "ru": "Исправить случаи сбоя (Sentry IOBROKER-MIHOME-1..4)",
-                "pt": "Corrigir casos de falha (Sentry IOBROKER-MIHOME-1..4)",
-                "nl": "Crash gevallen repareren (Sentry IOBROKER-MIHOME-1..4)",
-                "fr": "Correction des cas de crash (Sentry IOBROKER-MIHOME-1..4)",
-                "it": "Risolvi i casi di crash (Sentry IOBROKER-MIHOME-1..4)",
-                "es": "Reparar casos de fallas (Sentry IOBROKER-MIHOME-1..4)",
-                "pl": "Napraw przypadki awarii (Sentry IOBROKER-MIHOME-1..4)",
-                "zh-cn": "修复崩溃情况（Sentry IOBROKER-MIHOME-1..4）"
-            },
-            "1.3.4": {
-                "en": "Fixed the crash for non existing attributes",
-                "de": "Der Absturz für nicht vorhandene Attribute wurde behoben",
-                "ru": "Исправлен сбой для несуществующих атрибутов",
-                "pt": "Corrigida a falha para atributos não existentes",
-                "nl": "De crash voor niet bestaande attributen opgelost",
-                "fr": "Correction du crash pour les attributs non existants",
-                "it": "Risolto il crash per attributi non esistenti",
-                "es": "Se corrigió el bloqueo de los atributos no existentes.",
-                "pl": "Naprawiono awarię dla nieistniejących atrybutów",
-                "zh-cn": "修复了不存在的属性的崩溃"
-            },
-            "1.3.3": {
-                "en": "Sentry is activated",
-                "de": "Wachposten ist aktiviert",
-                "ru": "Часовой активирован",
-                "pt": "Sentinela está ativada",
-                "nl": "Sentry is geactiveerd",
-                "fr": "Sentry est activé",
-                "it": "Sentry è attivato",
-                "es": "Sentry está activado",
-                "pl": "Wartownik jest aktywny",
-                "zh-cn": "哨兵被激活"
-            },
-            "1.3.2": {
-                "en": "Added ac-partner.v3 support\nAdded compact mode",
-                "de": "Unterstützung für ac-partner.v3 hinzugefügt\nKompaktmodus hinzugefügt",
-                "ru": "Добавлена поддержка ac-partner.v3\nДобавлен компактный режим",
-                "pt": "Adicionado suporte ac-partner.v3\nAdicionado modo compacto",
-                "nl": "Ondersteuning voor ac-partner.v3 toegevoegd\nCompacte modus toegevoegd",
-                "fr": "Ajout du support ac-partner.v3\nAjout du mode compact",
-                "it": "Aggiunto supporto ac-partner.v3\nAggiunta la modalità compatta",
-                "es": "Se agregó soporte para ac-partner.v3\nModo compacto agregado",
-                "pl": "Dodano obsługę ac-partner.v3\nDodano tryb kompaktowy",
-                "zh-cn": "添加了ac-partner.v3支持\n增加了紧凑模式"
-            },
-            "1.3.1": {
-                "en": "Improved calculation for sensor's battery percentage",
-                "de": "Verbesserte Berechnung der Sensor Batterieprozente",
-                "ru": "Улучшенный расчет процента заряда батареи датчика",
-                "pt": "Cálculo melhorado para a percentagem da bateria do sensor",
-                "nl": "Verbeterde berekening van het batterijpercentage van de sensor",
-                "fr": "Calcul amélioré pour le pourcentage de la batterie du capteur",
-                "it": "Calcolo migliorato per la percentuale della batteria del sensore",
-                "es": "Cálculo mejorado del porcentaje de batería del sensor",
-                "pl": "Lepsze obliczanie procentowego udziału baterii czujnika",
-                "zh-cn": "改進了傳感器電池百分比的計算"
-            },
-            "1.3.0": {
-                "en": "Ability to add devices by their SID, which makes it possible to add devices with empty model such as Aqara two-channel relay",
-                "de": "Möglichkeit, Geräte anhand ihrer SID hinzuzufügen, sodass Geräte mit leerem Modell wie das Aqara-Zweikanal-Relais hinzugefügt werden können",
-                "ru": "Возможность добавления устройств по их SID, что позволяет добавлять устройства с пустой моделью, такой как двухканальная ретрансляция Aqara.",
-                "pt": "Capacidade de adicionar dispositivos pelo seu SID, o que torna possível adicionar dispositivos com modelo vazio, como o relé de dois canais do Aqara",
-                "nl": "Mogelijkheid om apparaten toe te voegen via hun SID, waardoor het mogelijk is om apparaten toe te voegen met een leeg model zoals Aqara tweekanaals relais",
-                "fr": "Possibilité d'ajouter des appareils par leur SID, ce qui permet d'ajouter des appareils avec un modèle vide comme le relais à deux canaux Aqara",
-                "it": "Possibilità di aggiungere dispositivi tramite il loro SID, che consente di aggiungere dispositivi con modello vuoto come il relè a due canali Aqara",
-                "es": "Posibilidad de agregar dispositivos por su SID, lo que hace posible agregar dispositivos con un modelo vacío, como el relé de dos canales Aqara",
-                "pl": "Możliwość dodawania urządzeń według ich identyfikatora SID, co umożliwia dodawanie urządzeń z pustym modelem, takich jak przekaźnik dwukanałowy Aqara",
-                "zh-cn": "能够通过其SID添加设备，从而可以添加具有空模型的设备，例如Aqara两通道中继"
-            },
-            "1.2.9": {
-                "en": "Fixed pressure range and values of Aqara weather sensor",
-                "de": "Wertebereich für Luftdruck korrigiert",
-                "ru": "Изменены диапазон давления и значения датчика погоды Aqara",
-                "pt": "Faixa de pressão e valores alterados do sensor climático Aqara",
-                "nl": "Gewijzigd drukbereik en waarden van Aqara-weersensor",
-                "fr": "Plage de pression modifiée et valeurs du capteur météo Aqara",
-                "it": "Intervallo di pressione e valori del sensore meteorologico Aqara modificati",
-                "es": "Se modificó el rango de presión y los valores del sensor meteorológico de Aqara",
-                "pl": "Zmieniono zakres ciśnienia i wartości czujnika pogodowego Aqara",
-                "zh-cn": "更改了Aqara天气传感器的压力范围和值"
-            },
-            "1.2.8": {
-                "en": "Change curtain and gateway light role that making them can be detected by type-detector",
-                "de": "Ändern Sie die Vorhang- und Gateway-Lichtrolle, damit sie vom Typendetektor erkannt werden können",
-                "ru": "Измените роль шторки и подсветки шлюза, чтобы их можно было определить с помощью детектора типа",
-                "pt": "Mude o papel da cortina e da luz do gateway que os fazendo podem ser detectados pelo tipo-detector",
-                "nl": "Verander de gordijn- en gateway-lichtrol zodat ze kunnen worden gedetecteerd door een typedetector",
-                "fr": "Changer le rôle du rideau et de la lumière de la passerelle pouvant être détecté par le détecteur de type",
-                "it": "Cambia il ruolo di tenda e gateway luce che renderli possono essere rilevati dal sensore di tipo",
-                "es": "Cambie el rol de la cortina y la luz de la puerta de enlace para que el detector de tipo pueda detectarlos.",
-                "pl": "Zmień rolę światła kurtyny i bramy, które można wykryć za pomocą detektora typu",
-                "zh-cn": "改变窗帘和网关灯的角色，使type-detector可以检测到它们"
-            },
-            "1.2.7": {
-                "en": "Add several devices support for protocol 2.0.x",
-                "de": "Unterstützung mehrerer Geräte für Protokoll 2.0.x hinzufügen",
-                "ru": "Добавлена поддержка нескольких устройств для протокола 2.0.x",
-                "pt": "Adicionar suporte a vários dispositivos para o protocolo 2.0.x",
-                "nl": "Voeg verschillende apparaten ondersteuning toe voor protocol 2.0.x",
-                "fr": "Ajouter plusieurs périphériques pris en charge pour le protocole 2.0.x",
-                "it": "Aggiungi diversi dispositivi di supporto per il protocollo 2.0.x",
-                "es": "Agregue soporte para varios dispositivos para el protocolo 2.0.x.",
-                "pl": "Dodaj obsługę kilku urządzeń dla protokołu 2.0.x",
-                "zh-cn": "为协议2.0.x添加多个设备支持"
-            },
-            "1.2.6": {
-                "en": "Improved calculation for sensor's battery percentage",
-                "de": "Verbesserte Berechnung der Sensor Batterieprozente",
-                "ru": "Улучшенный расчет процента заряда батареи датчика",
-                "pt": "Cálculo melhorado para a percentagem da bateria do sensor",
-                "nl": "Verbeterde berekening van het batterijpercentage van de sensor",
-                "fr": "Calcul amélioré pour le pourcentage de la batterie du capteur",
-                "it": "Calcolo migliorato per la percentuale della batteria del sensore",
-                "es": "Cálculo mejorado del porcentaje de batería del sensor",
-                "pl": "Lepsze obliczanie procentowego udziału baterii czujnika",
-                "zh-cn": "改進了傳感器電池百分比的計算"
-            },
-            "1.2.5": {
-                "en": "Long click for Aquara wall switch was added",
-                "de": "Langer Klick für Aquara-Wandschalter wurde hinzugefügt",
-                "ru": "Добавлен длинный щелчок для настенного выключателя Aquara",
-                "pt": "Longo clique para interruptor de parede Aquara foi adicionado",
-                "nl": "Lange klik voor Aquara-wandschakelaar is toegevoegd",
-                "fr": "Un clic long sur l'interrupteur mural Aquara a été ajouté",
-                "it": "È stato aggiunto un lungo clic per l'interruttore a parete Aquara",
-                "es": "Clic largo para Aquara interruptor de pared fue añadido",
-                "pl": "Długie kliknięcie przełącznika ściennego Aquara zostało dodane",
-                "zh-cn": "长时间点击Aquara墙壁开关添加"
-            },
-            "1.2.4": {
-                "en": "Add Chinese support",
-                "de": "Chinesische Unterstützung hinzufügen",
-                "ru": "Добавить поддержку китайцев",
-                "pt": "Adicionar suporte chinês",
-                "nl": "Voeg Chinese ondersteuning toe",
-                "fr": "Ajouter un support chinois",
-                "it": "Aggiungi supporto cinese",
-                "es": "Añadir soporte chino",
-                "pl": "Dodaj chińskie wsparcie",
-                "zh-cn": "添加中文支持"
-            },
-            "1.2.3": {
-                "en": "New switch was added",
-                "de": "Neuer Knopf wurde hinzugefügt",
-                "ru": "Добавлен новый кнопочный переключатель",
-                "pt": "Novo botão switch foi adicionado",
-                "nl": "Nieuwe knopschakelaar is toegevoegd",
-                "fr": "Un nouveau bouton a été ajouté",
-                "it": "È stata aggiunta la nuova opzione di pulsante",
-                "es": "Nuevo interruptor de botón fue agregado",
-                "pl": "Dodano nowy przełącznik przycisku"
-            },
-            "1.2.0": {
-                "en": "Refactoring",
-                "de": "Refactoring",
-                "ru": "Refactoring",
-                "pt": "Refactoring",
-                "nl": "Refactoring",
-                "fr": "Refactoring",
-                "it": "Refactoring",
-                "es": "Refactoring",
-                "pl": "Refactoring"
-            },
-            "1.1.2": {
-                "en": "New button switch was added",
-                "de": "Neuer Schalter wurde hinzugefügt",
-                "ru": "Добавлен новый кнопочный переключатель",
-                "pt": "Novo botão switch foi adicionado",
-                "nl": "Nieuwe knopschakelaar is toegevoegd",
-                "fr": "Un nouveau bouton a été ajouté",
-                "it": "È stata aggiunta la nuova opzione di pulsante",
-                "es": "Nuevo interruptor de botón fue agregado",
-                "pl": "Dodano nowy przełącznik przycisku"
-            },
-            "1.1.1": {
-                "en": "Fixed the creation of new devices",
-                "de": "Die Erstellung neuer Geräte wurde korrigiert",
-                "ru": "Исправлено создание новых устройств",
-                "pt": "Corrigida a criação de novos dispositivos",
-                "nl": "Het maken van nieuwe apparaten opgelost",
-                "fr": "Correction de la création de nouveaux appareils",
-                "it": "Risolto il problema della creazione di nuovi dispositivi",
-                "es": "Se corrigió la creación de nuevos dispositivos",
-                "pl": "Naprawiono tworzenie nowych urządzeń"
-            },
-            "1.1.0": {
-                "en": "New devices added:  sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nNames will be taken from gateway\nConnection state was added to gateway",
-                "de": "Neue Geräte hinzugefügt: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, Vibration, wleak1, lock_aq1\nDie Namen werden vom Gateway übernommen\nDer Verbindungsstatus wurde zum Gateway hinzugefügt",
-                "ru": "Добавлены новые устройства: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, вибрация, wleak1, lock_aq1\nИмена будут взяты из шлюза\nСостояние подключения добавлено в шлюз",
-                "pt": "Novos dispositivos adicionados: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibração, wleak1, lock_aq1\nOs nomes serão retirados do gateway\nEstado de conexão foi adicionado ao gateway",
-                "nl": "Nieuwe apparaten toegevoegd: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nNamen worden van de gateway gehaald\nVerbindingsstatus is toegevoegd aan gateway",
-                "fr": "Nouveaux périphériques ajoutés: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nLes noms seront pris de la passerelle\nL'état de la connexion a été ajouté à la passerelle",
-                "it": "Aggiunti nuovi dispositivi: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibrazione, wleak1, lock_aq1\nI nomi saranno presi dal gateway\nLo stato della connessione è stato aggiunto al gateway",
-                "es": "Nuevos dispositivos agregados: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, vibration, wleak1, lock_aq1\nLos nombres serán tomados de la entrada\nEl estado de conexión se agregó a la puerta de enlace",
-                "pl": "Dodano nowe urządzenia: sensor_switch.aq3, ctrl_ln1.aq1, ctrl_ln2.aq1, sensor_cube.aqgl01, remote.b286acn01, wibracja, wleak1, lock_aq1\nNazwy będą pobierane z bramy\nStan połączenia został dodany do bramy"
-            }
-        },
-        "mode": "daemon",
-        "platform": "javascript/Node.js",
-        "loglevel": "info",
-        "keywords": [
-            "mihome",
-            "xiaomi"
-        ],
-        "messagebox": true,
-        "materialize": true,
-        "main": "main.js",
-        "authors": [
-            "bluefox <dogafox@gmail.com>"
-        ],
-        "compact": true,
-        "license": "MIT",
-        "readme": "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
-        "icon": "mihome.png",
-        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
-        "type": "iot-systems",
-        "enabled": true,
-        "plugins": {
-            "sentry": {
-                "dsn": "https://0b230fa2857f4c88a811d152848d6bd9@sentry.iobroker.net/53"
-            }
-        },
-        "connectionType": "local",
-        "dataSource": "push",
-        "dependencies": [
-            {
-                "js-controller": ">=2.0.0"
-            }
-        ]
+  "common": {
+    "name": "mihome",
+    "title": "Xiaomi MiHome Gateway",
+    "desc": {
+      "en": "Xiaomi MiHome gateway support",
+      "de": "Xiaomi MiHome Gateway Unterstützung",
+      "ru": "Поддержка «Xiaomi MiHome gateway»",
+      "pt": "Suporte Xiaomi MiHome gateway",
+      "nl": "Xiaomi MiHome gateway -ondersteuning",
+      "fr": "Prise en charge de la passerelle Xiaomi MiHome",
+      "it": "Supporto Xiaomi MiHome gateway",
+      "es": "Asistencia técnica para Xiaomi MiHome gateway",
+      "pl": "Wsparcie dla Xiaomi MiHome gateway",
+      "zh-cn": "小米绿米网关接入适配器"
     },
-    "native": {
-        "bind": "0.0.0.0",
-        "port": 9898,
-        "keys": [
-            {
-                "ip": "",
-                "key": ""
-            }
-        ],
-        "sids": [
-            {
-                "sid": "",
-                "model": ""
-            }
-        ],
-        "interval": 5000,
-        "heartbeatTimeout": 20000,
-        "restartInterval": 30000,
-        "mmHg": false
+    "version": "1.3.9",
+    "news": {
+      "1.3.9": {
+        "en": "Added two new aqara devices and some missing icons",
+        "de": "Zwei neue aqara-Geräte und einige fehlende Symbole hinzugefügt",
+        "ru": "Добавлено два новых устройства aqara и несколько отсутствующих значков.",
+        "pt": "Adicionados dois novos dispositivos aqara e alguns ícones ausentes",
+        "nl": "Twee nieuwe aqara-apparaten en enkele ontbrekende pictogrammen toegevoegd",
+        "fr": "Ajout de deux nouveaux appareils aqara et de quelques icônes manquantes",
+        "it": "Aggiunti due nuovi dispositivi aqara e alcune icone mancanti",
+        "es": "Se agregaron dos nuevos dispositivos aqara y algunos íconos faltantes",
+        "pl": "Dodano dwa nowe urządzenia aqara i kilka brakujących ikon",
+        "zh-cn": "添加了两个新的 aqara 设备和一些丢失的图标"
+      },
+      "1.3.8": {
+        "en": "fixed the error messages for some states",
+        "de": "die Fehlermeldungen für einige Zustände behoben",
+        "ru": "исправлены сообщения об ошибках для некоторых состояний",
+        "pt": "corrigiu as mensagens de erro para alguns estados",
+        "nl": "de foutmeldingen voor sommige staten verholpen",
+        "fr": "correction des messages d'erreur pour certains états",
+        "it": "corretti i messaggi di errore per alcuni stati",
+        "es": "Se corrigieron los mensajes de error para algunos estados.",
+        "pl": "naprawiono komunikaty o błędach dla niektórych stanów",
+        "zh-cn": "修复了某些状态的错误消息"
+      },
+      "1.3.7": {
+        "en": "Prevent crash case (Sentry IOBROKER-MIHOME-A)",
+        "de": "Absturz verhindern (Sentry IOBROKER-MIHOME-A)",
+        "ru": "Случай предотвращения сбоя (Sentry IOBROKER-MIHOME-A)",
+        "pt": "Prevenir caso de travamento (Sentry IOBROKER-MIHOME-A)",
+        "nl": "Voorkom een crashgeval (Sentry IOBROKER-MIHOME-A)",
+        "fr": "Prévenir les cas de crash (Sentry IOBROKER-MIHOME-A)",
+        "it": "Prevenire il crash case (Sentry IOBROKER-MIHOME-A)",
+        "es": "Caso de prevención de accidentes (Sentry IOBROKER-MIHOME-A)",
+        "pl": "Zapobiegaj awariom (Sentry IOBROKER-MIHOME-A)",
+        "zh-cn": "防止发生崩溃情况（Sentry IOBROKER-MIHOME-A）"
+      },
+      "1.3.6": {
+        "en": "Added new device QBKG24LM",
+        "de": "Neues Gerät QBKG24LM hinzugefügt",
+        "ru": "Добавлено новое устройство QBKG24LM",
+        "pt": "Adicionado novo dispositivo QBKG24LM",
+        "nl": "Nieuw apparaat QBKG24LM toegevoegd",
+        "fr": "Ajout d'un nouvel appareil QBKG24LM",
+        "it": "Aggiunto nuovo dispositivo QBKG24LM",
+        "es": "Nuevo dispositivo agregado QBKG24LM",
+        "pl": "Dodano nowe urządzenie QBKG24LM",
+        "zh-cn": "添加了新设备QBKG24LM"
+      },
+      "1.3.5": {
+        "en": "Fix crash cases (Sentry IOBROKER-MIHOME-1..4)",
+        "de": "Absturzfälle beheben (Sentry IOBROKER-MIHOME-1..4)",
+        "ru": "Исправить случаи сбоя (Sentry IOBROKER-MIHOME-1..4)",
+        "pt": "Corrigir casos de falha (Sentry IOBROKER-MIHOME-1..4)",
+        "nl": "Crash gevallen repareren (Sentry IOBROKER-MIHOME-1..4)",
+        "fr": "Correction des cas de crash (Sentry IOBROKER-MIHOME-1..4)",
+        "it": "Risolvi i casi di crash (Sentry IOBROKER-MIHOME-1..4)",
+        "es": "Reparar casos de fallas (Sentry IOBROKER-MIHOME-1..4)",
+        "pl": "Napraw przypadki awarii (Sentry IOBROKER-MIHOME-1..4)",
+        "zh-cn": "修复崩溃情况（Sentry IOBROKER-MIHOME-1..4）"
+      },
+      "1.3.4": {
+        "en": "Fixed the crash for non existing attributes",
+        "de": "Der Absturz für nicht vorhandene Attribute wurde behoben",
+        "ru": "Исправлен сбой для несуществующих атрибутов",
+        "pt": "Corrigida a falha para atributos não existentes",
+        "nl": "De crash voor niet bestaande attributen opgelost",
+        "fr": "Correction du crash pour les attributs non existants",
+        "it": "Risolto il crash per attributi non esistenti",
+        "es": "Se corrigió el bloqueo de los atributos no existentes.",
+        "pl": "Naprawiono awarię dla nieistniejących atrybutów",
+        "zh-cn": "修复了不存在的属性的崩溃"
+      },
+      "1.3.3": {
+        "en": "Sentry is activated",
+        "de": "Wachposten ist aktiviert",
+        "ru": "Часовой активирован",
+        "pt": "Sentinela está ativada",
+        "nl": "Sentry is geactiveerd",
+        "fr": "Sentry est activé",
+        "it": "Sentry è attivato",
+        "es": "Sentry está activado",
+        "pl": "Wartownik jest aktywny",
+        "zh-cn": "哨兵被激活"
+      }
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "If connected to MiHome gateway",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "mode": "daemon",
+    "platform": "javascript/Node.js",
+    "loglevel": "info",
+    "keywords": [
+      "mihome",
+      "xiaomi"
+    ],
+    "messagebox": true,
+    "materialize": true,
+    "main": "main.js",
+    "authors": [
+      "bluefox <dogafox@gmail.com>"
+    ],
+    "compact": true,
+    "license": "MIT",
+    "readme": "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
+    "icon": "mihome.png",
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
+    "type": "iot-systems",
+    "enabled": true,
+    "plugins": {
+      "sentry": {
+        "dsn": "https://0b230fa2857f4c88a811d152848d6bd9@sentry.iobroker.net/53"
+      }
+    },
+    "connectionType": "local",
+    "dataSource": "push",
+    "dependencies": [
+      {
+        "js-controller": ">=2.0.0"
+      }
     ]
+  },
+  "native": {
+    "bind": "0.0.0.0",
+    "port": 9898,
+    "keys": [
+      {
+        "ip": "",
+        "key": ""
+      }
+    ],
+    "sids": [
+      {
+        "sid": "",
+        "model": ""
+      }
+    ],
+    "interval": 5000,
+    "heartbeatTimeout": 20000,
+    "restartInterval": 30000,
+    "mmHg": false
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "If connected to MiHome gateway",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }

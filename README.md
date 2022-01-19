@@ -120,12 +120,12 @@ For Aqara relay module it should be specified like this:
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.3.9 (2022-01-19)
 * (drtsb) Added two new aqara devices and some missing icons
 
 ### 1.3.8 (2021-09-13)
 * (VLGorskij) fixed the error messages for some states
- 
+
 ### 1.3.7 (2021-01-22)
 * (Apollon77) Prevent crash case (Sentry IOBROKER-MIHOME-A)
 
@@ -136,7 +136,7 @@ For Aqara relay module it should be specified like this:
 * (Apollon77) Fix crash cases (Sentry IOBROKER-MIHOME-1..4)
 
 ### 1.3.4 (2020-08-31)
-* (Alan) Fixed the crash for non existing attributes 
+* (Alan) Fixed the crash for non existing attributes
 
 ### 1.3.3 (2020-08-26)
 * (bluefox) Sentry is activated
