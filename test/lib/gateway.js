@@ -20,7 +20,11 @@ function GatewaySimulator () {
     const that = this;
 
     this.destroy = function (cb) {
-        this.socket.close(cb);
+        try {
+            this.socket.close(cb);
+        } catch {
+            // ignore
+        }
         this.socket = null;
     };
 

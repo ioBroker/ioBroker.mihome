@@ -2,6 +2,18 @@
   "common": {
     "name": "mihome",
     "title": "Xiaomi MiHome Gateway",
+    "titleLang": {
+      "en": "Xiaomi MiHome Gateway",
+      "de": "Xiaomi MiHome-Gateway",
+      "ru": "Шлюз Xiaomi MiHome",
+      "pt": "Xiaomi MiHome Gateway",
+      "nl": "Xiaomi MiHome-gateway",
+      "fr": "Passerelle Xiaomi MiHome",
+      "it": "Xiaomi MiHome Gateway",
+      "es": "Puerta de enlace Xiaomi MiHome",
+      "pl": "Bramka Xiaomi MiHome",
+      "zh-cn": "小米米家网关"
+    },
     "desc": {
       "en": "Xiaomi MiHome gateway support",
       "de": "Xiaomi MiHome Gateway Unterstützung",
@@ -16,30 +28,6 @@
     },
     "version": "1.3.9",
     "news": {
-      "1.3.9": {
-        "en": "Added two new aqara devices and some missing icons",
-        "de": "Zwei neue aqara-Geräte und einige fehlende Symbole hinzugefügt",
-        "ru": "Добавлено два новых устройства aqara и несколько отсутствующих значков.",
-        "pt": "Adicionados dois novos dispositivos aqara e alguns ícones ausentes",
-        "nl": "Twee nieuwe aqara-apparaten en enkele ontbrekende pictogrammen toegevoegd",
-        "fr": "Ajout de deux nouveaux appareils aqara et de quelques icônes manquantes",
-        "it": "Aggiunti due nuovi dispositivi aqara e alcune icone mancanti",
-        "es": "Se agregaron dos nuevos dispositivos aqara y algunos íconos faltantes",
-        "pl": "Dodano dwa nowe urządzenia aqara i kilka brakujących ikon",
-        "zh-cn": "添加了两个新的 aqara 设备和一些丢失的图标"
-      },
-      "1.3.8": {
-        "en": "fixed the error messages for some states",
-        "de": "die Fehlermeldungen für einige Zustände behoben",
-        "ru": "исправлены сообщения об ошибках для некоторых состояний",
-        "pt": "corrigiu as mensagens de erro para alguns estados",
-        "nl": "de foutmeldingen voor sommige staten verholpen",
-        "fr": "correction des messages d'erreur pour certains états",
-        "it": "corretti i messaggi di errore per alcuni stati",
-        "es": "Se corrigieron los mensajes de error para algunos estados.",
-        "pl": "naprawiono komunikaty o błędach dla niektórych stanów",
-        "zh-cn": "修复了某些状态的错误消息"
-      },
       "1.3.7": {
         "en": "Prevent crash case (Sentry IOBROKER-MIHOME-A)",
         "de": "Absturz verhindern (Sentry IOBROKER-MIHOME-A)",
@@ -102,7 +90,7 @@
       }
     },
     "mode": "daemon",
-    "platform": "javascript/Node.js",
+    "platform": "Javascript/Node.js",
     "loglevel": "info",
     "keywords": [
       "mihome",
@@ -128,6 +116,7 @@
     },
     "connectionType": "local",
     "dataSource": "push",
+    "tier": 2,
     "dependencies": [
       {
         "js-controller": ">=2.0.0"
