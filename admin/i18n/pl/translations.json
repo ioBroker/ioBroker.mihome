@@ -1,0 +1,20 @@
+{
+    "Default Gateway Key": "Domyślny klucz bramy",
+    "Device SID": "Identyfikator SID urządzenia",
+    "Double key interval (ms)": "Podwójny interwał klucza (ms)",
+    "Gateway Key": "Klucz bramki",
+    "Gateway keys": "Klucze do bram",
+    "IP Address": "Adres IP",
+    "Key": "Klucz",
+    "Listen on all IPs": "Posłuchaj na wszystkich IP",
+    "Main settings": "Ustawienia główne",
+    "MiHome Smarthome settings": "Ustawienia MiHome Smarthome",
+    "Model": "Model",
+    "SID": "SID",
+    "Search": "Szukaj",
+    "Use mmHg units for pressure": "Użyj jednostek mmHg dla ciśnienia",
+    "heartbeatTimeout": "Limit czasu bicia serca (ms)",
+    "ioBroker IP": "IP ioBroker",
+    "ioBroker Port": "Port ioBroker",
+    "restartInterval": "Interwał ponownego połączenia (ms)"
+}

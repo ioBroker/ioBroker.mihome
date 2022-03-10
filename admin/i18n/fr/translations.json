@@ -1,0 +1,20 @@
+{
+    "Default Gateway Key": "Clé de passerelle par défaut",
+    "Device SID": "SID de l'appareil",
+    "Double key interval (ms)": "Intervalle de clé double (ms)",
+    "Gateway Key": "Clé de la passerelle",
+    "Gateway keys": "Clés de passerelle",
+    "IP Address": "Adresse IP",
+    "Key": "Clé",
+    "Listen on all IPs": "Écoutez sur toutes les adresses IP",
+    "Main settings": "Réglages principaux",
+    "MiHome Smarthome settings": "MiHome Smarthome paramètres",
+    "Model": "Modèle",
+    "SID": "SID",
+    "Search": "Chercher",
+    "Use mmHg units for pressure": "Utilisez les unités mmHg pour la pression",
+    "heartbeatTimeout": "Délai d'attente de pulsation (ms)",
+    "ioBroker IP": "ioBroker IP",
+    "ioBroker Port": "ioBroker Port",
+    "restartInterval": "Intervalle de reconnexion (ms)"
+}

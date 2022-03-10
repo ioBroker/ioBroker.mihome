@@ -1,0 +1,20 @@
+{
+    "Default Gateway Key": "默认网关密钥：",
+    "Device SID": "设备SID",
+    "Double key interval (ms)": "双键间隔（毫秒）：",
+    "Gateway Key": "网关密钥：",
+    "Gateway keys": "网关键",
+    "IP Address": "IP地址",
+    "Key": "键",
+    "Listen on all IPs": "监听所有IP",
+    "Main settings": "主要设定",
+    "MiHome Smarthome settings": "小米网关设置",
+    "Model": "模型",
+    "SID": "SID",
+    "Search": "搜索",
+    "Use mmHg units for pressure": "使用毫米汞柱压力单位",
+    "heartbeatTimeout": "心跳超时时间（ms）",
+    "ioBroker IP": "ioBroker IP：",
+    "ioBroker Port": "ioBroker端口：",
+    "restartInterval": "重新连接间隔（ms）"
+}

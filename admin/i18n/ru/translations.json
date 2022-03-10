@@ -1,0 +1,20 @@
+{
+    "Default Gateway Key": "Ключ шлюза по умолчанию",
+    "Device SID": "SID устройства",
+    "Double key interval (ms)": "Двойной ключевой интервал (мс)",
+    "Gateway Key": "Gateway ключ",
+    "Gateway keys": "Ключи шлюза",
+    "IP Address": "IP адрес",
+    "Key": "Ключ",
+    "Listen on all IPs": "Слушать на всех адресах",
+    "Main settings": "Основные параметры",
+    "MiHome Smarthome settings": "MiHome Smarthome settings",
+    "Model": "Модель",
+    "SID": "SID",
+    "Search": "Поиск",
+    "Use mmHg units for pressure": "Единицы измерения давления в мм рт. Ст.",
+    "heartbeatTimeout": "Тайм-аут сердечного ритма (мс)",
+    "ioBroker IP": "ioBroker IP",
+    "ioBroker Port": "ioBroker порт",
+    "restartInterval": "Интервал повторного подключения (мс)"
+}
