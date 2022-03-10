@@ -123,7 +123,7 @@ For Aqara relay module it should be specified like this:
 -->
 
 ## Changelog
-### __WORK IN PROGRESS__
+### 1.4.0 (2022-03-10)
 * (drtsb) Added two new aqara devices and some missing icons
 * (VLGorskij) fixed the error messages for some states
 * (Apollon77) Catch some errors reported by Sentry and users
