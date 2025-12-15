@@ -110,7 +110,6 @@
     ],
     "messagebox": true,
     "materialize": true,
-    "main": "main.js",
     "authors": [
       "bluefox <dogafox@gmail.com>"
     ],
