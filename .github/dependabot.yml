@@ -8,3 +8,10 @@ updates:
       timezone: Europe/Berlin
     open-pull-requests-limit: 20
     versioning-strategy: increase
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'cron'
+      timezone: 'Europe/Berlin'
+      cronjob: '44 2 26 * *'
+    open-pull-requests-limit: 15
