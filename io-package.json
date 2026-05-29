@@ -109,7 +109,6 @@
       "xiaomi"
     ],
     "messagebox": true,
-    "materialize": true,
     "main": "main.js",
     "authors": [
       "bluefox <dogafox@gmail.com>"
@@ -131,9 +130,12 @@
     "tier": 2,
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=6.0.11"
       }
-    ]
+    ],
+    "adminUI": {
+      "config": "materialize"
+    }
   },
   "native": {
     "bind": "0.0.0.0",

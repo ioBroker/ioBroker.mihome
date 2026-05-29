@@ -123,6 +123,10 @@ For Aqara relay module it should be specified like this:
 -->
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 1.4.0 (2022-03-10)
 * (drtsb) Added two new aqara devices and some missing icons
 * (VLGorskij) fixed the error messages for some states
