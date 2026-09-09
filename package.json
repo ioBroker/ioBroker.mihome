@@ -49,7 +49,6 @@
   "main": "main.js",
   "files": [
     "admin/",
-    "doc/",
     "img/",
     "lib/",
     "io-package.json",
