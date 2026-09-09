@@ -65,10 +65,12 @@ tests.integration(path.join(__dirname, '..'), {
                     native: { key: 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF' },
                 });
 
+                await harness.startAdapterAndWait();
+
+                // the simulator is started after the adapter, so that its first messages
+                // - the only ones that carry the `rotate` report - are not lost
                 gw = new GatewaySimulator();
                 gw.init();
-
-                await harness.startAdapterAndWait();
 
                 await waitForState(harness, 'mihome.0.info.connection', true, 30000);
 

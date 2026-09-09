@@ -2,7 +2,7 @@
 
 const dgram = require('node:dgram');
 
-/** Messages that the simulated gateway answers to a `whois` request */
+/** Messages of the simulated gateway. They are also the answer to a `whois` request. */
 const commands = [
     {
         cmd: 'heartbeat',
@@ -24,10 +24,33 @@ const commands = [
     { cmd: 'report', model: 'sensor_wleak.aq1', sid: 'aaa000xxxxxxx', short_id: 12345, data: { status: 'no_leak' } },
 ];
 
-/** Minimal simulation of a Xiaomi gateway for the tests */
+/** `rotate` adds up in the cube, so it may only be sent once */
+const isRepeatable = command => command.data.rotate === undefined;
+
+/**
+ * Interval of the repeated messages. It has to be longer than the double press interval of the
+ * adapter (5 s), so that the repetitions are not detected as a double press, and shorter than
+ * its heartbeat timeout (20 s), so that the connection stays alive.
+ */
+const REPEAT_INTERVAL = 6000;
+
+/**
+ * Minimal simulation of a Xiaomi gateway for the tests.
+ *
+ * A real gateway answers the multicast `whois` of the adapter. The GitHub runners for macOS and
+ * Windows do not deliver multicast packets, so the messages are additionally pushed to the
+ * adapter directly - and repeated, in case the adapter was not listening yet.
+ */
 class GatewaySimulator {
-    constructor() {
+    /**
+     * @param {number} adapterPort port the adapter listens on (`native.port`)
+     * @param {string} adapterAddress address the adapter listens on
+     */
+    constructor(adapterPort = 9898, adapterAddress = '127.0.0.1') {
         this.socket = null;
+        this.adapter = { address: adapterAddress, port: adapterPort };
+        this.repeatTimer = null;
+        this.firstBurst = true;
     }
 
     init() {
@@ -42,8 +65,28 @@ class GatewaySimulator {
             } catch (err) {
                 console.error(`ERROR addMembership: ${err}`);
             }
+
+            this.sendAll(this.adapter);
+            this.repeatTimer = setInterval(() => this.sendAll(this.adapter), REPEAT_INTERVAL);
         });
         this.socket.bind(4321);
+    }
+
+    /** Send the device messages to the given target */
+    sendAll(target) {
+        const first = this.firstBurst;
+        this.firstBurst = false;
+
+        for (const command of commands) {
+            if (!first && !isRepeatable(command)) {
+                continue;
+            }
+            const json = JSON.stringify(command);
+            if (first) {
+                console.log(`Send ${json}`);
+            }
+            this.socket.send(json, 0, json.length, target.port, target.address);
+        }
     }
 
     onMessage(msgBuffer, rinfo) {
@@ -55,11 +98,7 @@ class GatewaySimulator {
         }
 
         if (msg.cmd === 'whois') {
-            for (let c = 0; c < commands.length; c++) {
-                const json = JSON.stringify(commands[c]);
-                console.log(`Send ${json}`);
-                this.socket.send(json, 0, json.length, rinfo.port, rinfo.address);
-            }
+            this.sendAll(rinfo);
         } else {
             msg.mirror = true;
             const json = JSON.stringify(msg);
@@ -69,6 +108,10 @@ class GatewaySimulator {
     }
 
     destroy(cb) {
+        if (this.repeatTimer) {
+            clearInterval(this.repeatTimer);
+            this.repeatTimer = null;
+        }
         try {
             this.socket?.close(cb);
         } catch {
