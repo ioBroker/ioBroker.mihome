@@ -67,12 +67,16 @@ tests.integration(path.join(__dirname, '..'), {
 
                 await harness.startAdapterAndWait();
 
-                // the simulator is started after the adapter, so that its first messages
-                // - the only ones that carry the `rotate` report - are not lost
                 gw = new GatewaySimulator();
                 gw.init();
 
+                // the adapter binds its socket after `startAdapterAndWait` returned, so the first
+                // messages of the simulator are normally lost - only the repeated ones arrive
                 await waitForState(harness, 'mihome.0.info.connection', true, 30000);
+
+                // the cube adds every rotation up, so this report may arrive exactly once. Now
+                // that the adapter has answered, it is known to listen and the report is not lost
+                gw.sendRotate();
 
                 for (const [id, val] of Object.entries(expectedStates)) {
                     await waitForState(harness, id, val);

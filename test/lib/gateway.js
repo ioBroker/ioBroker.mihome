@@ -17,15 +17,23 @@ const commands = [
     { cmd: 'report', model: 'weather.v1', sid: '1652761251244', short_id: 12817, data: { pressure: '100120' } },
     { cmd: 'report', model: 'weather.v1', sid: '1652761251244', short_id: 12817, data: { humidity: '6606' } },
     { cmd: 'report', model: 'weather.v1', sid: '1652761251244', short_id: 12817, data: { temperature: '2030' } },
-    { cmd: 'report', model: 'cube', sid: '287658275634875', short_id: 21396, data: { rotate: '6,500' } },
     { cmd: 'report', model: 'gateway', sid: '81726387164871', short_id: 0, data: { rgb: 0, illumination: 1180 } },
     { cmd: 'heartbeat', model: 'cube', sid: '287658275634875', short_id: 21396, data: { voltage: 2800 } },
     { cmd: 'report', model: 'sensor_wleak.aq1', sid: 'aaa000xxxxxxx', short_id: 12345, data: { status: 'leak' } },
     { cmd: 'report', model: 'sensor_wleak.aq1', sid: 'aaa000xxxxxxx', short_id: 12345, data: { status: 'no_leak' } },
 ];
 
-/** `rotate` adds up in the cube, so it may only be sent once */
-const isRepeatable = command => command.data.rotate === undefined;
+/**
+ * `rotate` adds up in the cube, so it may not be repeated. It is sent by `sendRotate()`, the test
+ * triggers it as soon as the adapter is known to listen.
+ */
+const rotateCommand = {
+    cmd: 'report',
+    model: 'cube',
+    sid: '287658275634875',
+    short_id: 21396,
+    data: { rotate: '6,500' },
+};
 
 /**
  * Interval of the repeated messages. It has to be longer than the double press interval of the
@@ -72,21 +80,34 @@ class GatewaySimulator {
         this.socket.bind(4321);
     }
 
-    /** Send the device messages to the given target */
+    /** Send the repeated device messages to the given target */
     sendAll(target) {
-        const first = this.firstBurst;
+        const log = this.firstBurst;
         this.firstBurst = false;
 
         for (const command of commands) {
-            if (!first && !isRepeatable(command)) {
-                continue;
-            }
-            const json = JSON.stringify(command);
-            if (first) {
-                console.log(`Send ${json}`);
-            }
-            this.socket.send(json, 0, json.length, target.port, target.address);
+            this.send(command, target, log);
         }
+    }
+
+    /**
+     * Send the single rotation of the cube.
+     *
+     * The cube adds every rotation up, so this message may arrive exactly once. It is sent to the
+     * adapter directly and only after the adapter has proven that it is listening - the first
+     * burst of `init()` is normally still lost, because the adapter binds its socket a bit later.
+     */
+    sendRotate() {
+        this.send(rotateCommand, this.adapter, true);
+    }
+
+    /** Send one message to the given target */
+    send(command, target, log) {
+        const json = JSON.stringify(command);
+        if (log) {
+            console.log(`Send to ${target.address}:${target.port} ${json}`);
+        }
+        this.socket?.send(json, 0, json.length, target.port, target.address);
     }
 
     onMessage(msgBuffer, rinfo) {
