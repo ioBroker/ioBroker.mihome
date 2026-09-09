@@ -162,6 +162,7 @@ The following list does not claim to be complete:
 * (bluefox) The adapter was refactored to TypeScript and the configuration was migrated to JsonConfig
 * (bluefox) __Breaking:__ Node.js >= 22, js-controller >= 6.0.11 and admin >= 7 are required now
 * (bluefox) The reports of the curtain are no longer written into a `state` object that does not exist
+* (bluefox) Fixed the `open`, `close` and `stop` states of the curtain: the reported status was never evaluated
 
 ### 1.4.0 (2022-03-10)
 * (drtsb) Added two new aqara devices and some missing icons

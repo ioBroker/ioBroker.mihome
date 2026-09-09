@@ -4,11 +4,6 @@ import type { HubCommand, RawData, SensorStates } from '../types';
 
 export class Curtain extends Sensor {
     private curtain_level: number | null = null;
-    /**
-     * Never assigned - see `getData`.
-     * Kept to preserve the behavior of the JavaScript version.
-     */
-    private readonly status: string | null = null;
 
     constructor(sid: string, ip: string, hub: Hub, model: string) {
         super(sid, ip, hub, model, 'curtain');
@@ -23,19 +18,17 @@ export class Curtain extends Sensor {
             newData = true;
         }
         if (data.status) {
-            // BUG (kept 1:1 from the JavaScript version): `this.status` is never set, so the
-            // status of the message is never evaluated here and only the warning is emitted.
-            if (this.status === 'open') {
+            if (data.status === 'open') {
                 obj.open = true;
                 newData = true;
-            } else if (this.status === 'close') {
+            } else if (data.status === 'close') {
                 obj.close = true;
                 newData = true;
-            } else if (this.status === 'stop') {
+            } else if (data.status === 'stop') {
                 obj.stop = true;
                 newData = true;
             } else {
-                this.hub.emit('warning', `Unknown status "${this.status}"`);
+                this.hub.emit('warning', `Unknown status "${data.status as string}"`);
             }
         }
 
