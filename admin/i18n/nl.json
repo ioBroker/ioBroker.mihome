@@ -1,0 +1,16 @@
+{
+    "Main settings": "Belangrijkste instellingen",
+    "Gateway keys": "Gateway sleutels",
+    "Device SID": "Apparaat-SID",
+    "ioBroker IP": "ioBroker IP",
+    "ioBroker Port": "ioBroker Port",
+    "Heartbeat timeout (ms)": "Heartbeat time-out (ms)",
+    "Re-connection interval (ms)": "Re-connection interval (ms)",
+    "Default Gateway Key": "Standaard gatewaysleutel",
+    "Double key interval (ms)": "Dubbel sleutelinterval (ms)",
+    "Use mmHg units for pressure": "Gebruik mmHg-eenheden voor druk",
+    "IP Address": "IP adres",
+    "Key": "Sleutel",
+    "SID": "SID",
+    "Model": "Model"
+}

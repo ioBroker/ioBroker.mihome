@@ -4,7 +4,6 @@
       "en": "README.md"
     },
     "name": "mihome",
-    "title": "Xiaomi MiHome Gateway",
     "titleLang": {
       "en": "Xiaomi MiHome Gateway",
       "de": "Xiaomi MiHome-Gateway",
@@ -112,8 +111,10 @@
       "xiaomi"
     ],
     "messagebox": true,
-    "materialize": true,
-    "main": "main.js",
+    "adminUI": {
+      "config": "json"
+    },
+    "main": "build/main.js",
     "authors": [
       "bluefox <dogafox@gmail.com>"
     ],
@@ -134,13 +135,20 @@
     "tier": 2,
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "nogit": true,
+    "globalDependencies": [
+      {
+        "admin": ">=7.0.0"
       }
     ]
   },
   "native": {
     "bind": "0.0.0.0",
     "port": 9898,
+    "key": "",
     "keys": [
       {
         "ip": "",
