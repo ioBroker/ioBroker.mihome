@@ -114,7 +114,6 @@
     "adminUI": {
       "config": "json"
     },
-    "main": "build/main.js",
     "authors": [
       "bluefox <dogafox@gmail.com>"
     ],
