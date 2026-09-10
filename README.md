@@ -275,6 +275,8 @@ The following list does not claim to be complete:
 ### 0.1.1 (2017-06-06)
 * (bluefox) Initial commit
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 The MIT License (MIT)
 
