@@ -9,44 +9,58 @@
 [![Translation status](https://weblate.iobroker.net/widgets/adapters/-/mihome/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.mihome.svg)](https://www.npmjs.com/package/iobroker.mihome)
 
-**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information on how to disable the error reporting, see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+
+With the Mi Home adapter, a Mi Control Hub (gateway) is integrated into an ioBroker system and enables the communication of various Xiaomi sensors, switches, etc. with ioBroker.
+For example, the lighting and the loudspeaker of the gateway can be controlled via ioBroker.
 
 ## Requirements
-### Android (copied from [here](http://www.domoticz.com/wiki/Xiaomi_Gateway_(Aqara)) )
-You first need to enable local network functions by using the Android Mi Home
-App https://play.google.com/store/apps/details?id=com.xiaomi.smarthome :
+* Mi Home app on an Android or iOS device with the local network function activated
+* Connected Mi Home gateway
+* Ready-to-use ioBroker system
 
-- Install the App on a Android device
-- Make sure you set your region to: `Mainland China` under `settings -> Locale` - at time of writing this seems to be required.
-- Mainland China and language can set on English
-- Select your Gateway in `Mi Home`
-- Then the 3 dots at the top right of the screen
-- Then click on about
-- Tap the version (2.27 is the current Android version as of 2 June 2017) number at the bottom of the screen repeatedly
-- You should see now 2 extra options listed in English (was Chinese in earlier versions) until you did now enable the developer mode. \[ if not try all steps again! \]
-- Choose the first new option
-- Then tap the first toggle switch to enable LAN functions. Note down the password (`29p9i40jeypwck38` in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
-- If you change here something, you lose your password!
+### Installation of the Mi Home app and activation of the local network function
+The local network function must be enabled first, because the adapter communicates with the gateway over the local network only.
+
+#### Android
+* Download the [Android app](https://play.google.com/store/apps/details?id=com.xiaomi.smarthome) on an Android device, install it, open it and agree to the terms and conditions
+* Select `Mainland China` as country (under `settings -> Locale`) - at the time of writing this seems to be required. The language can still be set to English
+* Create an account via *Login*
+* After successful registration, add a device via `+`
+* Under *Household Security*, select the `MI Control Hub` and follow the instructions
+* After the gateway has been integrated successfully, tap the 3 dots at the top right of the screen and then *About*
+* Tap the text *Plug-in version* at the bottom of the screen 10 times (in older app versions: the version number). This switches on the developer mode and after a certain time 2 additional menu entries appear. \[ If not, try all steps again! \]
+* Select the menu entry `Wireless communication protocol` (the first new entry in older app versions)
+* Turn on the slide switch at the top, write down the password (`29p9i40jeypwck38` in the screenshot) and confirm with `OK` (to the right of the cancel button) to save your changes
+
+> The password is required later during the configuration of the ioBroker adapter. If you change something here, a new password is generated and the old one is lost!
 
 ![android](img/mihome-settings.png)
 
-### iOS
-You first need to enable local network functions by using the [iOS Mi Home App iosApp Mi](https://itunes.apple.com/fr/app/%E7%B1%B3%E5%AE%B6-%E7%B2%BE%E5%93%81%E5%95%86%E5%9F%8E-%E6%99%BA%E8%83%BD%E7%94%9F%E6%B4%BB/id957323480?mt=8)
-Install the App on a iOS device:
-- Make sure you set your region to: `Mainland China` under `settings -> Locale` - required for the moment.
-- `Mainland China` and language can set on English
-- Select your Gateway in Mi Home
-- Then the 3 dots at the top right of the screen
-- Then click on about
-- Tap under Tutorial menu(on the blank part) repeatedly
-- You should see now 3 extra options listed in Chinese until you did now enable the developer mode. \[ if not try all steps again! \]
-- Choose the second new option
-- Then tap the first toggle switch to enable LAN functions. Note down the password (`29p9i40jeypwck38` in the screenshot). Make sure you hit the OK button (to the right of the cancel button) to save your changes.
-- If you change here something, you lose your password!
+Now additional devices can be taught in using the `+` symbol.
+
+#### iOS
+* Download the [iOS app](https://itunes.apple.com/de/app/mi-home-xiaomi-smarthome/id957323480?mt=8) on an iOS device, install it, open it and agree to the privacy policy
+* Select the country *Mainland China* via Profile/Settings/Country settings - required for the moment. The language can still be set to English
+* Create an account via *Login*
+* After successful registration, add a device via `+`
+* Under *Household Security*, select the `MI Control Hub` and follow the instructions
+* After the gateway has been integrated successfully, tap the 3 dots at the top right of the screen and then *About*
+* Tap repeatedly on the empty area below the *Tutorial* menu. This switches on the developer mode and after a certain time additional menu entries appear (in Chinese in older app versions). \[ If it does not work right away, repeat the steps! \]
+* Select the 4th menu entry (the second new entry in older app versions)
+* Turn on the slide switch at the top, write down the password and confirm with `OK` (to the right of the cancel button) to save your changes
+
+> The password is required later during the configuration of the ioBroker adapter. If you change something here, a new password is generated and the old one is lost!
+
+Now additional devices can be taught in using the `+` symbol.
+
+### Setting on the router
+Under About/Hub info, the IP address used by the gateway can be determined in the text after _localip_. This IP should be permanently assigned to the gateway in the router used.
+If you no longer want to operate the taught-in devices via the app, you can also switch off the gateway's internet access in the router after all devices have been taught in.
 
 ### Using acpartner
   An adapter of version 1.3.xx or higher allows you to control the air conditioner connected to ioBroker using acpartner.v3 (KTBL11LM), 
-(it will probably work with version v2 too, but the developer had not hardware to test it, if anyone tries, let us know).
+(it will probably work with version v2 too, but the developer had no hardware to test it, if anyone tries, let us know).
   
 The following states have been added to control the air conditioner:
 ![ac states](img/Air-Conditioning-Controller.png)
@@ -58,26 +72,47 @@ To start using:
 - register in the Aqara Home application,
 - select the "Mainland China" region in the settings,
 - add acpartner to the Aqara Home app,
-- update the acpartner firmware (click on the air conditioning icon, then the three dots in the upper right corner, then click the lowest point “Software Version”), as a result, Aqara firmware will be installed on acpartner (when using the MiHome application it was from Xiaomi),
+- update the acpartner firmware (click on the air conditioning icon, then the three dots in the upper right corner, then click the lowest point “Software Version”), as a result, Aqara firmware will be installed on acpartner (when using the MiHome application, it was from Xiaomi),
 - register on the site https://opencloud.aqara.cn/ with the same password and login as in the Aqara Home application (registration confirmation may take some time, I had about 6 hours),
 - log in to the console https://opencloud.aqara.cn/console/
 - create an application on the tab https://opencloud.aqara.cn/console/app-management with the type "Device access" (I’m not sure about the need for this item (because I did it yet), so you can try to skip it),
-- then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access and you will see the network key, which is necessary to configure the adapter in ioBroker.
+- then go to the console https://opencloud.aqara.cn/console and select Gateway LAN on the left, fill in the "Aqara account" and "Password" fields and click the Submit button - you will see your Air Conditioning Controller and the network protocol enable button by clicking to which you allow LAN access, and you will see the network key, which is necessary to configure the adapter in ioBroker.
 - in the adapter settings, enter the key obtained above.
 ![gateway key](img/Gateway-LAN.png)
+
+## Installation of the ioBroker Mi Home adapter
+Further settings are made via the ioBroker admin interface only.
+Search for the adapter in the *Adapter* area and install it using the `+` symbol.
+
+![adapter](img/Adapter.png)
+
+The following configuration window will then open:
+
+![adapter configuration](img/Adapterconfig1.PNG)
+
+Enter the password determined above under `Default Gateway Key` and close the window with *save and close*. The running adapter should then be displayed in green under *Instances*:
+
+![instance](img/Instanz.PNG)
+
+The gateway and its taught-in devices are now displayed under *Objects*:
+
+![objects](img/Objekte.PNG)
+
+This manual has been prepared to the best of our knowledge and belief.
 
 ## Usage
 You can use small button on temperature sensor to trigger `double Press` event. Just press twice within 5 seconds. You can set this interval in settings, but do not set it over 10 seconds.
 
-### Add device by SID
-In case of device does not recognized by its Model name it is possible to try to add device using SID. Currently it is applicable for __Aqara 2 channels relay control module__ which has empty model name due to some problems in Gateway firmware.
+### Add a device by SID
+In case of a device does not get recognized by its Model name, it is possible to try to add a device using SID. Currently, it is applicable for __Aqara 2 channels relay control module__ which has an empty model name due to some problems in Gateway firmware.
 
-In order to add device by SID, open `DEVICE SID` tab in adapter settings and specify SID and device name from the supported devices list below.
+In order to add a device by SID, open `DEVICE SID` tab in adapter settings and specify SID and device name from the supported devices list below.
 
 For Aqara relay module it should be specified like this:
 ![by sid](img/device-sid-settings.png)
 
 ### Supported devices
+The following list does not claim to be complete:
 
 - `gateway` -           Xiaomi RGB Gateway
 - `acpartner.v3` -      Aqara AC Partner (KTBL11LM)
@@ -94,7 +129,7 @@ For Aqara relay module it should be specified like this:
 - `smoke` -             Xiaomi Mijia Honeywell Fire Alarm Detector
 - `ctrl_ln1` -          Xiaomi Aqara 86 Fire Wall Switch One Button
 - `ctrl_ln1.aq1` -      Xiaomi Aqara Wall Switch LN
-- `ctrl_ln2` -          Xiaomi 86 zero fire wall switch double key
+- `ctrl_ln2` -          Xiaomi 86-zero-fire wall switch double key
 - `ctrl_ln2.aq1` -      Xiaomi Aqara Wall Switch LN double key
 - `ctrl_neutral2` -     Xiaomi Wired Dual Wall Switch
 - `ctrl_neutral1` -     Xiaomi Wired Single Wall Switch
@@ -125,7 +160,10 @@ For Aqara relay module it should be specified like this:
 ## Changelog
 
 ### **WORK IN PROGRESS**
-- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+* (bluefox) The adapter was refactored to TypeScript and the configuration was migrated to JsonConfig
+* (bluefox) __Breaking:__ Node.js >= 22, js-controller >= 6.0.11 and admin >= 7 are required now
+* (bluefox) The reports of the curtain are no longer written into a `state` object that does not exist
+* (bluefox) Fixed the `open`, `close` and `stop` states of the curtain: the reported status was never evaluated
 
 ### 1.4.0 (2022-03-10)
 * (drtsb) Added two new aqara devices and some missing icons
@@ -133,7 +171,7 @@ For Aqara relay module it should be specified like this:
 * (Apollon77) Catch some errors reported by Sentry and users
 
 ### 1.3.7 (2021-01-22)
-* (Apollon77) Prevent crash case (Sentry IOBROKER-MIHOME-A)
+* (Apollon77) Prevent a crash case (Sentry IOBROKER-MIHOME-A)
 
 ### 1.3.6 (2020-09-25)
 * (VLGorskij) Added new device QBKG24LM
@@ -155,13 +193,13 @@ For Aqara relay module it should be specified like this:
 * (Diginix) Fixed calculation for sensor's battery percentage
 
 ### 1.3.0 (2020-01-16)
-* (algar42) Ability to add devices with missing model by their SID ([e.g. for Aqara two-channel relay](https://github.com/algar42/ioBroker.mihome#usage))
+* (algar42) Ability to add devices with a missing model by their SID ([e.g. for Aqara two-channel relay](https://github.com/algar42/ioBroker.mihome#usage))
 
 ### 1.2.9 (2019-11-15)
 * (Diginix) Fixed pressure range and values of Aqara weather sensor
 
 ### 1.2.8 (2019-07-18)
-* (SchumyHao) Change curtain and gateway light role that making them can be detected by type-detector
+* (SchumyHao) Change a curtain and gateway light role that making them can be detected by type-detector
 
 ### 1.2.7 (2019-06-25)
 * (SchumyHao) Add several devices support for protocol 2.0.x
@@ -226,7 +264,7 @@ For Aqara relay module it should be specified like this:
 * (bluefox) Set after 300ms doublePress to false by Temperature Sensor\nAllow control of Plug
 
 ### 0.2.1 (2017-07-29)
-* (bluefox) Implement double click on temperature sensor
+* (bluefox) Implement double click on the temperature sensor
 
 ### 0.2.0 (2017-07-18)
 * (bluefox) fix battery level
@@ -238,10 +276,12 @@ For Aqara relay module it should be specified like this:
 ### 0.1.1 (2017-06-06)
 * (bluefox) Initial commit
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2017-2022 bluefox <dogafox@gmail.com>
+Copyright (c) 2017-2026 bluefox <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
