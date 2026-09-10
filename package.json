@@ -36,7 +36,7 @@
     "@alcalzone/release-script-plugin-license": "^5.2.2",
     "@iobroker/adapter-dev": "^1.4.0",
     "@iobroker/eslint-config": "^2.3.4",
-    "@iobroker/testing": "^5.3.0",
+    "@iobroker/testing": "^6.1.0",
     "@iobroker/types": "^7.2.2",
     "@tsconfig/node22": "^22.0.6",
     "@types/node": "^22.20.1",
