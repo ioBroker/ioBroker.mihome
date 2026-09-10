@@ -28,8 +28,21 @@
       "pl": "Wsparcie dla Xiaomi MiHome gateway",
       "zh-cn": "小米绿米网关接入适配器"
     },
-    "version": "1.4.0",
+    "version": "2.0.0",
     "news": {
+      "2.0.0": {
+        "en": "The adapter was refactored to TypeScript and the configuration was migrated to JsonConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 and admin >= 7 are required now\nThe reports of the curtain are no longer written into a `state` object that does not exist\nFixed the `open`, `close` and `stop` states of the curtain: the reported status was never evaluated",
+        "de": "Der Adapter wurde auf TypeScript und die Konfiguration auf JSONConfig umgestellt\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 und admin >= 7 sind jetzt nötig\nDie Berichte des Vorhangs sind nicht mehr in ein Objekt geschrieben, das es nicht gibt\nÖffnen/Schließen/Stopp des Vorhangs behoben: Der gemeldete Status wurde nie ausgewertet",
+        "ru": "Адаптер был переработан на TypeScript, а конфигурация перенесена в JSONConfig\n__Breaking:__ Node.js >= 22, js-контроллер >= 6.0.11 и администратор >= 7 теперь требуются\nОтчеты занавеса больше не записываются в несуществующий объект «состояние»\nИсправлены состояния «открыто», «закрыто» и «стоп» шторы: статус, о котором сообщалось, так и не оценивался",
+        "pt": "O adaptador foi refeito para TypeScript e a configuração migrada para JSONConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 e admin >= 7 agora\nOs relatos da cortina não são mais escritos em um objeto de “estado” que não existe\nCorrigidos os estados `open`, `fechar` e `stop` da cortina: o status relatado nunca foi avaliado",
+        "nl": "De adapter is omgevormd naar TypeScript en de configuratie is gemigreerd naar JSONConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 en admin >= 7 zijn nu vereist\nDe verslagen van het gordijn worden niet langer in een „staatsobject” geschreven dat niet bestaat\nDe status 'open', 'dicht' en 'stop' van het gordijn is opgelost: de gerapporteerde status is nooit geëvalueerd",
+        "fr": "L'adaptateur a été refactorisé en TypeScript et la configuration a été migrée vers JSONConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 et admin >= 7 sont requis\nLes rapports du rideau ne sont plus écrits dans un objet « État » qui n'existe pas\nCorrection des états « ouvert », « fermé » et « arrêt » du rideau : l'état signalé n'a jamais été évalué",
+        "it": "L'adattatore è stato refattorizzato in TypeScript e la configurazione in JSONConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 e admin >= 7 ora servono\nI resoconti del sipario non sono più scritti in un oggetto «stato» che non esiste\nRisolti gli stati «aperto», «chiuso» e «stop»: lo stato riportato non è mai stato valutato",
+        "es": "El adaptador se refactorizó a TypeScript y la configuración se migró a JsonConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 y admin >= 7 ahora se necesitan\nLos informes del telón ya no se escriben en un objeto de «estado» que no existe\nSe corrigieron los estados de «abrir», «cerrar» y «detener» del telón: el estado informado nunca se evaluó",
+        "pl": "Adapter został zmieniony do TypeScript, a konfiguracja została przeniesiona do JSONConfig\n__Breaking:__ Node.js >= 22, js-controller >= 6.0.11 i admin >= 7 są teraz wymagane\nRaporty kurtyny nie są już zapisywane do obiektu „stanu”, który nie istnieje\nNaprawiono stany „open”, „close” i „stop” kurtyny: zgłoszony status nigdy nie był oceniany",
+        "uk": "Адаптер був перероблений на TypeScript, а конфігурацію перенесено на JSONConfig\n__Порушення: __ Node.js >= 22, js-контролер >= 6.0.11 та адміністратор >= 7 тепер потрібні\nЗвіти про завісу більше не записуються в «державний» об'єкт, якого не існує\nВиправлено стан «відкрито», «закрити» та «зупинити» завіси: повідомлений статус ніколи не оцінювався",
+        "zh-cn": "适配器被重构为 TypeScript，配置已迁移到 JsonConfig\n__Breaking: __ Node.js >= 22，现在需要 js-controller >= 6.0.11 和管理员 >= 7\n幕布的报道不再写入不存在的 “状态” 对象中\n修复了窗帘的 “打开”、“关闭” 和 “停止” 状态：从未评估过报告的状态"
+      },
       "1.4.0": {
         "en": "Added two new aqara devices and some missing icons\nfixed the error messages for some states\nCatch some errors reported by Sentry and users",
         "de": "Zwei neue aqara-Geräte und einige fehlende Symbole hinzugefügt\ndie Fehlermeldungen für einige Zustände behoben\nFangen Sie einige Fehler ab, die von Sentry und Benutzern gemeldet wurden",
