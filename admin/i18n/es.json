@@ -1,0 +1,16 @@
+{
+    "Main settings": "Ajustes principales",
+    "Gateway keys": "Claves de puerta de enlace",
+    "Device SID": "SID del dispositivo",
+    "ioBroker IP": "ioBroker IP",
+    "ioBroker Port": "Puerto ioBroker",
+    "Heartbeat timeout (ms)": "Tiempo de latido del corazón (ms)",
+    "Re-connection interval (ms)": "Intervalo de reconexión (ms)",
+    "Default Gateway Key": "Clave de puerta de enlace predeterminada",
+    "Double key interval (ms)": "Intervalo de tecla doble (ms)",
+    "Use mmHg units for pressure": "Utilice unidades de mmHg para la presión",
+    "IP Address": "Dirección IP",
+    "Key": "Llave",
+    "SID": "SID",
+    "Model": "Modelo"
+}

@@ -1,0 +1,137 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_main": {
+            "type": "panel",
+            "label": "Main settings",
+            "items": {
+                "_logo": {
+                    "type": "staticImage",
+                    "src": "mihome.png",
+                    "style": {
+                        "width": "64px"
+                    },
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 1
+                },
+                "bind": {
+                    "type": "ip",
+                    "label": "ioBroker IP",
+                    "listenOnAllPorts": true,
+                    "onlyIp4": true,
+                    "newLine": true,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4
+                },
+                "port": {
+                    "type": "number",
+                    "label": "ioBroker Port",
+                    "min": 1,
+                    "max": 65535,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2
+                },
+                "heartbeatTimeout": {
+                    "type": "number",
+                    "label": "Heartbeat timeout (ms)",
+                    "min": 0,
+                    "max": 120000,
+                    "newLine": true,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4
+                },
+                "restartInterval": {
+                    "type": "number",
+                    "label": "Re-connection interval (ms)",
+                    "min": 1000,
+                    "max": 120000,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2
+                },
+                "key": {
+                    "type": "text",
+                    "label": "Default Gateway Key",
+                    "newLine": true,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4
+                },
+                "interval": {
+                    "type": "number",
+                    "label": "Double key interval (ms)",
+                    "min": 0,
+                    "max": 9000,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2
+                },
+                "mmHg": {
+                    "type": "checkbox",
+                    "label": "Use mmHg units for pressure",
+                    "newLine": true,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4
+                }
+            }
+        },
+        "_keys": {
+            "type": "panel",
+            "label": "Gateway keys",
+            "items": {
+                "keys": {
+                    "type": "table",
+                    "sm": 12,
+                    "items": [
+                        {
+                            "type": "autocompleteSendTo",
+                            "attr": "ip",
+                            "title": "IP Address",
+                            "width": "40%",
+                            "command": "browse",
+                            "jsonData": "{\"port\": ${data.port}, \"bind\": \"${data.bind}\"}",
+                            "alsoDependsOn": ["port", "bind"],
+                            "freeSolo": true
+                        },
+                        {
+                            "type": "text",
+                            "attr": "key",
+                            "title": "Key",
+                            "width": "60%"
+                        }
+                    ]
+                }
+            }
+        },
+        "_sids": {
+            "type": "panel",
+            "label": "Device SID",
+            "items": {
+                "sids": {
+                    "type": "table",
+                    "sm": 12,
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "sid",
+                            "title": "SID",
+                            "width": "40%"
+                        },
+                        {
+                            "type": "text",
+                            "attr": "model",
+                            "title": "Model",
+                            "width": "60%"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
