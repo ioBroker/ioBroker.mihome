@@ -119,7 +119,10 @@
       "bluefox <dogafox@gmail.com>"
     ],
     "compact": true,
-    "license": "MIT",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
     "readme": "https://github.com/ioBroker/ioBroker.mihome/blob/master/README.md",
     "icon": "mihome.png",
     "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.mihome/master/admin/mihome.png",
