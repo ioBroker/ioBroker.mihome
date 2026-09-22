@@ -2,15 +2,15 @@
 version: 2
 updates:
 
-  - package-ecosystem: "npm"
+  - package-ecosystem: 'npm'
     schedule:
-      interval: "cron"
-      timezone: "Europe/Berlin"
-      cronjob: "43 1 18 * *"
+      interval: 'cron'
+      timezone: 'Europe/Berlin'
+      cronjob: '43 1 18 * *'
     open-pull-requests-limit: 20
-    versioning-strategy: "increase"
+    versioning-strategy: 'increase'
     directories:
-      - "**/*"
+      - '**/*'
     ignore:
       - dependency-name: '@types/node'
         update-types:
