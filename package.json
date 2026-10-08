@@ -34,12 +34,12 @@
     "@alcalzone/release-script": "^5.2.1",
     "@alcalzone/release-script-plugin-iobroker": "^5.2.0",
     "@alcalzone/release-script-plugin-license": "^5.2.2",
-    "@iobroker/adapter-dev": "^1.4.0",
+    "@iobroker/adapter-dev": "^1.5.0",
     "@iobroker/eslint-config": "^2.3.4",
-    "@iobroker/testing": "^6.2.0",
-    "@iobroker/types": "^7.2.2",
+    "@iobroker/testing": "^6.3.0",
+    "@iobroker/types": "^7.2.5",
     "@tsconfig/node22": "^22.0.6",
-    "@types/node": "^26.5.1",
+    "@types/node": "^22.20.5",
     "typescript": "~6.0.3"
   },
   "bugs": {
