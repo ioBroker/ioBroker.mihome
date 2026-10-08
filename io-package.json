@@ -14,6 +14,7 @@
       "it": "Xiaomi MiHome Gateway",
       "es": "Puerta de enlace Xiaomi MiHome",
       "pl": "Bramka Xiaomi MiHome",
+      "uk": "Шлюз Xiaomi MiHome",
       "zh-cn": "小米米家网关"
     },
     "desc": {
@@ -26,6 +27,7 @@
       "it": "Supporto Xiaomi MiHome gateway",
       "es": "Asistencia técnica para Xiaomi MiHome gateway",
       "pl": "Wsparcie dla Xiaomi MiHome gateway",
+      "uk": "Підтримка шлюзу Xiaomi MiHome",
       "zh-cn": "小米绿米网关接入适配器"
     },
     "version": "2.0.0",

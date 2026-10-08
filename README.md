@@ -154,10 +154,13 @@ The following list does not claim to be complete:
 
 <!--
 	Placeholder for the next version (at the beginning of the line):
-	### __WORK IN PROGRESS__
+	### **WORK IN PROGRESS**
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (@GermanBluefox) Updated packages
+
 ### 2.0.0 (2026-09-10)
 * (@GermanBluefox) The adapter was refactored to TypeScript and the configuration was migrated to JsonConfig
 * (@GermanBluefox) __Breaking:__ Node.js >= 22, js-controller >= 6.0.11 and admin >= 7 are required now
