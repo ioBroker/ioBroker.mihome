@@ -158,7 +158,7 @@ The following list does not claim to be complete:
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 2.0.1 (2026-10-08)
 * (@GermanBluefox) Updated packages
 
 ### 2.0.0 (2026-09-10)
@@ -177,9 +177,6 @@ The following list does not claim to be complete:
 
 ### 1.3.6 (2020-09-25)
 * (VLGorskij) Added new device QBKG24LM
-
-### 1.3.5 (2020-09-17)
-* (Apollon77) Fix crash cases (Sentry IOBROKER-MIHOME-1..4)
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
