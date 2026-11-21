@@ -1,0 +1,16 @@
+{
+    "Main settings": "Основні налаштування",
+    "Gateway keys": "Ключі шлюзів",
+    "Device SID": "SID пристрою",
+    "ioBroker IP": "IP ioBroker",
+    "ioBroker Port": "Порт ioBroker",
+    "Heartbeat timeout (ms)": "Тайм-аут heartbeat (мс)",
+    "Re-connection interval (ms)": "Інтервал повторного підключення (мс)",
+    "Default Gateway Key": "Ключ шлюзу за замовчуванням",
+    "Double key interval (ms)": "Інтервал подвійного натискання (мс)",
+    "Use mmHg units for pressure": "Використовувати мм рт. ст. для тиску",
+    "IP Address": "IP-адреса",
+    "Key": "Ключ",
+    "SID": "SID",
+    "Model": "Модель"
+}

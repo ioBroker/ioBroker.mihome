@@ -158,6 +158,10 @@ The following list does not claim to be complete:
 -->
 
 ## Changelog
+### **WORK IN PROGRESS**
+* (@GermanBluefox) Raised the minimal admin version to 7.6.17
+* (@GermanBluefox) Added Ukrainian translations
+
 ### 2.0.1 (2026-10-08)
 * (@GermanBluefox) Updated packages
 
