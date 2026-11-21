@@ -1,4 +1,7 @@
 # Older changes
+## 1.3.6 (2020-09-25)
+* (VLGorskij) Added new device QBKG24LM
+
 ## 1.3.5 (2020-09-17)
 * (Apollon77) Fix crash cases (Sentry IOBROKER-MIHOME-1..4)
 

@@ -158,7 +158,7 @@ The following list does not claim to be complete:
 -->
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 2.0.2 (2026-11-21)
 * (@GermanBluefox) Raised the minimal admin version to 7.6.17
 * (@GermanBluefox) Added Ukrainian translations
 
@@ -178,9 +178,6 @@ The following list does not claim to be complete:
 
 ### 1.3.7 (2021-01-22)
 * (Apollon77) Prevent a crash case (Sentry IOBROKER-MIHOME-A)
-
-### 1.3.6 (2020-09-25)
-* (VLGorskij) Added new device QBKG24LM
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

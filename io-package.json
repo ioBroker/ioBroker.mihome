@@ -30,8 +30,21 @@
       "uk": "Підтримка шлюзу Xiaomi MiHome",
       "zh-cn": "小米绿米网关接入适配器"
     },
-    "version": "2.0.1",
+    "version": "2.0.2",
     "news": {
+      "2.0.2": {
+        "en": "Raised the minimal admin version to 7.6.17\nAdded Ukrainian translations",
+        "de": "Minimale Admin-Version auf 7.6.17 erhöht\nUkrainisch hinzugefügt",
+        "ru": "Увеличена минимальная версия для администратора до 7.6.17\nДобавлены переводы на украинский язык",
+        "pt": "Aumentou a versão admin mínima para 7.6.17\nAdição de traduções ucranianas",
+        "nl": "De minimale beheerversie verhoogd naar 7.6.17\nOekraïense vertalingen toegevoegd",
+        "fr": "La version admin minimale est passée à 7.6.17\nTraductions en ukrainien ajoutées",
+        "it": "Aumentata la versione admin minima a 7.6.17\nAggiunte traduzioni ucraine",
+        "es": "Subió la versión mínima de admin a 7.6.17\nAñadió traducciones al ucraniano",
+        "pl": "Podniesiono minimalną wersję administratora do 7.6.17\nDodano tłumaczenia ukraińskie",
+        "uk": "Піднято мінімальну версію адміністратора до 7.6.17\nДодані українські переклади",
+        "zh-cn": "将最低管理员版本提高到 7.6.17\n添加了乌克兰语翻译"
+      },
       "2.0.1": {
         "en": "Updated packages",
         "de": "Neue Pakete",
@@ -109,19 +122,6 @@
         "pl": "Napraw przypadki awarii (Sentry IOBROKER-MIHOME-1..4)",
         "uk": "Виправлено випадки збоїв (Sentry IOBROKER-MIHOME-1..4)",
         "zh-cn": "修复崩溃情况（Sentry IOBROKER-MIHOME-1..4）"
-      },
-      "1.3.4": {
-        "en": "Fixed the crash for non existing attributes",
-        "de": "Der Absturz für nicht vorhandene Attribute wurde behoben",
-        "ru": "Исправлен сбой для несуществующих атрибутов",
-        "pt": "Corrigida a falha para atributos não existentes",
-        "nl": "De crash voor niet bestaande attributen opgelost",
-        "fr": "Correction du crash pour les attributs non existants",
-        "it": "Risolto il crash per attributi non esistenti",
-        "es": "Se corrigió el bloqueo de los atributos no existentes.",
-        "pl": "Naprawiono awarię dla nieistniejących atrybutów",
-        "uk": "Виправлено збій для неіснуючих атрибутів",
-        "zh-cn": "修复了不存在的属性的崩溃"
       }
     },
     "mode": "daemon",
